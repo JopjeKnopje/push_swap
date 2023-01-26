@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/01/26 16:16:37 by jboeve        ########   odam.nl          #
+#    Updated: 2023/01/26 18:06:50 by joppe         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 
 .PHONY: $(LIBFT)
 $(LIBFT):
-	make -C libft bonus
+	$(MAKE) -C libft bonus
 
 clean:
 	rm -fr $(OBJ_DIR)
@@ -55,8 +55,8 @@ compile_commands: dfclean fclean
 	compiledb -- make
 
 dfclean:
-	make -C libft fclean
+	$(MAKE) -C libft fclean
 dre:
-	make -C libft re
+	$(MAKE) -C libft re
 
 
