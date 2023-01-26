@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/01/26 23:36:35 by joppe         ########   odam.nl         */
+/*   Updated: 2023/01/26 23:50:07 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,13 @@
 int is_num_str(char *s)
 {
 	int i = 0;
+	int counter = 0;
+	while (s[i] == '-' || s[i] == '+')
+		i++;
 	while (s[i]) 
 	{
-
-		int num = ft_atoi(s);
-		if (num)
-		{
-			printf("num %d\n", num);
-		}
-		// if (!ft_isdigit(s[i]))
-		// 	return (0);
+		if (!ft_isdigit(s[i]))
+			return (0);
 		i++;
 	}
 	return (1);
@@ -44,7 +41,6 @@ int parse_args(char *argv[])
 	{
 		if (!is_num_str(argv[i]))
 			return (0);
-
 		i++;
 	}
 	return (1);
@@ -80,16 +76,15 @@ void print_list(t_list *head)
 
 int main (int argc, char *argv[])
 {
-	parse_args(argv);
-	// t_list *head_a;
-	// if (argc > 1 && parse_args(argv))
-	// {
-	// 	// add to list
-	// 	 head_a = create_stack_a(argv);
-	// }
-	// else
-	// 	printf("Error!\n");
-	//
-	// print_list(head_a);
-	return 0;
+	t_list *head_a;
+	if (argc > 1 && parse_args(argv))
+	{
+		// add to list
+		 head_a = create_stack_a(argv);
+	}
+	else
+		printf("Error!\n");
+
+	print_list(head_a);
+	return (0);
 }
