@@ -1,0 +1,5 @@
+1 - parse input while in argv[] 
+1.1 - check if each argument is a valid int
+1.2 no duplicates, negative numbers are allowed, 
+2. if all input is valid put in list (linked or array?)
+3. sort

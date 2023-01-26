@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/01/26 18:06:50 by joppe         ########   odam.nl          #
+#    Updated: 2023/01/26 18:55:23 by joppe         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,10 @@ NAME = app
 
 LIBFT = libft/build/libft.a
 
-CFLAGS = -Wall -Wextra -Werror
+# CFLAGS = -Wall -Wextra -Werror
 # CFLAGS += -g -fsanitize=address
 
-INC = -Ilibft/include
+INC = -Ilibft/include -Iinclude
 # INC = -Ilibft -I/usr/include/bsd
 
 SRC_DIR = src
@@ -49,7 +49,7 @@ fclean: clean
 re: fclean dfclean all
 
 run: all
-	./$(NAME)
+	./$(NAME) 5 4 3 2 1
 
 compile_commands: dfclean fclean
 	compiledb -- make
