@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/01/26 18:55:10 by joppe         ########   odam.nl         */
+/*   Updated: 2023/01/26 18:56:59 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,26 @@ t_list *create_stack_a(char *argv[])
 }
 
 
+
+void print_list(t_list *head)
+{
+	t_list *tmp;
+	while (tmp)
+	{
+	
+	}
+}
+
 int main (int argc, char *argv[])
 {
 	if (argc > 1 && parse_args(argv))
 	{
 		// add to list
 		t_list *head = create_stack_a(argv);
-		
 	}
 	else
 		printf("Error!\n");
+
+	print_list(head);
 	return 0;
 }
