@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/01/31 21:16:45 by joppe         ########   odam.nl         */
+/*   Updated: 2023/01/31 21:24:30 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ t_node *create_stack_a(char *argv[])
 {
 	t_node *head = stack_new(ft_atoi(argv[1]));
 
-	int i = 1;
+	int i = 2;
 	while (argv[i])
 	{
 		int num = ft_atoi(argv[i]);
-		// stack_add_front(&head, stack_new(num));
-		stack_add_back(&head, stack_new(num));
+		stack_add_front(&head, stack_new(num));
+		// stack_add_back(&head, stack_new(num));
 		i++;
 	}
 	return (head);
@@ -64,10 +64,11 @@ void print_node(t_node *head)
 	t_node *tmp = head;
 	while (tmp)
 	{
-		if (!tmp->next)
-			break ;
 
 		printf("%d\n", tmp->nb);
+
+		if (!tmp->next)
+			break ;
 
 		tmp = tmp->next;
 	}
