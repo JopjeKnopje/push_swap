@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/01/29 15:42:13 by joppe         ########   odam.nl         */
+/*   Updated: 2023/01/31 13:27:22 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,11 @@ t_list *create_stack_a(char *argv[])
 	int i = 1;
 	while (argv[i])
 	{
-		ft_lstadd_front(&head, ft_lstnew(argv[i]));
+		int *num = calloc(1, sizeof(int) + 1);
+		*num = ft_atoi(argv[i]);
+		// ft_lstadd_front(&head, ft_lstnew(argv[i]));
+		ft_lstadd_front(&head, ft_lstnew(num));
+
 		// ft_lstadd_back(&head, ft_lstnew(argv[i]));
 		i++;
 	}
