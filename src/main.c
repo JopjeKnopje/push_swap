@@ -6,11 +6,10 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/01/31 13:27:22 by joppe         ########   odam.nl         */
+/*   Updated: 2023/01/31 21:16:45 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_swap.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -36,7 +35,6 @@ int parse_args(char *argv[])
 {
 	int i = 1;
 
-	// while (i < argc) 
 	while (argv[i]) 
 	{
 		if (!is_num_str(argv[i]))
@@ -46,65 +44,49 @@ int parse_args(char *argv[])
 	return (1);
 }
       
-t_list *create_stack_a(char *argv[])
+t_node *create_stack_a(char *argv[])
 {
-	t_list *head = ft_lstnew(argv[1]);
+	t_node *head = stack_new(ft_atoi(argv[1]));
 
 	int i = 1;
 	while (argv[i])
 	{
-		int *num = calloc(1, sizeof(int) + 1);
-		*num = ft_atoi(argv[i]);
-		// ft_lstadd_front(&head, ft_lstnew(argv[i]));
-		ft_lstadd_front(&head, ft_lstnew(num));
-
-		// ft_lstadd_back(&head, ft_lstnew(argv[i]));
+		int num = ft_atoi(argv[i]);
+		// stack_add_front(&head, stack_new(num));
+		stack_add_back(&head, stack_new(num));
 		i++;
 	}
 	return (head);
 }
 
-void print_list(t_list *head)
+void print_node(t_node *head)
 {
-	t_list *tmp = head;
+	t_node *tmp = head;
 	while (tmp)
 	{
 		if (!tmp->next)
 			break ;
 
-		printf("%s\n", (char *) tmp->content);
+		printf("%d\n", tmp->nb);
 
 		tmp = tmp->next;
 	}
 }
 
-void lstfree(t_list **head)
-{
-	t_list *tmp;
-	while (*head)
-	{
-		if (!(*head)->next)
-			break ;
-		
-		tmp = *head;
-		*head = (*head)->next;
-		free(tmp);
-	}
-}
 
 int main (int argc, char *argv[])
 {
-	t_list *head_a;
+	t_node *head_a;
 	if (argc > 1 && parse_args(argv))
 	{
 		// add to list
 		head_a = create_stack_a(argv);
 		
-		print_list(head_a);
-		lstfree(&head_a);
+		print_node(head_a);
+		stack_free(&head_a);
 	}
 	else
-		printf("error!\n");
+		printf("Error!\n");
 
 	return (0);
 }
