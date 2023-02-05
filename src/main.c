@@ -6,13 +6,15 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/01/31 21:24:30 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/05 20:08:01 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
+#include <limits.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 
 // TODO Add to libft
@@ -44,50 +46,60 @@ int parse_args(char *argv[])
 	return (1);
 }
       
-t_node *create_stack_a(char *argv[])
+t_stack *create_stack_a(char *argv[])
 {
-	t_node *head = stack_new(ft_atoi(argv[1]));
+	t_stack *head; 
 
-	int i = 2;
+	int i = 1;
+	head = 0;
+
+	// if argv is 0 we get error?
 	while (argv[i])
 	{
-		int num = ft_atoi(argv[i]);
-		stack_add_front(&head, stack_new(num));
-		// stack_add_back(&head, stack_new(num));
+		long num = atol(argv[i]);
+		if (num > INT_MAX || num < INT_MIN) 
+		{
+			stack_free(&head);
+			return 0;
+		}
+		if (!head)
+			head = stack_new(num);
+		else
+			stack_add_front(&head, stack_new(num));
 		i++;
 	}
 	return (head);
 }
 
-void print_node(t_node *head)
+void print_node(t_stack *head)
 {
-	t_node *tmp = head;
+	t_stack *tmp = head;
 	while (tmp)
 	{
-
 		printf("%d\n", tmp->nb);
-
-		if (!tmp->next)
-			break ;
-
 		tmp = tmp->next;
 	}
 }
 
 
-int main (int argc, char *argv[])
+int main(int argc, char *argv[])
 {
-	t_node *head_a;
+	t_stack *head_a;
 	if (argc > 1 && parse_args(argv))
 	{
 		// add to list
 		head_a = create_stack_a(argv);
+		if (!head_a)
+		{
+			printf("input error\n");
+			return 0;
+		}
 		
 		print_node(head_a);
 		stack_free(&head_a);
 	}
 	else
-		printf("Error!\n");
+		printf("error!\n");
 
 	return (0);
 }

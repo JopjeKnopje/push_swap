@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 18:41:31 by joppe         #+#    #+#                 */
-/*   Updated: 2023/01/31 21:16:08 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/01 11:09:53 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@
 #include <stdio.h>
 #include "libft.h"
 
-typedef struct s_node
+typedef struct s_stack
 {
 	int 			nb;
-	struct s_node	*next;
-}	t_node;
+	struct s_stack	*next;
+}	t_stack;
 
 
-void 	stack_free(t_node **head);
-void 	stack_add_front(t_node **lst, t_node *new);
-void 	stack_free(t_node **head);
-void 	stack_add_back(t_node **lst, t_node *new);
-t_node	*stack_new(int nb);
+void 	stack_free(t_stack **head);
+void 	stack_add_front(t_stack **lst, t_stack *new);
+void 	stack_free(t_stack **head);
+void 	stack_add_back(t_stack **lst, t_stack *new);
+t_stack	*stack_new(int nb);
 
 #endif

@@ -6,31 +6,29 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/31 20:57:28 by joppe         #+#    #+#                 */
-/*   Updated: 2023/01/31 21:23:09 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/05 20:07:10 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 
-void stack_free(t_node **head)
+void stack_free(t_stack **head)
 {
-	t_node *tmp;
+	t_stack *tmp;
 	while (*head)
 	{
-		if (!(*head)->next)
-			break ;
-		
 		tmp = *head;
 		*head = (*head)->next;
 		free(tmp);
 	}
 }
 
-t_node	*stack_last(t_node *stack)
+t_stack	*stack_last(t_stack *stack)
 {
-	t_node	*tmp;
+	t_stack	*tmp;
 
 	if (!stack)
 		return (NULL);
@@ -44,9 +42,9 @@ t_node	*stack_last(t_node *stack)
 	return (tmp);
 }
 
-void 	stack_add_back(t_node **stack, t_node *new)
+void 	stack_add_back(t_stack **stack, t_stack *new)
 {
-	t_node	*last;
+	t_stack	*last;
 
 	if (!stack || !new)
 		return ;
@@ -59,7 +57,7 @@ void 	stack_add_back(t_node **stack, t_node *new)
 	}
 }
 
-void 	stack_add_front(t_node **stack, t_node *new)
+void 	stack_add_front(t_stack **stack, t_stack *new)
 {
 	if (!stack || !new)
 		return ;
@@ -68,11 +66,11 @@ void 	stack_add_front(t_node **stack, t_node *new)
 	*stack = new;
 }
 
-t_node	*stack_new(int nb)
+t_stack	*stack_new(int nb)
 {
-	t_node	*node;
+	t_stack	*node;
 
-	node = (t_node *) malloc(sizeof(t_node));
+	node = (t_stack *) malloc(sizeof(t_stack));
 	if (!node)
 		return (NULL);
 	node->nb = nb;
