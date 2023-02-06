@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/31 20:57:28 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/05 20:07:10 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/06 08:45:38 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,18 @@ t_stack	*stack_new(int nb)
 	node->nb = nb;
 	node->next = NULL;
 	return (node);
+}
+
+
+int	stack_size(t_stack *stack)
+{
+	int	i;
+
+	i = 0;
+	while (stack)
+	{
+		i++;
+		stack = stack->next;
+	}
+	return (i);
 }

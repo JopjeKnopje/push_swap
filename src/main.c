@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/05 20:11:30 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/06 08:55:58 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int parse_args(char *argv[])
 	return (1);
 }
       
-t_stack *create_stack_a(char *argv[])
+t_stack *create_stack_a(char *argv[], int argc)
 {
 	t_stack *head; 
 
@@ -65,7 +65,9 @@ t_stack *create_stack_a(char *argv[])
 		if (!head)
 			head = stack_new(num);
 		else
-			stack_add_front(&head, stack_new(num));
+			// stack_add_front(&head, stack_new(num));
+			// TODO Instead of stack_add_back reverse iterate over the argv array.
+			stack_add_back(&head, stack_new(num));
 		i++;
 	}
 	return (head);
@@ -81,6 +83,19 @@ void print_node(t_stack *head)
 	}
 }
 
+// testing to see if the stack operations work.
+void do_sort(t_stack **stack_a)
+{
+	int i = 0;
+	int len = stack_size(*stack_a);
+	
+	while (i < len)
+	{
+		i++;				
+	}
+
+}
+
 
 int main(int argc, char *argv[])
 {
@@ -88,18 +103,20 @@ int main(int argc, char *argv[])
 	if (argc > 1 && parse_args(argv))
 	{
 		// add to list
-		head_a = create_stack_a(argv);
+		head_a = create_stack_a(argv, argc);
 		if (!head_a)
 		{
-			printf("input error\n");
+			printf("Error!\n");
 			return 0;
 		}
+
+		do_sort(&head_a);
 		
 		print_node(head_a);
 		stack_free(&head_a);
 	}
 	else
-		printf("error!\n");
+		printf("Error!\n");
 
 	return (0);
 }
