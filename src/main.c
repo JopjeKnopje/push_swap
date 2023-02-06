@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/06 09:21:45 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/06 09:31:21 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/06 12:02:30 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,19 @@ void print_stack(t_stack *head)
 	printf("=======================\n");
 }
 
+void do_sort(t_stack **head)
+{
+	t_stack *tmp = *head;
+
+	while (tmp) 
+	{
+		operation_swap(&tmp);
+		*head = tmp;
+		tmp = tmp->next;
+	
+	}
+}
+
 
 int main (int argc, char *argv[])
 {
@@ -34,9 +47,10 @@ int main (int argc, char *argv[])
 		stack_add_back(&stack_head, stack_new(i));
 		i++;
 	}
-	print_stack(stack_head);
 	
-	operation_swap(&stack_head);
+	print_stack(stack_head);
+	do_sort(&stack_head);
+
 
 	print_stack(stack_head);
 	stack_free(&stack_head);
