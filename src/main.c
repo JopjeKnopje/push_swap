@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/06 08:55:58 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/06 09:17:20 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ t_stack *create_stack_a(char *argv[], int argc)
 		if (!head)
 			head = stack_new(num);
 		else
-			// stack_add_front(&head, stack_new(num));
 			// TODO Instead of stack_add_back reverse iterate over the argv array.
 			stack_add_back(&head, stack_new(num));
 		i++;
@@ -73,7 +72,7 @@ t_stack *create_stack_a(char *argv[], int argc)
 	return (head);
 }
 
-void print_node(t_stack *head)
+void print_stack(t_stack *head)
 {
 	t_stack *tmp = head;
 	while (tmp)
@@ -88,10 +87,19 @@ void do_sort(t_stack **stack_a)
 {
 	int i = 0;
 	int len = stack_size(*stack_a);
+	t_stack *tmp = *stack_a;
 	
 	while (i < len)
 	{
-		i++;				
+
+		operation_swap(&tmp);
+
+		print_stack(*stack_a);
+		printf("=======================\n");
+		
+		tmp = tmp->next;
+
+		i++;
 	}
 
 }
@@ -112,7 +120,7 @@ int main(int argc, char *argv[])
 
 		do_sort(&head_a);
 		
-		print_node(head_a);
+		print_stack(head_a);
 		stack_free(&head_a);
 	}
 	else

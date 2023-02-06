@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/02/06 08:49:54 by joppe         ########   odam.nl          #
+#    Updated: 2023/02/06 09:04:42 by joppe         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ INC = -Ilibft/include -Iinclude
 # INC = -Ilibft -I/usr/include/bsd
 
 SRC_DIR = src
-SRCS = main.c stack.c
+SRCS = main.c stack.c operatons.c
 SRCS := $(addprefix $(SRC_DIR)/, $(SRCS))
 
 OBJ_DIR = obj
@@ -49,7 +49,7 @@ fclean: clean
 re: fclean dfclean all
 
 run: all
-	./$(NAME) 1 -2 0 -2147483647 2147483647
+	./$(NAME) 1 -2 3 -4 5
 
 compile_commands: dfclean fclean
 	compiledb -- $(MAKE)
