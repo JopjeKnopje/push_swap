@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/06 09:21:45 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/06 17:23:39 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/06 20:21:04 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,19 @@ void print_stack(t_stack *head)
 
 void do_sort(t_stack **head)
 {
-	t_stack **tmp = &(*head)->next;
-	operation_swap(tmp);
-
+	t_stack *tmp = *head;
+	while (tmp)
+	{
+		operation_swap(&(tmp->next));
+		tmp = tmp->next;
+	}
 }
-
 
 int main (int argc, char *argv[])
 {
 	t_stack *stack_head = stack_new(0);
 	int i = 1;
-	while (i < 5) 
+	while (i < 5)
 	{
 		stack_add_back(&stack_head, stack_new(i));
 		i++;
