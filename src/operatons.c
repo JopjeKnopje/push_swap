@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/06 08:46:52 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/07 17:39:55 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/07 22:30:07 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,14 @@ void operation_push(t_stack **src, t_stack **dst)
 	// TODO Handle (prob malloc) if there is no *dst
 
 	tmp = (*src);
+	// if end of src stack
+	if (!(*src)->next)
+	{
+		printf("no src next\n");
+		// return ;
+	}
 	*src = (*src)->next;
 	stack_add_front(dst, tmp);
 
-	// stack_last(*src)->next = NULL;
 
 }

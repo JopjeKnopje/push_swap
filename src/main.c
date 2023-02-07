@@ -6,11 +6,13 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/07 09:21:42 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/07 17:37:19 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/07 22:05:13 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdlib.h>
+#include <time.h>
 #include <stdio.h>
 
 // yikes
@@ -22,8 +24,17 @@ void print_stacks(t_stack *head_a, t_stack *head_b)
 	int len_a = stack_size(head_a);
 	int len_b = stack_size(head_b);
 	int len;
-	int num_a = head_a->nb;
-	int num_b = head_b->nb;
+	int num_a;
+	int num_b;
+
+	if (head_a)
+		num_a = head_a->nb;
+	else
+	 	num_a = -1;
+	if (head_b)
+		num_b = head_b->nb;
+	else
+	 	num_b = -1;
 
 
 	if (len_a >= len_b)
@@ -43,7 +54,7 @@ void print_stacks(t_stack *head_a, t_stack *head_b)
 		else
 			printf("| stack_b %4d\n", num_b);
 
-		if (!(tmp_a->next) && !(tmp_b->next))
+		if ((!(tmp_a) || !(tmp_b)) || !(tmp_a->next) && !(tmp_b->next))
 			break;
 
 		if (tmp_a->next)
@@ -62,7 +73,7 @@ void print_stacks(t_stack *head_a, t_stack *head_b)
 
 void do_sort(t_stack **stack_a, t_stack **stack_b)
 {
-	for (int i = 0; i < 14; i++) {
+	for (int i = 0; i <= 10; i++) {
 	
 		operation_push(stack_a, stack_b);
 	}
@@ -70,10 +81,12 @@ void do_sort(t_stack **stack_a, t_stack **stack_b)
 
 int main (int argc, char *argv[])
 {
+	srand(time(NULL));
+
 	t_stack *stack_a = stack_new(0);
 	t_stack *stack_b = stack_new(0);
 	int i = 1;
-	while (i < 40)
+	while (i <= 10)
 	{
 		stack_add_back(&stack_a, stack_new(i));
 		i++;
@@ -85,5 +98,8 @@ int main (int argc, char *argv[])
 
 	stack_free(&stack_a);
 	stack_free(&stack_b);
+
+
+
 	return 0;
 }
