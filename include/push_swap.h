@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 18:41:31 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/07 09:37:45 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/07 17:18:16 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void 	stack_add_front(t_stack **stack, t_stack *new);
 void 	stack_free(t_stack **head);
 void 	stack_add_back(t_stack **stack, t_stack *new);
 int		stack_size(t_stack *stack);
+t_stack	*stack_last(t_stack *stack);
 t_stack	*stack_new(int nb);
 
 
