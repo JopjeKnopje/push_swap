@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/06 08:46:52 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/07 17:21:24 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/07 17:39:55 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ void operation_swap(t_stack **stack)
 void operation_push(t_stack **src, t_stack **dst)
 {
 	t_stack *tmp;
+
+	// TODO Handle if not *stack->next.
+	// TODO Handle (prob malloc) if there is no *dst
 
 	tmp = (*src);
 	*src = (*src)->next;
