@@ -72,7 +72,7 @@ t_stack *create_stack_a(char *argv[], int argc)
 	return (head);
 }
 
-void print_stack(t_stack *head)
+void print_stacks(t_stack *head)
 {
 	t_stack *tmp = head;
 	while (tmp)
@@ -94,7 +94,7 @@ void do_sort(t_stack **stack_a)
 
 		operation_swap(&tmp);
 
-		print_stack(*stack_a);
+		print_stacks(*stack_a);
 		printf("=======================\n");
 		
 		tmp = tmp->next;
@@ -120,7 +120,7 @@ int main(int argc, char *argv[])
 
 		do_sort(&head_a);
 		
-		print_stack(head_a);
+		print_stacks(head_a);
 		stack_free(&head_a);
 	}
 	else
