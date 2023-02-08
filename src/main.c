@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/07 09:21:42 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/08 19:16:29 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/08 19:24:55 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,8 @@ void do_sort(t_stack **stack_a, t_stack **stack_b)
 	{
 		operation_push(stack_a, stack_b);
 	}
-	operation_rotate(stack_b);
-	// operation_swap(stack_a);
-	// operation_push(stack_a, stack_b);
-	// operation_push(stack_a, stack_b);
-	// stack_add_back(stack_a, stack_new(42));
-	// operation_swap(stack_a);
-	// operation_push(stack_a, stack_b);
-	// operation_push(stack_a, stack_b);
-	// operation_push(stack_b, stack_a);
-	// operation_push(stack_b, stack_a);
-	// operation_push(stack_b, stack_a);
-	// operation_push(stack_b, stack_a);
-	// operation_swap(stack_a);
-	// operation_swap(stack_b);
+	
+	operation_reverse_rotate(stack_b);
 }
 
 // !(!tmp_a && !tmp_b) == (tmp_a || tmp_b) WTF?

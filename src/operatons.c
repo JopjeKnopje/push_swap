@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/06 08:46:52 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/08 19:19:41 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/08 19:28:21 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,21 @@ void operation_rotate(t_stack **stack)
 
 	tmp->next = NULL;
 	stack_last(*stack)->next = tmp;
+}
+
+
+// Bottom number in stack goes to top of stack.
+void operation_reverse_rotate(t_stack **stack)
+{
+	t_stack *tmp;
+
+	if (!(*stack))
+		return;
+
+	tmp = stack_last(*stack);
+
+	tmp->next = *stack;
+	*stack = tmp;
+
+
 }
