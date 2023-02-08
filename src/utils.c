@@ -6,23 +6,20 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/08 14:24:01 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/08 17:45:11 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/02/08 18:56:18 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void print_stacks(t_stack *head_a, t_stack *head_b)
 {
 	t_stack *tmp_a = head_a;
 	t_stack *tmp_b = head_b;
+
 	int stack_a_len = stack_size(head_a);
 	int stack_b_len = stack_size(head_b);
 
-
-
-	// WTF Why does this work?
 	while (tmp_a || tmp_b)
 	{
 		if (tmp_a)
@@ -45,5 +42,4 @@ void print_stacks(t_stack *head_a, t_stack *head_b)
 	}
 	printf("==============================\n");
 }
-
 

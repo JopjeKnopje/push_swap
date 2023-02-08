@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/06 08:46:52 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/08 14:23:19 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/02/08 18:59:03 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,13 @@ void operation_swap(t_stack **stack)
 
 
 // Top number in src goes to top of dst.
-// TODO doens't set the next pointer of the last element
 void operation_push(t_stack **src, t_stack **dst)
 {
 	t_stack *tmp;
 
 	if (!(*src))
 		return ;
-
-	// TODO Handle if not *stack->next.
-	// TODO Handle (prob malloc) if there is no *dst
-	// TODO When we want to add the last element of src, we loose the next ptr.
-
 	tmp = (*src);
 	*src = (*src)->next;
 	stack_add_front(dst, tmp);
-
-
 }
