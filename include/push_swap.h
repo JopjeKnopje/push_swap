@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 18:41:31 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/07 17:18:16 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/08 14:24:39 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ t_stack	*stack_new(int nb);
 
 // operations.c
 void 	operation_swap(t_stack **stack);
-void operation_push(t_stack **src, t_stack **dst);
+void 	operation_push(t_stack **src, t_stack **dst);
+
+// utils.c
+void 	print_stacks(t_stack *head_a, t_stack *head_b);
+
 
 #endif

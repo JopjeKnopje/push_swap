@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/02/07 12:03:13 by jboeve        ########   odam.nl          #
+#    Updated: 2023/02/08 14:25:04 by jboeve        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ INC = -Ilibft/include -Iinclude
 # INC = -Ilibft -I/usr/include/bsd
 
 SRC_DIR = src
-SRCS = main.c stack.c operatons.c
+SRCS = main.c stack.c operatons.c utils.c
 SRCS := $(addprefix $(SRC_DIR)/, $(SRCS))
 
 OBJ_DIR = obj
