@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/06 08:46:52 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/07 22:30:07 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/08 09:57:08 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ void operation_push(t_stack **src, t_stack **dst)
 
 	// TODO Handle if not *stack->next.
 	// TODO Handle (prob malloc) if there is no *dst
+	// TODO When we want to add the last element of src, we loose the next ptr.
 
 	tmp = (*src);
 	// if end of src stack
-	if (!(*src)->next)
+	if ((*src)->next)
 	{
-		printf("no src next\n");
 		// return ;
 	}
 	*src = (*src)->next;
