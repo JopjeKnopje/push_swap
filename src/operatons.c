@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/06 08:46:52 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/08 18:59:03 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/08 19:19:41 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void operation_swap(t_stack **stack)
 }
 
 
-
 // Top number in src goes to top of dst.
 void operation_push(t_stack **src, t_stack **dst)
 {
@@ -39,4 +38,20 @@ void operation_push(t_stack **src, t_stack **dst)
 	tmp = (*src);
 	*src = (*src)->next;
 	stack_add_front(dst, tmp);
+}
+
+
+// Top number in stack goes to bottom of stack.
+void operation_rotate(t_stack **stack)
+{
+	t_stack *tmp;
+
+	if (!(*stack))
+		return;
+
+	tmp = *stack;
+	*stack = (*stack)->next;
+
+	tmp->next = NULL;
+	stack_last(*stack)->next = tmp;
 }

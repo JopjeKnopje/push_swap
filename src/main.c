@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/07 09:21:42 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/08 18:58:52 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/08 19:16:29 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@
 void do_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	// t_stack *tmp = *stack_a;
-	for (int i = 0; i <= 10; i++) 
+	for (int i = 0; i <= 8; i++) 
 	{
 		operation_push(stack_a, stack_b);
 	}
+	operation_rotate(stack_b);
 	// operation_swap(stack_a);
 	// operation_push(stack_a, stack_b);
 	// operation_push(stack_a, stack_b);

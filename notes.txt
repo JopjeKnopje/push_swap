@@ -22,3 +22,9 @@ rra (reverse rotate a) : Bottom number in A goes to top of A
 rra (reverse rotate b) : Bottom number in B goes to top of B
 rrr : rra + rrb
 
+
+TODO:
+	Instead of using shitty list funcions,
+	look into a different kind of list for better performance.
+	because now we are constantly calling stack_last() which loops through
+	the entire stack which is slow.
