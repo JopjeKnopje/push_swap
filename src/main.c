@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/07 09:21:42 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/09 11:24:27 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/02/09 12:02:03 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,26 +32,37 @@ void do_sort(t_stack **stack_a, t_stack **stack_b)
 }
 
 
-int main (int argc, char *argv[])
+// int main (int argc, char *argv[])
+// {
+// 	srand(time(NULL));
+//
+// 	t_stack *stack_a = NULL;
+// 	t_stack *stack_b = NULL;
+// 	int i = 1;
+// 	while (i <= 10)
+// 	{
+// 		stack_add_back(&stack_a, stack_new(i));
+// 		i++;
+// 	}
+//
+// 	print_stacks(stack_a, stack_b);
+// 	do_sort(&stack_a, &stack_b);
+// 	print_stacks(stack_a, stack_b);
+//
+//
+// 	stack_free(&stack_a);
+// 	stack_free(&stack_b);
+//
+// 	return 0;
+// }
+
+int main(int argc, char *argv[])
 {
-	srand(time(NULL));
+	void *ptr;
 
-	t_stack *stack_a = NULL;
-	t_stack *stack_b = NULL;
-	int i = 1;
-	while (i <= 10)
-	{
-		stack_add_back(&stack_a, stack_new(i));
-		i++;
-	}
+	int x = 32;
 
-	print_stacks(stack_a, stack_b);
-	do_sort(&stack_a, &stack_b);
-	print_stacks(stack_a, stack_b);
+	ptr = (void *) x;
 
-
-	stack_free(&stack_a);
-	stack_free(&stack_b);
-
-	return 0;
+	return EXIT_SUCCESS;
 }
