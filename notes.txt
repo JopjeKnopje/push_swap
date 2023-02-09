@@ -28,3 +28,7 @@ TODO:
 	look into a different kind of list for better performance.
 	because now we are constantly calling stack_last() which loops through
 	the entire stack which is slow.
+
+	With reverse rotate a doubly linked list would be nice,
+	since you can call the prev node.
+

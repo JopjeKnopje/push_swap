@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/06 08:46:52 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/08 19:28:21 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/09 09:18:20 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,17 @@ void operation_rotate(t_stack **stack)
 
 
 // Bottom number in stack goes to top of stack.
+// TODO Actually move the node instead of the value lol.
 void operation_reverse_rotate(t_stack **stack)
 {
 	t_stack *tmp;
+	int nb;
 
 	if (!(*stack))
 		return;
 
 	tmp = stack_last(*stack);
-
-	tmp->next = *stack;
-	*stack = tmp;
-
-
+	nb = (*stack)->nb;
+	(*stack)->nb = tmp->nb;
+	tmp->nb = nb;
 }
