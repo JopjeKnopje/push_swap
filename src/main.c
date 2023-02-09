@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/09 14:28:47 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/02/09 16:25:10 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,34 @@ int is_num_str(char *s)
 	return (1);
 }
 
+
+int has_dupes(char *strings[])
+{
+	int i = 1;
+	int j = 1;
+	while (strings[i])
+	{
+		j = i + 1;
+		while (strings[j]) 
+		{
+			if (!ft_strncmp(strings[i], strings[j], 10))
+				return 1;
+			j++;	
+		}
+		i++;
+	}
+	return 0;
+}
+
+
 // TODO Check for duplicates
 int parse_args(char *argv[])
 {
 	int i = 1;
+	int j = 1;
 
+	if (has_dupes(argv))
+		return (0);
 	while (argv[i]) 
 	{
 		if (!is_num_str(argv[i]))
@@ -81,6 +104,7 @@ void do_sort(t_stack **stack_a, t_stack **stack_b)
 	operation_push(stack_a, stack_b);
 	operation_push(stack_a, stack_b);
 	operation_push(stack_a, stack_b);
+	operation_reverse_rotate(stack_b);
 	operation_reverse_rotate(stack_b);
 }
 
