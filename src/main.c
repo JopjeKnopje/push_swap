@@ -6,10 +6,11 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/09 13:30:00 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/02/09 14:28:47 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "push_swap.h"
 #include <stdio.h>
 #include <limits.h>
@@ -33,6 +34,7 @@ int is_num_str(char *s)
 	return (1);
 }
 
+// TODO Check for duplicates
 int parse_args(char *argv[])
 {
 	int i = 1;
@@ -75,6 +77,7 @@ t_stack *create_stack_a(char *argv[], int argc)
 // testing to see if the stack operations work.
 void do_sort(t_stack **stack_a, t_stack **stack_b)
 {
+
 	operation_push(stack_a, stack_b);
 	operation_push(stack_a, stack_b);
 	operation_push(stack_a, stack_b);
