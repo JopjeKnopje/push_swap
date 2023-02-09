@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/09 16:30:18 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/09 16:47:28 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,14 @@ t_stack *create_stack_a(char *argv[], int argc)
 // testing to see if the stack operations work.
 void do_sort(t_stack **stack_a, t_stack **stack_b)
 {
-	operation_push(stack_a, stack_b);
-	operation_push(stack_a, stack_b);
-	operation_push(stack_a, stack_b);
-	operation_reverse_rotate(stack_b);
-	operation_reverse_rotate(stack_b);
+	// operation_push(stack_a, stack_b);
+	// operation_push(stack_a, stack_b);
+	// operation_push(stack_a, stack_b);
+	// operation_reverse_rotate(stack_b);
+	// operation_reverse_rotate(stack_b);
+	sa(stack_a);
+	sb(stack_b);
+	ss(stack_a, stack_b);
 }
 
 
