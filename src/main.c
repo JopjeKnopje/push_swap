@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/09 16:25:10 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/09 16:30:18 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,59 +18,6 @@
 #include <unistd.h>
 
 
-// TODO Add to libft
-int is_num_str(char *s)
-{
-	int i = 0;
-	int counter = 0;
-	while (s[i] == '-' || s[i] == '+')
-		i++;
-	while (s[i]) 
-	{
-		if (!ft_isdigit(s[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-
-int has_dupes(char *strings[])
-{
-	int i = 1;
-	int j = 1;
-	while (strings[i])
-	{
-		j = i + 1;
-		while (strings[j]) 
-		{
-			if (!ft_strncmp(strings[i], strings[j], 10))
-				return 1;
-			j++;	
-		}
-		i++;
-	}
-	return 0;
-}
-
-
-// TODO Check for duplicates
-int parse_args(char *argv[])
-{
-	int i = 1;
-	int j = 1;
-
-	if (has_dupes(argv))
-		return (0);
-	while (argv[i]) 
-	{
-		if (!is_num_str(argv[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-      
 t_stack *create_stack_a(char *argv[], int argc)
 {
 	t_stack *head; 
@@ -100,7 +47,6 @@ t_stack *create_stack_a(char *argv[], int argc)
 // testing to see if the stack operations work.
 void do_sort(t_stack **stack_a, t_stack **stack_b)
 {
-
 	operation_push(stack_a, stack_b);
 	operation_push(stack_a, stack_b);
 	operation_push(stack_a, stack_b);
@@ -122,6 +68,7 @@ int main(int argc, char *argv[])
 			printf("Error!\n");
 			return 0;
 		}
+
 
 		print_stacks(head_a, head_b);
 		do_sort(&head_a, &head_b);
