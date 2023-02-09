@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/02/08 14:25:04 by jboeve        ########   odam.nl          #
+#    Updated: 2023/02/09 12:15:46 by jboeve        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,8 +49,7 @@ fclean: clean
 re: fclean dfclean all
 
 run: all
-	@# ./$(NAME) 1 -2 3 -4 5
-	./$(NAME)
+	./$(NAME) 1 -2 3 -4 5
 
 compile_commands: dfclean fclean
 	compiledb -- $(MAKE)

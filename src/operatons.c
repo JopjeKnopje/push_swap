@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/06 08:46:52 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/09 11:57:58 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/02/09 13:29:11 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void operation_reverse_rotate(t_stack **stack)
 	t_stack	*tmp;
 	t_stack *end;
 
-	if (!(*stack))
+	if (!(*stack) || !(*stack)->next)
 		return;
 
 	tmp = *stack;
