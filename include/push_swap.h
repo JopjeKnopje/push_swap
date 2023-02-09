@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 18:41:31 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/09 16:46:07 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/09 16:56:37 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,17 @@ int parse_args(char *argv[]);
 void sa(t_stack **stack_a);
 void sb(t_stack **stack_b);
 void ss(t_stack **stack_a, t_stack **stack_b);
+
+void pa(t_stack **stack_a, t_stack **stack_b);
+void pb(t_stack **stack_a, t_stack **stack_b);
+
+void ra(t_stack **stack_a);
+void rb(t_stack **stack_b);
+void rr(t_stack **stack_a, t_stack **stack_b);
+
+void rra(t_stack **stack_a);
+void rrb(t_stack **stack_b);
+void rrr(t_stack **stack_a, t_stack **stack_b);
 
 
 #endif
