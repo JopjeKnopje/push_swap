@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/06 08:46:52 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/09 09:18:20 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/09 11:24:37 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,25 @@ void operation_rotate(t_stack **stack)
 // TODO Actually move the node instead of the value lol.
 void operation_reverse_rotate(t_stack **stack)
 {
-	t_stack *tmp;
-	int nb;
-
+	t_stack	*tmp;
+	t_stack *end;
+	int i = 0;
 	if (!(*stack))
 		return;
 
-	tmp = stack_last(*stack);
-	nb = (*stack)->nb;
-	(*stack)->nb = tmp->nb;
-	tmp->nb = nb;
+	tmp = *stack;
+	while (tmp)
+	{
+		if (!tmp->next)
+			break ;
+		if (tmp->next && !(tmp->next->next))
+			end = tmp;
+		tmp = tmp->next;
+		i++;
+	}
+
+	end->next = NULL;
+	tmp->next = (*stack);
+	stack_add_front(stack, tmp);
+
 }
