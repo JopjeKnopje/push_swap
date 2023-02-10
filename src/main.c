@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/10 18:47:39 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/10 18:52:17 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,24 +68,27 @@ int calculate_median(t_stack *stack)
 t_stack *find_median(t_stack *stack, int median, unsigned int range)
 {
 	t_stack *tmp = stack;
+	t_stack *med = NULL;
 
-	static int counter = 0;
-	static int printed = 0;
-	counter++;
-	
-	while (tmp)
-	{
-		if (tmp->nb >= median - range && tmp->nb <= median + range)
-			return tmp;
-		tmp = tmp->next;
-	}
-	t_stack *med = find_median(stack, median, range + 10000);
+	int counter = 0;
 
-	if (med && !printed)
+	while (!med)
 	{
-		printf("%s call %d\n", __func__, counter);
-		printed = 1;
+		tmp = stack;
+		while (tmp)
+		{
+			if (tmp->nb >= median - range && tmp->nb <= median + range)
+			{
+				med = tmp;
+				break;
+			}
+			tmp = tmp->next;
+		}
+		range += 1000;
+		counter++;
 	}
+
+	printf("%s iterations %d\n", __func__, counter);
 
 	return (med);
 }
