@@ -1,9 +1,9 @@
 import random
 import os
 
-ARG_COUNT = 1000
-MIN_VAL = 0
-MAX_VAL = 10000000
+ARG_COUNT = 100
+MIN_VAL = -2147483648
+MAX_VAL = 2147483647
 
 
 

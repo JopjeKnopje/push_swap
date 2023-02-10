@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/10 14:13:57 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/02/10 16:04:45 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int calculate_median(t_stack *stack)
 	return median;
 }
 
+// TODO Integer overflow
 t_stack *find_median(t_stack *stack, int median, int range)
 {
 	t_stack *tmp = stack;
@@ -117,9 +118,9 @@ int main(int argc, char *argv[])
 			return 0;
 		}
 
-		print_stacks(head_a, head_b);
+		// print_stacks(head_a, head_b);
 		do_sort(&head_a, &head_b);
-		print_stacks(head_a, head_b);
+		// print_stacks(head_a, head_b);
 
 		stack_free(&head_a);
 		stack_free(&head_b);
