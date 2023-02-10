@@ -1,17 +1,21 @@
 import random
 import os
 
-ARG_COUNT = 100
+ARG_COUNT = 1000
 MIN_VAL = 0
-MAX_VAL = 10000
+MAX_VAL = 10000000
+
 
 
 def main():
+    lst = []
     string = "./app "
     for x in range(0, ARG_COUNT):
         num = random.randrange(MIN_VAL, MAX_VAL)
-        string += str(num)
-        string += " "
+        lst.append(num)
+    lst = list(dict.fromkeys(lst))
+
+    string += ' '.join(map(str, lst)) 
     # print(string)
     os.system(string)
 

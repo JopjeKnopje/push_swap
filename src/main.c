@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/10 12:28:34 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/02/10 12:45:50 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ t_stack *create_stack_a(char *argv[], int argc)
 	head = 0;
 
 	// if argv is 0 we get error?
-	while (argv[i])
+	while (argc - 1)
 	{
-		long num = atol(argv[i]);
+		long num = atol(argv[argc - 1]);
 		if (num > INT_MAX || num < INT_MIN) 
 		{
 			stack_free(&head);
@@ -38,8 +38,9 @@ t_stack *create_stack_a(char *argv[], int argc)
 			head = stack_new(num);
 		else
 			// TODO Instead of stack_add_back reverse iterate over the argv array.
-			stack_add_back(&head, stack_new(num));
-		i++;
+			stack_add_front(&head, stack_new(num));
+			// stack_add_back(&head, stack_new(num));
+		argc--;
 	}
 	return (head);
 }
