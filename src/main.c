@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/09 14:28:47 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/02/10 12:26:31 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,64 @@ t_stack *create_stack_a(char *argv[], int argc)
 	return (head);
 }
 
+
+int calculate_median(t_stack *stack)
+{
+	t_stack *tmp = stack;
+	int median = stack->nb;
+	int mid = stack_size(stack) / 2;
+	int i = 0;
+
+	while (tmp)
+	{
+		if (i == mid)
+			median += tmp->nb;
+		if (!tmp->next)
+			break;
+		i++;
+		tmp = tmp->next;
+	}
+	median += tmp->nb;
+	median /= 3;
+	return median;
+}
+
+t_stack *find_median(t_stack *stack, int median, int range)
+{
+	t_stack *tmp = stack;
+
+	static int counter = 0;
+	static int printed = 0;
+	counter++;
+	
+	while (tmp)
+	{
+		if (tmp->nb >= median - range && tmp->nb <= median + range)
+			return tmp;
+		tmp = tmp->next;
+	}
+	t_stack *med = find_median(stack, median, range + 1);
+
+	if (med && !printed)
+	{
+		printf("%s call %d\n", __func__, counter);
+		printed = 1;
+	}
+
+	return (med);
+}
+
+
 // testing to see if the stack operations work.
 void do_sort(t_stack **stack_a, t_stack **stack_b)
 {
+	int num = calculate_median(*stack_a);
+	t_stack *med = find_median(*stack_a, num, 0);
+	if (!med)
+		printf("med not found\n");
+	else
+		printf("median %d\n", med->nb);
 
-	operation_push(stack_a, stack_b);
-	operation_push(stack_a, stack_b);
-	operation_push(stack_a, stack_b);
-	operation_reverse_rotate(stack_b);
 }
 
 
@@ -99,9 +149,9 @@ int main(int argc, char *argv[])
 			return 0;
 		}
 
-		print_stacks(head_a, head_b);
+		// print_stacks(head_a, head_b);
 		do_sort(&head_a, &head_b);
-		print_stacks(head_a, head_b);
+		// print_stacks(head_a, head_b);
 
 		stack_free(&head_a);
 		stack_free(&head_b);

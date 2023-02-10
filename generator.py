@@ -1,9 +1,9 @@
 import random
 import os
 
-ARG_COUNT = 20
+ARG_COUNT = 100
 MIN_VAL = 0
-MAX_VAL = 100
+MAX_VAL = 10000
 
 
 def main():
@@ -12,7 +12,7 @@ def main():
         num = random.randrange(MIN_VAL, MAX_VAL)
         string += str(num)
         string += " "
-    print(string)
+    # print(string)
     os.system(string)
 
 
