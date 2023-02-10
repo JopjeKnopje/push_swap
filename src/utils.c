@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/08 14:24:01 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/09 12:55:19 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/02/10 09:42:55 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,3 +43,31 @@ void print_stacks(t_stack *head_a, t_stack *head_b)
 	printf("==============================\n");
 }
 
+long ft_atol(const char *s)
+{
+	int		i;
+	long 	num;
+	int		sign;
+
+	num = 0;
+	sign = 0;
+	i = 0;
+	while (s[i] == ' ' || (s[i] >= 9 && s[i] <= 13))
+		i++;
+	while ((s[i] == '-' || s[i] == '+') && !sign)
+	{
+		if (s[i] == '-')
+			sign = -1;
+		if (s[i] == '+')
+			sign = 1;
+		i++;
+	}
+	if (!sign)
+		sign = 1;
+	while (s[i] && ft_isdigit(s[i]))
+	{
+		num = num * 10 + s[i] - '0';
+		i++;
+	}
+	return (num * sign);
+}

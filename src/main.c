@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/10 12:26:31 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/02/10 12:28:34 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,36 +18,6 @@
 #include <unistd.h>
 
 
-// TODO Add to libft
-int is_num_str(char *s)
-{
-	int i = 0;
-	int counter = 0;
-	while (s[i] == '-' || s[i] == '+')
-		i++;
-	while (s[i]) 
-	{
-		if (!ft_isdigit(s[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-// TODO Check for duplicates
-int parse_args(char *argv[])
-{
-	int i = 1;
-
-	while (argv[i]) 
-	{
-		if (!is_num_str(argv[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-      
 t_stack *create_stack_a(char *argv[], int argc)
 {
 	t_stack *head; 
