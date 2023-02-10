@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/10 12:45:50 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/02/10 14:13:57 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ t_stack *create_stack_a(char *argv[], int argc)
 	int i = 1;
 	head = 0;
 
-	// if argv is 0 we get error?
 	while (argc - 1)
 	{
 		long num = atol(argv[argc - 1]);
@@ -37,9 +36,7 @@ t_stack *create_stack_a(char *argv[], int argc)
 		if (!head)
 			head = stack_new(num);
 		else
-			// TODO Instead of stack_add_back reverse iterate over the argv array.
 			stack_add_front(&head, stack_new(num));
-			// stack_add_back(&head, stack_new(num));
 		argc--;
 	}
 	return (head);
@@ -81,7 +78,7 @@ t_stack *find_median(t_stack *stack, int median, int range)
 			return tmp;
 		tmp = tmp->next;
 	}
-	t_stack *med = find_median(stack, median, range + 1);
+	t_stack *med = find_median(stack, median, range + 5);
 
 	if (med && !printed)
 	{
@@ -120,9 +117,9 @@ int main(int argc, char *argv[])
 			return 0;
 		}
 
-		// print_stacks(head_a, head_b);
+		print_stacks(head_a, head_b);
 		do_sort(&head_a, &head_b);
-		// print_stacks(head_a, head_b);
+		print_stacks(head_a, head_b);
 
 		stack_free(&head_a);
 		stack_free(&head_b);
