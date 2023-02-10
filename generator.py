@@ -3,7 +3,7 @@ import os
 
 ARG_COUNT = 100
 MIN_VAL = -2147483648
-MAX_VAL = 2147483647
+MAX_VAL = 2147483647 
 
 
 
@@ -16,7 +16,7 @@ def main():
     lst = list(dict.fromkeys(lst))
 
     string += ' '.join(map(str, lst)) 
-    # print(string)
+    print(string)
     os.system(string)
 
 
