@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 18:41:31 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/09 16:56:37 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/10 09:32:09 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void 	operation_reverse_rotate(t_stack **stack);
 
 // utils.c
 void 	print_stacks(t_stack *head_a, t_stack *head_b);
+long 	ft_atol(const char *s);
 
 // parser.c
 int parse_args(char *argv[]);

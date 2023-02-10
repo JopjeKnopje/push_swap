@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/09 16:47:28 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/10 09:44:25 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,11 @@
 t_stack *create_stack_a(char *argv[], int argc)
 {
 	t_stack *head; 
+	head = NULL;
 
-	int i = 1;
-	head = 0;
-
-	// if argv is 0 we get error?
-	while (argv[i])
+	while (argc - 1)
 	{
-		long num = atol(argv[i]);
+		long num = ft_atol(argv[argc - 1]);
 		if (num > INT_MAX || num < INT_MIN) 
 		{
 			stack_free(&head);
@@ -37,9 +34,8 @@ t_stack *create_stack_a(char *argv[], int argc)
 		if (!head)
 			head = stack_new(num);
 		else
-			// TODO Instead of stack_add_back reverse iterate over the argv array.
-			stack_add_back(&head, stack_new(num));
-		i++;
+			stack_add_front(&head, stack_new(num));
+		argc--;
 	}
 	return (head);
 }
@@ -47,41 +43,67 @@ t_stack *create_stack_a(char *argv[], int argc)
 // testing to see if the stack operations work.
 void do_sort(t_stack **stack_a, t_stack **stack_b)
 {
-	// operation_push(stack_a, stack_b);
-	// operation_push(stack_a, stack_b);
-	// operation_push(stack_a, stack_b);
-	// operation_reverse_rotate(stack_b);
-	// operation_reverse_rotate(stack_b);
 	sa(stack_a);
 	sb(stack_b);
 	ss(stack_a, stack_b);
 }
 
+// int main(int argc, char *argv[])
+// {
+// 	t_stack *head_a = NULL;
+// 	t_stack *head_b = NULL;
+// 	if (argc > 1 && parse_args(argv))
+// 	{
+// 		head_a = create_stack_a(argv, argc);
+// 		if (!head_a)
+// 		{
+// 			printf("Error!\n");
+// 			return 0;
+// 		}
+//
+// 		print_stacks(head_a, head_b);
+// 		do_sort(&head_a, &head_b);
+// 		print_stacks(head_a, head_b);
+//
+// 		stack_free(&head_a);
+// 		stack_free(&head_b);
+// 	}
+// 	else
+// 		printf("Error!\n");
+//
+// 	return (0);
+// }
 
-int main(int argc, char *argv[])
+
+int main (int argc, char *argv[])
 {
-	t_stack *head_a = NULL;
-	t_stack *head_b = NULL;
-	if (argc > 1 && parse_args(argv))
+	char *s[] = {
+		"123",
+		"0",
+		"-0",
+		"+0",
+		"-922337203685477580",
+		"-922337203685477581",
+		"+9223372036854775807",
+		"+9223372036854775808",
+		"+9223372036854775809",
+		NULL
+	};
+
+	int i = 0;
+	int size = 0;
+	while (s[size])
+		size++;
+
+	printf("input | atol | ft_atol\n");
+	while (i < size)
 	{
-		// add to list
-		head_a = create_stack_a(argv, argc);
-		if (!head_a)
-		{
-			printf("Error!\n");
-			return 0;
-		}
-
-
-		print_stacks(head_a, head_b);
-		do_sort(&head_a, &head_b);
-		print_stacks(head_a, head_b);
-
-		stack_free(&head_a);
-		stack_free(&head_b);
+		long out_1 = atol(s[i]);
+		long out_2 = ft_atol(s[i]);
+		if (out_1 != out_2)
+			printf("%s | %ld %6ld\n", s[i], out_1, out_2);
+		i++;
 	}
-	else
-		printf("Error!\n");
-
-	return (0);
+	return 0;
 }
+
