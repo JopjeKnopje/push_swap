@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/10 18:52:17 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/12 10:44:33 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,17 @@ t_stack *find_median(t_stack *stack, int median, unsigned int range)
 	return (med);
 }
 
+// https://www.geeksforgeeks.org/quick-sort/
+void quicksort(int arr[], size_t len, size_t pivot)
+{
+	
+}
+
+void test_quicksort()
+{
+	int to_sort[] = {4, 2, 1, 5, 3};
+	quicksort(to_sort, 5, 5);
+}
 
 // testing to see if the stack operations work.
 void do_sort(t_stack **stack_a, t_stack **stack_b)
@@ -103,7 +114,6 @@ void do_sort(t_stack **stack_a, t_stack **stack_b)
 		printf("med not found\n");
 	else
 		printf("median %d\n", med->nb);
-
 }
 
 
@@ -122,8 +132,10 @@ int main(int argc, char *argv[])
 		}
 
 		// print_stacks(head_a, head_b);
-		do_sort(&head_a, &head_b);
+		// do_sort(&head_a, &head_b);
 		// print_stacks(head_a, head_b);
+
+		test_quicksort(argv);
 
 		stack_free(&head_a);
 		stack_free(&head_b);
