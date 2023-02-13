@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/12 10:44:33 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/13 21:07:55 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,77 +43,10 @@ t_stack *create_stack_a(char *argv[], int argc)
 }
 
 
-int calculate_median(t_stack *stack)
-{
-	t_stack *tmp = stack;
-	int median = stack->nb;
-	int mid = stack_size(stack) / 2;
-	int i = 0;
-
-	while (tmp)
-	{
-		if (i == mid)
-			median += tmp->nb;
-		if (!tmp->next)
-			break;
-		i++;
-		tmp = tmp->next;
-	}
-	median += tmp->nb;
-	median /= 3;
-	return median;
-}
-
-// TODO Integer overflow
-t_stack *find_median(t_stack *stack, int median, unsigned int range)
-{
-	t_stack *tmp = stack;
-	t_stack *med = NULL;
-
-	int counter = 0;
-
-	while (!med)
-	{
-		tmp = stack;
-		while (tmp)
-		{
-			if (tmp->nb >= median - range && tmp->nb <= median + range)
-			{
-				med = tmp;
-				break;
-			}
-			tmp = tmp->next;
-		}
-		range += 1000;
-		counter++;
-	}
-
-	printf("%s iterations %d\n", __func__, counter);
-
-	return (med);
-}
-
-// https://www.geeksforgeeks.org/quick-sort/
-void quicksort(int arr[], size_t len, size_t pivot)
-{
-	
-}
-
-void test_quicksort()
-{
-	int to_sort[] = {4, 2, 1, 5, 3};
-	quicksort(to_sort, 5, 5);
-}
-
-// testing to see if the stack operations work.
 void do_sort(t_stack **stack_a, t_stack **stack_b)
 {
-	int num = calculate_median(*stack_a);
-	t_stack *med = find_median(*stack_a, num, 0);
-	if (!med)
-		printf("med not found\n");
-	else
-		printf("median %d\n", med->nb);
+	// TODO Start basic sorting thing.
+	
 }
 
 
@@ -132,10 +65,9 @@ int main(int argc, char *argv[])
 		}
 
 		// print_stacks(head_a, head_b);
-		// do_sort(&head_a, &head_b);
+		do_sort(&head_a, &head_b);
 		// print_stacks(head_a, head_b);
 
-		test_quicksort(argv);
 
 		stack_free(&head_a);
 		stack_free(&head_b);
