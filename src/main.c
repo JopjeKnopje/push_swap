@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/13 21:07:55 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/13 22:18:30 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,24 @@ t_stack *create_stack_a(char *argv[], int argc)
 }
 
 
+int is_sorted(t_stack *stack)
+{
+	t_stack *tmp = stack;
+	while (tmp)
+	{
+		if (!(tmp->next))
+			break;
+		if (tmp->nb > tmp->next->nb)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
+
 void do_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	// TODO Start basic sorting thing.
-	
 }
 
 
