@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/21 14:00:55 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/02/21 14:01:31 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,9 @@ int main(int argc, char *argv[])
 			return 0;
 		}
 
-		print_stacks(head_a, head_b);
+		// print_stacks(head_a, head_b);
 		do_sort(&head_a, &head_b);
-		print_stacks(head_a, head_b);
+		// print_stacks(head_a, head_b);
 
 
 		stack_free(&head_a);
