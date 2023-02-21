@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/21 14:22:04 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/02/21 17:49:35 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,28 @@ void do_sort(t_stack **stack_a, t_stack **stack_b)
 	t_stack *tmp;
 
 	push_largest(stack_a, stack_b);
+
 	tmp = *stack_a;
+
+	while (*stack_a)
+	{
+		while (*stack_b && (*stack_b)->nb < (*stack_a)->nb) 
+		{
+			pa(stack_a, stack_b);
+		}	
+		pb(stack_a, stack_b);
+	}
+	while (*stack_b)
+	{
+		pa(stack_a, stack_b);
+	}
 	
 	// while (tmp)
 	// {
-	// 	// push_largest(stack_a, stack_b);
+	// 	push_largest(stack_a, stack_b);
 	// 	tmp = *stack_a;
 	// }
-
+	//
 	// while (*stack_b)
 	// {
 	// 	rrb(stack_b);
