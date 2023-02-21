@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/13 22:18:30 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/21 14:00:55 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,44 @@ int is_sorted(t_stack *stack)
 	return (1);
 }
 
+void push_largest(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack *tmp = *stack_a;
+	int largest = (*stack_a)->nb;
+
+	while (tmp)
+	{
+		if (tmp->nb > largest)	
+		{
+			largest = tmp->nb;
+		}
+		tmp = tmp->next;
+	}
+
+	// TODO Check wheter to use ra or rra
+	while ((*stack_a)->nb < largest)
+		ra(stack_a);
+	pb(stack_a, stack_b);
+}
 
 void do_sort(t_stack **stack_a, t_stack **stack_b)
 {
-	// TODO Start basic sorting thing.
+	t_stack *tmp;
+
+	push_largest(stack_a, stack_b);
+	tmp = *stack_a;
+	
+	while (tmp)
+	{
+		push_largest(stack_a, stack_b);
+		tmp = *stack_a;
+	}
+
+	while (*stack_b)
+	{
+		rrb(stack_b);
+		pa(stack_a, stack_b);
+	}
 }
 
 
@@ -78,9 +112,9 @@ int main(int argc, char *argv[])
 			return 0;
 		}
 
-		// print_stacks(head_a, head_b);
+		print_stacks(head_a, head_b);
 		do_sort(&head_a, &head_b);
-		// print_stacks(head_a, head_b);
+		print_stacks(head_a, head_b);
 
 
 		stack_free(&head_a);

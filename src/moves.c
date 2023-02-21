@@ -6,12 +6,15 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/09 16:39:57 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/09 16:54:55 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/21 13:54:13 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
+
+
+#define printf(fmt, ...) (0)
 
 // Swap the top two numbers in A
 void sa(t_stack **stack_a)
@@ -25,7 +28,6 @@ void sb(t_stack **stack_b)
 {
 	operation_swap(stack_b);
 	printf("%s\n", __func__);
-
 }
 
 // sa + sb
