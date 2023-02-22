@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/22 21:48:25 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/23 00:18:02 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,45 @@ t_stack *create_stack_a(char *argv[], int argc)
 
 
 
+// haha wtf
 void do_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *stack_a_copy;
 
 	stack_a_copy = stack_dup(*stack_a);
-	// print_stacks(*stack_a, stack_a_copy);
 	bubblesort(stack_a_copy);
 	apply_offset(stack_a, stack_a_copy);
-	// print_stacks(*stack_a, stack_a_copy);
 	stack_free(&stack_a_copy);
+
+	int sorting = stack_size(*stack_a);
+	int shift = 0;
+
+	int i = 10;
+
+	print_stacks(*stack_a, *stack_b);
+	while (i) 
+	{
+		sorting = stack_size(*stack_a);
+		while (sorting--) 
+		{
+			int x = (*stack_a)->nb >> shift & 1;
+			if (x)
+			{
+				pb(stack_a, stack_b);
+			}
+			else
+				ra(stack_a);
+
+		}
+		while ((*stack_b)) 
+		{
+			pa(stack_a, stack_b);
+		}
+		// print_stacks(*stack_a, *stack_b);
+		shift++;
+		i--;
+	}
+
 
 
 
@@ -81,7 +110,8 @@ int main(int argc, char *argv[])
 
 		// print_stacks(head_a, head_b);
 		do_sort(&head_a, &head_b);
-		// print_stacks(head_a, head_b);
+		print_stacks(head_a, head_b);
+
 
 		stack_free(&head_a);
 		stack_free(&head_b);

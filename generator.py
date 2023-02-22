@@ -1,7 +1,7 @@
 import random
 import os
 
-ARG_COUNT = 10000
+ARG_COUNT = 100
 MIN_VAL = -2147483648
 MAX_VAL = 2147483647 
 
@@ -16,8 +16,8 @@ def main():
     lst = list(dict.fromkeys(lst))
 
     string += ' '.join(map(str, lst)) 
-    print(string)
-    # os.system(string)
+    # print(string)
+    os.system(string)
 
 
 if __name__ == "__main__":

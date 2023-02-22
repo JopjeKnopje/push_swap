@@ -6,22 +6,25 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/08 14:24:01 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/22 19:50:50 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/23 00:01:59 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 #include <limits.h>
+#include <stdio.h>
 
 
+// TODO Support negative number
 char *bin_to_str(int nb)
 {
 	int size = 0;
 	int tmp = nb;
+
 	while (tmp)
 	{
-		tmp = tmp >> 1;	
+		tmp >>= 1;
 		size++;
 	}
 	char *s = ft_calloc(size + 1, sizeof(char));
