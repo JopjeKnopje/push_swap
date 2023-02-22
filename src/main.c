@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/21 17:49:35 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/22 15:43:30 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,17 @@ t_stack *create_stack_a(char *argv[], int argc)
 			stack_free(&head);
 			return 0;
 		}
+		// TODO instead of adding INT_MAX find the smallest number and add that to all elements.
+		unsigned int scaled_num = num + INT_MAX;
 		if (!head)
-			head = stack_new(num);
+			head = stack_new(scaled_num);
 		else
-			stack_add_front(&head, stack_new(num));
+			stack_add_front(&head, stack_new(scaled_num));
 		argc--;
 	}
 	return (head);
 }
+
 
 
 int is_sorted(t_stack *stack)
@@ -79,36 +82,28 @@ void push_largest(t_stack **stack_a, t_stack **stack_b)
 
 void do_sort(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack *tmp;
+	unsigned int shift = 0;
+	int size = stack_size(*stack_a);
 
-	push_largest(stack_a, stack_b);
-
-	tmp = *stack_a;
-
-	while (*stack_a)
+	while (shift < 10) 
 	{
-		while (*stack_b && (*stack_b)->nb < (*stack_a)->nb) 
+		size = stack_size(*stack_a);
+		while (size) 
 		{
-			pa(stack_a, stack_b);
-		}	
-		pb(stack_a, stack_b);
-	}
-	while (*stack_b)
-	{
-		pa(stack_a, stack_b);
-	}
+			if ((*stack_a)->nb >> shift & 0)
+			{
+				printf("pb %d\n", (*stack_a)->nb - INT_MAX);
+				pb(stack_a, stack_b);
+			}
+			else
+			{
+				ra(stack_a);
+			}
+			size--;
+		}
+		shift++;
 	
-	// while (tmp)
-	// {
-	// 	push_largest(stack_a, stack_b);
-	// 	tmp = *stack_a;
-	// }
-	//
-	// while (*stack_b)
-	// {
-	// 	rrb(stack_b);
-	// 	pa(stack_a, stack_b);
-	// }
+	}
 }
 
 

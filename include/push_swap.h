@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 18:41:31 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/21 10:51:00 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/02/22 15:27:02 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 typedef struct s_stack
 {
-	int 			nb;
+	unsigned int 	nb;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -43,6 +43,7 @@ void 	operation_reverse_rotate(t_stack **stack);
 // utils.c
 void 	print_stacks(t_stack *head_a, t_stack *head_b);
 long 	ft_atol(const char *s);
+char 	*bin_to_str(int bin);
 
 
 // parser.c
