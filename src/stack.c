@@ -6,15 +6,55 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/31 20:57:28 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/08 19:17:58 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/22 21:47:59 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
-#include <stdlib.h>
 
+// TODO Optimize
+t_stack *stack_dup(t_stack *head)
+{
+	t_stack *new = NULL;
+	t_stack **last = NULL;
+	t_stack *tmp = head;
+	if (!head)
+		return NULL;
 
+	while (tmp)
+	{
+		if (!new)
+		{
+			new = stack_new(tmp->nb);
+			last = &new;
+		}
+		else
+		{
+			stack_add_front(last, stack_new(tmp->nb));
+			last = &(*last)->next;
+		};
+		tmp = tmp->next;
+	}
+	operation_reverse_rotate(&new);
+	return (new);
+}
+
+int stack_is_sorted(t_stack *head)
+{
+	t_stack *tmp = head;
+	while (tmp)
+	{
+		if (!(tmp->next))
+			break;
+		if (tmp->nb > tmp->next->nb)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
+// TODO remove double pointer
 void stack_free(t_stack **head)
 {
 	t_stack *tmp;

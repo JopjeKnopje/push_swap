@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 18:41:31 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/22 16:49:20 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/22 21:41:52 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct s_stack
 
 
 // stack.c
+t_stack *stack_dup(t_stack *head);
+int 	stack_is_sorted(t_stack *head);
 void 	stack_free(t_stack **head);
 void 	stack_add_front(t_stack **stack, t_stack *new);
 void 	stack_free(t_stack **head);
@@ -65,6 +67,12 @@ void rr(t_stack **stack_a, t_stack **stack_b);
 void rra(t_stack **stack_a);
 void rrb(t_stack **stack_b);
 void rrr(t_stack **stack_a, t_stack **stack_b);
+
+
+// radix.c
+// void 	pre_sort(t_stack **stack_a, t_stack **stack_b);
+void 	bubblesort(t_stack *head);
+void 	apply_offset(t_stack **head_a, t_stack *head_sorted);
 
 
 #endif
