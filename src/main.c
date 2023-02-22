@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/22 17:18:58 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/22 19:08:08 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,18 +80,113 @@ void bubblesort(t_stack *head)
 	}
 } 
 
-void apply_offset(t_stack *head)
+
+
+
+t_stack *add_to_stack(int *arr, int size)
 {
-	t_stack *tmp = head;
-	int i = 0;
-	if (head->nb > 0)
-		return ;
-	while (tmp)
+	t_stack *tmp = stack_new(arr[--size]);
+	size--;
+	while (size >= 0)
 	{
-		tmp->nb -= head->nb;
-		tmp = tmp->next;
+		stack_add_front(&tmp, stack_new(arr[size]));
+		size--;
+	}
+	return tmp;
+}
+
+
+// TODO understand this code
+void apply_offset_test_arr(int *input, int *sorted, int size)
+{
+	int *tmplst = ft_calloc(size, sizeof(int));
+	for (int i = 0; i < size; i++) 
+		for (int j = 0; j < size; j++) 
+		{
+			if (input[i] == sorted[j])
+			{
+				// input[i] = j;
+				tmplst[i] = j;
+				printf("i %d | j %d | match input[%d] == sorted[%d]\n", i, j, input[i], sorted[j]);
+
+			}
+
+		}
+	int i = 0;
+	while (i < size) 
+	{
+		printf("%d \t%d \t%d\n", input[i], sorted[i], tmplst[i]);
+		i++;
+	}
+	free(tmplst);
+}
+
+void apply_test_offset_lst(int *input, int *sorted, int size)
+{
+	t_stack *lst_input = add_to_stack(input, size);
+	t_stack *lst_sorted = add_to_stack(sorted, size);
+	t_stack *tmp_stack = NULL;
+	print_stacks(lst_input, lst_sorted);
+
+	t_stack *tmp_input = lst_input;
+	t_stack *tmp_sorted = lst_sorted;
+
+	int index = 0;
+	while (tmp_input) 
+	{
+		tmp_sorted = lst_sorted;
+		index = 0;
+		while (tmp_sorted)
+		{
+			if (tmp_sorted->nb == tmp_input->nb)
+			{
+				// tmp_input->nb = index;
+				if (!tmp_stack)
+					tmp_stack = stack_new(index);
+				else
+					stack_add_back(&tmp_stack, stack_new(index));
+
+			}
+
+			tmp_sorted = tmp_sorted->next;	
+			index++;
+		}
+		tmp_input = tmp_input->next;	
+	}
+
+
+	print_stacks(lst_input, tmp_stack);
+	stack_free(&lst_input);
+	stack_free(&lst_sorted);
+	stack_free(&tmp_stack);
+}
+
+
+
+
+
+void apply_offset(t_stack *head_a, t_stack *head_copy)
+{
+	t_stack *tmp_input = head_a;
+	t_stack *tmp_sorted = head_copy;
+
+	int index = 0;
+	while (tmp_input) 
+	{
+		tmp_sorted = head_copy;
+		index = 0;
+		while (tmp_sorted)
+		{
+			if (tmp_sorted->nb == tmp_input->nb)
+				tmp_input->nb = index;	
+
+			tmp_sorted = tmp_sorted->next;	
+			index++;
+		}
+		tmp_input = tmp_input->next;	
 	}
 }
+
 
 void do_sort(t_stack **stack_a, t_stack **stack_b)
 {
@@ -104,10 +199,12 @@ int main(int argc, char *argv[])
 {
 	t_stack *head_a = NULL;
 	t_stack *head_b = NULL;
+	t_stack *head_copy = NULL;
 
 	if (argc > 1 && parse_args(argv))
 	{
 		head_a = create_stack_a(argv, argc);
+		head_copy = create_stack_a(argv, argc);
 		if (is_sorted(head_a))
 		{
 			stack_free(&head_a);
@@ -119,27 +216,31 @@ int main(int argc, char *argv[])
 			return 0;
 		}
 
-		print_stacks(head_a, head_b);
+		// print_stacks(head_a, head_copy);
+		// bubblesort(head_copy);
+		// print_stacks(head_a, head_copy);
+		// apply_offset(head_a, head_copy);
+		// print_stacks(head_a, head_copy);
+		int input[] = {87, -487, 781, -100, 101, 0, 1};
+		int sorted[] = {-487, -100, 0, 1, 87, 101, 781};
+		int size = 7;
+		apply_test_offset_lst(input, sorted, size);
+		apply_offset_test_arr(input, sorted, size);
 
-		// TODO Move all this stuff to presort.c
-		bubblesort(head_a);
-		print_stacks(head_a, head_b);
-		apply_offset(head_a);
-		// end TODO
+		// print_stacks(head_a, head_copy);
 
-		print_stacks(head_a, head_b);
+		// print_stacks(head_a, head_b);
 
 		// do_sort(&head_a, &head_b);
 		// print_stacks(head_a, head_b);
 
 
 		stack_free(&head_a);
+		stack_free(&head_copy);
 		stack_free(&head_b);
 	}
 	else
-	{
 		printf("Error!\n");
-	}
 
 	return (0);
 }
