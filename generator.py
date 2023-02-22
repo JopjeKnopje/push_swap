@@ -1,7 +1,7 @@
 import random
 import os
 
-ARG_COUNT = 100
+ARG_COUNT = 10000
 MIN_VAL = -2147483648
 MAX_VAL = 2147483647 
 
@@ -17,7 +17,7 @@ def main():
 
     string += ' '.join(map(str, lst)) 
     print(string)
-    os.system(string)
+    # os.system(string)
 
 
 if __name__ == "__main__":

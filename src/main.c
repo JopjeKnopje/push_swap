@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/22 16:51:43 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/22 17:18:58 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,14 @@ int is_sorted(t_stack *stack)
 
 void bubblesort(t_stack *head) 
 { 
-	t_stack *tmp = head;
-
+	t_stack *tmp;
 	int swapped = 1;
+
 	while (swapped)
 	{
 		swapped = 0;
 		tmp = head;
 
-		// while (tmp->next != tmpa)
 		while (tmp->next)
 		{
 			if (tmp->nb > tmp->next->nb)
@@ -81,6 +80,19 @@ void bubblesort(t_stack *head)
 	}
 } 
 
+void apply_offset(t_stack *head)
+{
+	t_stack *tmp = head;
+	int i = 0;
+	if (head->nb > 0)
+		return ;
+	while (tmp)
+	{
+		tmp->nb -= head->nb;
+		tmp = tmp->next;
+	}
+}
+
 void do_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	unsigned int shift = 0;
@@ -92,6 +104,7 @@ int main(int argc, char *argv[])
 {
 	t_stack *head_a = NULL;
 	t_stack *head_b = NULL;
+
 	if (argc > 1 && parse_args(argv))
 	{
 		head_a = create_stack_a(argv, argc);
@@ -107,7 +120,13 @@ int main(int argc, char *argv[])
 		}
 
 		print_stacks(head_a, head_b);
+
+		// TODO Move all this stuff to presort.c
 		bubblesort(head_a);
+		print_stacks(head_a, head_b);
+		apply_offset(head_a);
+		// end TODO
+
 		print_stacks(head_a, head_b);
 
 		// do_sort(&head_a, &head_b);
@@ -118,7 +137,9 @@ int main(int argc, char *argv[])
 		stack_free(&head_b);
 	}
 	else
+	{
 		printf("Error!\n");
+	}
 
 	return (0);
 }
