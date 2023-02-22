@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/08 14:24:01 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/22 15:43:39 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/22 16:12:38 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ void print_stacks(t_stack *head_a, t_stack *head_b)
 	while (tmp_a || tmp_b)
 	{
 		if (tmp_a)
-			printf("stack_a %4d\t", tmp_a->nb - INT_MAX);
+			printf("stack_a %4d\t", tmp_a->nb);
 		else 
 			printf("\t\t");
 		if (tmp_b)
-			printf("| stack_b %4d\n", tmp_b->nb - INT_MAX);
+			printf("| stack_b %4d\n", tmp_b->nb);
 		else
 			printf("\n");
 		

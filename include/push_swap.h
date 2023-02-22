@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 18:41:31 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/22 15:27:02 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/22 16:49:20 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 typedef struct s_stack
 {
-	unsigned int 	nb;
+	int nb;
 	struct s_stack	*next;
 }	t_stack;
 
