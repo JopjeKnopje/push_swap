@@ -6,11 +6,11 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/02/22 19:53:54 by joppe         ########   odam.nl          #
+#    Updated: 2023/02/23 00:40:11 by joppe         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = app
+NAME = push_swap
 
 LIBFT = libft/build/libft.a
 

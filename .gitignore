@@ -2,3 +2,8 @@ obj/
 app
 compile_commands.json
 .cache/
+
+/push_swap_visualizer
+imgui.ini
+visualizer
+push_swap

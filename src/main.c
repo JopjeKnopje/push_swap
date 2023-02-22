@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/23 00:18:02 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/23 00:30:21 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,13 @@ void do_sort(t_stack **stack_a, t_stack **stack_b)
 
 	int i = 10;
 
-	print_stacks(*stack_a, *stack_b);
 	while (i) 
 	{
 		sorting = stack_size(*stack_a);
 		while (sorting--) 
 		{
-			int x = (*stack_a)->nb >> shift & 1;
-			if (x)
-			{
+			if ((*stack_a)->nb >> shift & 1)
 				pb(stack_a, stack_b);
-			}
 			else
 				ra(stack_a);
 
@@ -78,14 +74,9 @@ void do_sort(t_stack **stack_a, t_stack **stack_b)
 		{
 			pa(stack_a, stack_b);
 		}
-		// print_stacks(*stack_a, *stack_b);
 		shift++;
 		i--;
 	}
-
-
-
-
 }
 
 
@@ -110,7 +101,7 @@ int main(int argc, char *argv[])
 
 		// print_stacks(head_a, head_b);
 		do_sort(&head_a, &head_b);
-		print_stacks(head_a, head_b);
+		// print_stacks(head_a, head_b);
 
 
 		stack_free(&head_a);
