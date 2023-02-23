@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/23 01:07:21 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/23 14:25:19 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ t_stack *create_stack_a(char *argv[], int argc)
 	return (head);
 }
 
-// haha wtf
 void do_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *stack_a_copy;
@@ -55,6 +54,7 @@ void do_sort(t_stack **stack_a, t_stack **stack_b)
 	int shift = 0;
 	int size_a;
 	int i;
+	print_stacks(*stack_a, *stack_b);
 
 	while (!stack_is_sorted(*stack_a)) 
 	{
