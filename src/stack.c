@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/31 20:57:28 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/22 21:47:59 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/23 16:35:30 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,31 +55,28 @@ int stack_is_sorted(t_stack *head)
 }
 
 // TODO remove double pointer
-void stack_free(t_stack **head)
+void stack_free(t_stack *head)
 {
 	t_stack *tmp;
-	while (*head)
+	while (head)
 	{
-		tmp = *head;
-		*head = (*head)->next;
+		tmp = head;
+		head = head->next;
 		free(tmp);
 	}
 }
 
 t_stack	*stack_last(t_stack *stack)
 {
-	t_stack	*tmp;
-
 	if (!stack)
 		return (NULL);
-	tmp = stack;
-	while (tmp)
+	while (stack)
 	{
-		if (!tmp->next)
+		if (!stack->next)
 			break ;
-		tmp = tmp->next;
+		stack = stack->next;
 	}
-	return (tmp);
+	return (stack);
 }
 
 void 	stack_add_back(t_stack **stack, t_stack *new)

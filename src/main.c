@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/23 16:18:24 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/23 16:38:02 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_stack *create_stack_a(char *argv[], int argc)
 		long num = atol(argv[argc - 1]);
 		if (num > INT_MAX || num < INT_MIN) 
 		{
-			stack_free(&head);
+			stack_free(head);
 			return 0;
 		}
 		if (!head)
@@ -43,9 +43,9 @@ t_stack *create_stack_a(char *argv[], int argc)
 }
 
 // TODO Add cases for 3 and 5 elements.
-void do_sort(t_stack **stack_a, t_stack **stack_b)
+void do_sort(t_stack *stack_a, t_stack *stack_b)
 {
-	radixsort(stack_a, stack_b);
+	radixsort(&stack_a, &stack_b);
 }
 
 
@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
 		head_a = create_stack_a(argv, argc);
 		if (stack_is_sorted(head_a))
 		{
-			stack_free(&head_a);
+			stack_free(head_a);
 			head_a = NULL;
 		}
 		if (!head_a)
@@ -68,13 +68,13 @@ int main(int argc, char *argv[])
 			printf("Error!\n");
 			return 0;
 		}
-		print_stacks(head_a, head_b);
-		do_sort(&head_a, &head_b);
-		print_stacks(head_a, head_b);
+		// print_stacks(head_a, head_b);
+		do_sort(head_a, head_b);
+		// print_stacks(head_a, head_b);
 
 
-		stack_free(&head_a);
-		stack_free(&head_b);
+		stack_free(head_a);
+		stack_free(head_b);
 	}
 	else
 		printf("Error!\n");

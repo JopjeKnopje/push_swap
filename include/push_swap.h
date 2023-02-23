@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 18:41:31 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/23 16:17:14 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/23 16:31:32 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,8 @@ typedef struct s_stack
 // stack.c
 t_stack *stack_dup(t_stack *head);
 int 	stack_is_sorted(t_stack *head);
-void 	stack_free(t_stack **head);
+void 	stack_free(t_stack *head);
 void 	stack_add_front(t_stack **stack, t_stack *new);
-void 	stack_free(t_stack **head);
 void 	stack_add_back(t_stack **stack, t_stack *new);
 int		stack_size(t_stack *stack);
 t_stack	*stack_last(t_stack *stack);
