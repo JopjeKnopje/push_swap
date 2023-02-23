@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 18:41:31 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/22 21:41:52 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/23 16:17:14 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,7 @@ void rrr(t_stack **stack_a, t_stack **stack_b);
 
 
 // radix.c
-// void 	pre_sort(t_stack **stack_a, t_stack **stack_b);
-void 	bubblesort(t_stack *head);
-void 	apply_offset(t_stack **head_a, t_stack *head_sorted);
+void 	radixsort(t_stack **stack_a, t_stack **stack_b);
 
 
 #endif
