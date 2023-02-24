@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/23 16:38:02 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/24 21:41:46 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ t_stack *create_stack_a(char *argv[], int argc)
 // TODO Add cases for 3 and 5 elements.
 void do_sort(t_stack *stack_a, t_stack *stack_b)
 {
+	int size = stack_size(stack_a);
+	printf("size %d\n", size);
+
+	if (size == 3 || size == 5)
+		smallsort(stack_a, stack_b);
+
 	radixsort(&stack_a, &stack_b);
 }
 

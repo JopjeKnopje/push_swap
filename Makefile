@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/02/23 00:44:11 by joppe         ########   odam.nl          #
+#    Updated: 2023/02/24 21:41:27 by joppe         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ INC = -Ilibft/include -Iinclude
 # INC = -Ilibft -I/usr/include/bsd
 
 SRC_DIR = src
-SRCS = main.c stack.c operatons.c utils.c parser.c moves.c radix.c
+SRCS = main.c stack.c operatons.c utils.c parser.c moves.c sort.c
 SRCS := $(addprefix $(SRC_DIR)/, $(SRCS))
 
 HEADER_DIR = include
@@ -53,9 +53,7 @@ fclean: clean
 re: fclean dfclean all
 
 run: all
-	@# ./$(NAME) 1 4 2 5 -3 6 8 9 7
-	./$(NAME) 87 -487 781 -100 101 0 1
-	@# ./$(NAME) 3 2 1 5 4 -5
+	./$(NAME) 3 2 1 5 4
 	@# python3 generator.py | wc -l
 
 
