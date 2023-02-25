@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/24 21:41:46 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/25 16:29:36 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,6 @@ t_stack *create_stack_a(char *argv[], int argc)
 	return (head);
 }
 
-// TODO Add cases for 3 and 5 elements.
-void do_sort(t_stack *stack_a, t_stack *stack_b)
-{
-	int size = stack_size(stack_a);
-	printf("size %d\n", size);
-
-	if (size == 3 || size == 5)
-		smallsort(stack_a, stack_b);
-
-	radixsort(&stack_a, &stack_b);
-}
-
 
 // TODO Have head_b in the actual sorting function
 int main(int argc, char *argv[])
@@ -61,6 +49,8 @@ int main(int argc, char *argv[])
 	t_stack *head_a = NULL;
 	t_stack *head_b = NULL;
 
+	if (argc <= 1)
+		return (0);
 	if (argc > 1 && parse_args(argv))
 	{
 		head_a = create_stack_a(argv, argc);
@@ -68,6 +58,7 @@ int main(int argc, char *argv[])
 		{
 			stack_free(head_a);
 			head_a = NULL;
+			printf("stack is already sorted\n");
 		}
 		if (!head_a)
 		{
@@ -75,8 +66,8 @@ int main(int argc, char *argv[])
 			return 0;
 		}
 		// print_stacks(head_a, head_b);
-		do_sort(head_a, head_b);
-		// print_stacks(head_a, head_b);
+		radixsort(&head_a, &head_b);
+	  	// print_stacks(head_a, head_b);
 
 
 		stack_free(head_a);
