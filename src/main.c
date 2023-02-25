@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/25 16:55:18 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/25 17:10:42 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,17 @@ void exit_program(t_stack *head_a, t_stack *head_b)
 	exit(EXIT_SUCCESS);
 }
 
+void do_sort(t_stack **head_a, t_stack **head_b)
+{
+	int size = stack_size(*head_a);
+
+	if (size <= 5)
+		smallsort(head_a, head_b);
+	else
+		radixsort(head_a, head_b);
+
+}
+
 // TODO Have head_b in the actual sorting function
 int main(int argc, char *argv[])
 {
@@ -70,7 +81,8 @@ int main(int argc, char *argv[])
 			printf("Error!\n");
 			return 0;
 		}
-		radixsort(&head_a, &head_b);
+		// radixsort(&head_a, &head_b);
+		do_sort(&head_a, &head_b);
 		stack_free(head_a);
 		stack_free(head_b);
 	}

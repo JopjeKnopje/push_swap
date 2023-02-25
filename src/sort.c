@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/25 17:02:55 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/25 17:10:57 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void radixsort(t_stack **stack_a, t_stack **stack_b)
 }
 
 
-void 	smallsort(t_stack *stack_a, t_stack *stack_b)
+void 	smallsort(t_stack **stack_a, t_stack **stack_b)
 {
 	// TODO Implement.
 }
