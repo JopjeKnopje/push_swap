@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/25 16:29:36 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/25 17:02:55 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,36 +41,32 @@ static void bubblesort(t_stack *head)
 static void apply_offset(t_stack *head_a, t_stack *head_sorted)
 {
 	t_stack *tmp = head_a;
-	int index = 0;
+	// TODO Use different kind of array.
+	int *isset = ft_calloc(stack_size(head_a), sizeof(int));
+	if (!isset)
+		return ;
 
-	int size = stack_size(head_a);
-	int isset[size];
-	int j = 0;
-	ft_bzero(&isset, size * sizeof(int));
+	int index = 0;
+	int j;
 
 	while (head_sorted) 
 	{
-		tmp = head_a;
-		// index = 0;
 		j = 0;
+		tmp = head_a;
 		while (tmp)
 		{
 			if (tmp->nb == head_sorted->nb && !isset[j])
 			{
-				// printf("match %d on i: %d\n", tmp->nb, index);
 				tmp->nb = index;
 				isset[j] = 1;
-				// for (int i = 0; i < size; i++) {
-				// 	printf("i: %d | %d\n", i, isset[i]);
-				// }
-				// printf("========\n");
 			}
 			tmp = tmp->next;
 			j++;
 		}
-		index++;
 		head_sorted = head_sorted->next;	
+		index++;
 	}
+	free(isset);
 }
 
 
@@ -80,17 +76,13 @@ void radixsort(t_stack **stack_a, t_stack **stack_b)
 
 	stack_a_copy = stack_dup(*stack_a);
 	bubblesort(stack_a_copy);
-	print_stacks(*stack_a, stack_a_copy);
 	apply_offset(*stack_a, stack_a_copy);
-	print_stacks(*stack_a, stack_a_copy);
-
 	stack_free(stack_a_copy);
 
 	int shift;
 	int size_a;
 	int i;
 
-	// print_stacks(*stack_a, stack_a_copy);
 	shift = 0;
 	while (!stack_is_sorted(*stack_a)) 
 	{
