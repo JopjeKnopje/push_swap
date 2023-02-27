@@ -3,6 +3,8 @@ app
 compile_commands.json
 .cache/
 
+
+/tests/bin
 /push_swap_visualizer
 imgui.ini
 visualizer

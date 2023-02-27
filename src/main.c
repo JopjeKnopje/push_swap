@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/25 17:10:42 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/27 15:51:09 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ int main(int argc, char *argv[])
 			printf("Error!\n");
 			return 0;
 		}
-		// radixsort(&head_a, &head_b);
 		do_sort(&head_a, &head_b);
 		stack_free(head_a);
 		stack_free(head_b);

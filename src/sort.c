@@ -6,12 +6,13 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/25 17:10:57 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/27 13:08:20 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
+#include <limits.h>
 #include <stdio.h>
 
 static void bubblesort(t_stack *head) 
@@ -102,8 +103,59 @@ void radixsort(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
+// TODO remove if statements for each case.
+static void 	sort_3(t_stack **stack_a, t_stack **stack_b)
+{
+	int nb[3] = {
+		(*stack_a)->nb,
+		(*stack_a)->next->nb,
+		(*stack_a)->next->next->nb
+	};
+
+
+	if (nb[0] > nb[1] && nb[0] < nb[2])
+		sa(stack_a);
+	else if (nb[0] > nb[1] && nb[1] > nb[2])
+	{
+		sa(stack_a);
+		rra(stack_a);
+	}
+	else if (nb[0] > nb[1] && nb[1] < nb[2])
+		ra(stack_a);
+	else if (nb[0] < nb[1] && nb[1] > nb[2])
+	{
+		sa(stack_a);
+		ra(stack_a);
+	}
+	else if (nb[0] > nb[1] && nb[1] < nb[2])
+		rra(stack_a);
+}
 
 void 	smallsort(t_stack **stack_a, t_stack **stack_b)
 {
-	// TODO Implement.
+	if (stack_size(*stack_a) <= 3)
+		sort_3(stack_a, stack_b);
+	else
+	{
+		pb(stack_a, stack_b);
+		pb(stack_a, stack_b);
+		sort_3(stack_a, stack_b);
+
+		if ((*stack_a)->nb > (*stack_a)->next->nb)
+			sa(stack_a);
+
+		if ((*stack_a)->nb < (*stack_b)->nb)
+		{
+			pa(stack_a, stack_b);
+			ra(stack_a);
+		}
+		else
+		{
+			pa(stack_a, stack_b);
+			pa(stack_a, stack_b);
+			ra(stack_a);
+		}
+		pa(stack_a, stack_b);
+	}
+	print_stacks(*stack_a, *stack_b);
 }
