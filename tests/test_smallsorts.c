@@ -1,3 +1,14 @@
+/**
+
+  	TODO Read this
+	https://github.com/Snaipe/Criterion/blob/bleeding/samples/parameterized.c
+
+
+
+
+  */
+
+
 #include <criterion/criterion.h>
 #include <criterion/internal/assert.h>
 #include <criterion/internal/new_asserts.h>
@@ -90,6 +101,20 @@ void cleanup(void)
 {
 	stack_free(stack_sorted);
 }
+
+
+ReportHook(PRE_INIT)(struct criterion_test *test) 
+{
+    printf("testing %s in category %s\n", test->name, test->category);
+}
+
+ReportHook(POST_TEST)(struct criterion_test_stats *stats)
+{
+    // printf("Asserts: [%d passed, %d failed, %d total]\n",
+    //         stats->passed_asserts, stats->failed_asserts, stats->passed_asserts + stats->failed_asserts);
+}
+
+
 
 TestSuite(smallsorts, .init=setup, .fini=cleanup);
 
