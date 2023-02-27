@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/27 15:51:09 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/27 23:14:18 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void do_sort(t_stack **head_a, t_stack **head_b)
 }
 
 // TODO Have head_b in the actual sorting function
-int main(int argc, char *argv[])
+int push_swap(int argc, char *argv[])
 {
 	t_stack *head_a = NULL;
 	t_stack *head_b = NULL;
@@ -89,3 +89,12 @@ int main(int argc, char *argv[])
 		printf("Error!\n");
 	return (0);
 }
+
+
+// #ifndef BUILD_TESTER
+// int main(int argc, char *argv[])
+// {
+// 	push_swap(argc, argv);
+// 	return EXIT_SUCCESS;
+// }
+// #endif

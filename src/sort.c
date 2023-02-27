@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/27 13:08:20 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/27 17:32:52 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,5 +157,5 @@ void 	smallsort(t_stack **stack_a, t_stack **stack_b)
 		}
 		pa(stack_a, stack_b);
 	}
-	print_stacks(*stack_a, *stack_b);
+	// print_stacks(*stack_a, *stack_b);
 }

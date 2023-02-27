@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/02/27 15:47:37 by joppe         ########   odam.nl          #
+#    Updated: 2023/02/27 23:37:57 by joppe         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ LIBFT = libft/build/libft.a
 
 # CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -g -fsanitize=address
+CFLAGS += -DBUILD_TESTER
 
 INC = -Ilibft/include -Iinclude -I../libft/include -I../include 
 
@@ -30,10 +31,16 @@ HEADERS := $(addprefix $(HEADER_DIR)/, $(HEADERS))
 OBJ_DIR = obj
 OBJS = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
 
+
+
 TEST_DIR = tests
 TESTS = test_smallsorts.c
 TESTS := $(addprefix $(TEST_DIR)/, $(TESTS))
+TEST_BIN_DIR = bin
+TEST_BIN_DIR := $(addprefix $(TEST_DIR)/, $(TEST_BIN_DIR))
 TEST_BINS = $(patsubst $(TEST_DIR)/%.c, $(TEST_DIR)/bin/%, $(TESTS))
+
+
 
 all: $(NAME)
 
@@ -49,10 +56,12 @@ $(LIBFT):
 	$(MAKE) -C libft
 
 clean:
-	rm -fr $(OBJ_DIR)
+	rm -rf $(OBJ_DIR)
+	rm -rf $(TEST_BIN_DIR)
 
 fclean: clean
 	rm -f $(NAME)
+
 
 re: fclean dfclean all
 
@@ -73,11 +82,10 @@ dfclean:
 dre:
 	$(MAKE) -C libft re
 
-$(TEST_DIR)/bin/%: $(TEST_DIR)/%.c
+$(TEST_BIN_DIR)/%: $(TEST_DIR)/%.c
+	@mkdir -p $(TEST_BIN_DIR)
 	$(CC) $(CFLAGS) $(INC) $< $(OBJS) $(LIBFT) -o $@ -lcriterion
 
-$(TEST_DIR)/bin:
-	mkdir -p $@
 
-test: $(LIBFT) $(OBJS) $(TEST_DIR)/bin $(TEST_BINS)
-		for test in $(TEST_BINS) ; do ./$$test ; done
+test: $(LIBFT) $(OBJS) $(TEST_BINS)
+	@for test in $(TEST_BINS) ; do ./$$test ; done

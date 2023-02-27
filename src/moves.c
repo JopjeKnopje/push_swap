@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/09 16:39:57 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/26 21:04:38 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/27 22:59:28 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 #include <stdio.h>
 
 
-// #define printf(fmt, ...) (0)
+#ifdef BUILD_TESTER
+#define printf(fmt, ...) (0)
+#endif
 
 // Swap the top two numbers in A
 void sa(t_stack **stack_a)
