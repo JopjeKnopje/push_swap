@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/27 17:32:52 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/28 10:04:47 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void apply_offset(t_stack *head_a, t_stack *head_sorted)
 }
 
 
-void radixsort(t_stack **stack_a, t_stack **stack_b)
+void sort_radix(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *stack_a_copy;
 
@@ -131,7 +131,7 @@ static void 	sort_3(t_stack **stack_a, t_stack **stack_b)
 		rra(stack_a);
 }
 
-void 	smallsort(t_stack **stack_a, t_stack **stack_b)
+void 	sort_small(t_stack **stack_a, t_stack **stack_b)
 {
 	if (stack_size(*stack_a) <= 3)
 		sort_3(stack_a, stack_b);

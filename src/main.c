@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/28 09:18:24 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/28 09:57:59 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ void do_sort(t_stack **head_a, t_stack **head_b)
 	int size = stack_size(*head_a);
 
 	if (size <= 5)
-		smallsort(head_a, head_b);
+		sort_small(head_a, head_b);
 	else
-		radixsort(head_a, head_b);
+		sort_radix(head_a, head_b);
 
 }
 

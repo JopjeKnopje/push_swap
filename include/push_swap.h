@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 18:41:31 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/27 17:37:57 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/28 09:57:43 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void rrr(t_stack **stack_a, t_stack **stack_b);
 
 
 // sort.c
-void 	radixsort(t_stack **stack_a, t_stack **stack_b);
-void 	smallsort(t_stack **stack_a, t_stack **stack_b);
+void 	sort_radix(t_stack **stack_a, t_stack **stack_b);
+void 	sort_small(t_stack **stack_a, t_stack **stack_b);
 
 
 #endif

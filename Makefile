@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/02/28 09:18:35 by joppe         ########   odam.nl          #
+#    Updated: 2023/02/28 16:27:25 by jboeve        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ LIBFT = libft/build/libft.a
 
 # CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -g -fsanitize=address
-CFLAGS += -DBUILD_TESTER
+# CFLAGS += -DBUILD_TESTER
 
-INC = -Ilibft/include -Iinclude -I../libft/include -I../include 
+INC = -Ilibft/include -Iinclude -I../libft/include -I../include -I/Users/jboeve/Downloads/Criterion/include
 
 SRC_DIR = src
 SRCS = main.c stack.c operatons.c utils.c parser.c moves.c sort.c
