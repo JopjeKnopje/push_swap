@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/02/27 23:14:18 by joppe         ########   odam.nl         */
+/*   Updated: 2023/02/28 09:18:24 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,10 @@ int push_swap(int argc, char *argv[])
 }
 
 
-// #ifndef BUILD_TESTER
-// int main(int argc, char *argv[])
-// {
-// 	push_swap(argc, argv);
-// 	return EXIT_SUCCESS;
-// }
-// #endif
+#ifndef BUILD_TESTER
+int main(int argc, char *argv[])
+{
+	push_swap(argc, argv);
+	return EXIT_SUCCESS;
+}
+#endif
