@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/03/01 14:22:44 by jboeve        ########   odam.nl          #
+#    Updated: 2023/03/01 15:03:17 by jboeve        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIBFT = libft/build/libft.a
 
 # CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -g -fsanitize=address
-CFLAGS += -DBUILD_TESTER
+# CFLAGS += -DBUILD_TESTER
 
 INC = -Ilibft/include -Iinclude 
 
@@ -88,4 +88,4 @@ $(TEST_BIN_DIR)/%: $(TEST_DIR)/%.c
 	$(CC) $(CFLAGS) $(INC) $(TEST_INC) $< $(OBJS) $(LIBFT) -o $@ -lcriterion 
 
 test: $(LIBFT) $(OBJS) $(TEST_BINS)
-	@for test in $(TEST_BINS) ; do ./$$test ; done
+	@for test in $(TEST_BINS) ; do ./$$test -j 1 ; done
