@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/02/28 16:27:25 by jboeve        ########   odam.nl          #
+#    Updated: 2023/03/01 14:22:44 by jboeve        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ LIBFT = libft/build/libft.a
 
 # CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -g -fsanitize=address
-# CFLAGS += -DBUILD_TESTER
+CFLAGS += -DBUILD_TESTER
 
-INC = -Ilibft/include -Iinclude -I../libft/include -I../include -I/Users/jboeve/Downloads/Criterion/include
+INC = -Ilibft/include -Iinclude 
 
 SRC_DIR = src
 SRCS = main.c stack.c operatons.c utils.c parser.c moves.c sort.c
@@ -36,6 +36,7 @@ OBJS = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
 TEST_DIR = tests
 TESTS = test_smallsorts.c
 TESTS := $(addprefix $(TEST_DIR)/, $(TESTS))
+TEST_INC = -I/Users/jboeve/homebrew/include -L/Users/jboeve/homebrew/lib
 TEST_BIN_DIR = bin
 TEST_BIN_DIR := $(addprefix $(TEST_DIR)/, $(TEST_BIN_DIR))
 TEST_BINS = $(patsubst $(TEST_DIR)/%.c, $(TEST_DIR)/bin/%, $(TESTS))
@@ -84,8 +85,7 @@ dre:
 
 $(TEST_BIN_DIR)/%: $(TEST_DIR)/%.c
 	@mkdir -p $(TEST_BIN_DIR)
-	$(CC) $(CFLAGS) $(INC) $< $(OBJS) $(LIBFT) -o $@ -lcriterion
-
+	$(CC) $(CFLAGS) $(INC) $(TEST_INC) $< $(OBJS) $(LIBFT) -o $@ -lcriterion 
 
 test: $(LIBFT) $(OBJS) $(TEST_BINS)
 	@for test in $(TEST_BINS) ; do ./$$test ; done

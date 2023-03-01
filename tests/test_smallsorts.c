@@ -73,7 +73,7 @@ t_stack *test_smallsort(char *s)
 	free_all(argv, size);
 	cr_assert(head_a != 0, "head_a should not be zero.");
 
-	smallsort(&head_a, &head_b);
+	sort_small(&head_a, &head_b);
 
 	if (!stack_cmp(head_a, stack_sorted))
 	{
