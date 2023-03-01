@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/03/01 15:03:17 by jboeve        ########   odam.nl          #
+#    Updated: 2023/03/01 16:08:16 by joppe         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,8 +70,8 @@ run: all
 	@# ./$(NAME) 1 4 2 5 -3 6 8 9 7
 	@# ./$(NAME) 87 -487 781 -100 101 0 1
 	# ./$(NAME) 1 5 2 3 4
-	./$(NAME) 4 5 1 2 3 
-	# ./$(NAME) 5 1 2 3 4
+	# ./$(NAME) 4 5 1 2 3 
+	./$(NAME) 1 2 5 3 4
 	@# python3 generator.py | wc -l
 
 

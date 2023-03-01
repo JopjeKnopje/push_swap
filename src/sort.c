@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/28 10:04:47 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/03/01 16:19:04 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,9 +133,13 @@ static void 	sort_3(t_stack **stack_a, t_stack **stack_b)
 
 void 	sort_small(t_stack **stack_a, t_stack **stack_b)
 {
-	if (stack_size(*stack_a) <= 3)
+	int size = stack_size(*stack_a);
+	if (size == 2)
+		sa(stack_a);
+	if (size == 3)
 		sort_3(stack_a, stack_b);
-	else
+	// TODO Hardcode
+	if(size == 5)
 	{
 		pb(stack_a, stack_b);
 		pb(stack_a, stack_b);
