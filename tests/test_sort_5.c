@@ -2,10 +2,6 @@
 
   	TODO Read this
 	https://github.com/Snaipe/Criterion/blob/bleeding/samples/parameterized.c
-
-
-
-
   */
 
 

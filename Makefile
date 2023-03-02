@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/03/01 16:08:16 by joppe         ########   odam.nl          #
+#    Updated: 2023/03/02 11:25:08 by joppe         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIBFT = libft/build/libft.a
 
 # CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -g -fsanitize=address
-# CFLAGS += -DBUILD_TESTER
+CFLAGS += -DBUILD_TESTER
 
 INC = -Ilibft/include -Iinclude 
 
@@ -34,7 +34,8 @@ OBJS = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
 
 
 TEST_DIR = tests
-TESTS = test_smallsorts.c
+# TESTS = test_sort_3.c test_sort_5.c
+TESTS = test_sort_3.c
 TESTS := $(addprefix $(TEST_DIR)/, $(TESTS))
 TEST_INC = -I/Users/jboeve/homebrew/include -L/Users/jboeve/homebrew/lib
 TEST_BIN_DIR = bin
