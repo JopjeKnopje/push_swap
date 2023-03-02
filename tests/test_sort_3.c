@@ -38,7 +38,6 @@ char *stack_to_str(t_stack *stack)
 		stack = stack->next;	
 		s = s_start + ft_strlen(s_start);
 	}
-
 	return s_start;
 }
 
@@ -64,6 +63,8 @@ void assert_sort_3(char *s, char *expected)
 	sort_small(&stack, &stack_b);
 
 	char *output = stack_to_str(stack);
+
+
 	stack_free(stack);
 
 
@@ -73,7 +74,28 @@ void assert_sort_3(char *s, char *expected)
 }
 
 
+
 Test(sort_3, args_1)
 {
+	assert_sort_3("2 1 3", "1 2 3");
+}
+
+Test(sort_3, args_2)
+{
 	assert_sort_3("3 2 1", "1 2 3");
+}
+
+Test(sort_3, args_3)
+{
+	assert_sort_3("3 1 2", "1 2 3");
+}
+
+Test(sort_3, args_4)
+{
+	assert_sort_3("1 3 2", "1 2 3");
+}
+
+Test(sort_3, args_5)
+{
+	assert_sort_3("2 3 1", "1 2 3");
 }
