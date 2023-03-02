@@ -8,6 +8,7 @@
 
 #include <criterion/internal/assert.h>
 #include <criterion/internal/test.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include "libft.h"
 #include "push_swap.h"
@@ -19,6 +20,28 @@ char	**free_all(char **s_split, int i)
 	free(s_split);
 	return (NULL);
 }
+
+char *stack_to_str(t_stack *stack)
+{
+	int size = stack_size(stack);
+
+	// sure we can calculate the buffersize but just hardcode it.
+	char *s = ft_calloc(64, sizeof(char));
+	char *s_start = s;
+
+	while (stack)
+	{
+		if (s_start == s)
+			sprintf(s, "%d", stack->nb);
+		else
+			sprintf(s, " %d", stack->nb);
+		stack = stack->next;	
+		s = s_start + ft_strlen(s_start);
+	}
+
+	return s_start;
+}
+
 
 void assert_sort_3(char *s, char *expected)
 {
@@ -35,17 +58,18 @@ void assert_sort_3(char *s, char *expected)
 		 	stack_add_front(&stack, stack_new(ft_atol(split[i])));
 		i++;
 	}
-	// sort_small(NULL, NULL);
-	print_stacks(stack, NULL);
-	stack_free(stack);
 	free_all(split, i);
 
-}
+	t_stack *stack_b = NULL;
+	sort_small(&stack, &stack_b);
 
-char *stack_to_str(t_stack *s)
-{
+	char *output = stack_to_str(stack);
+	stack_free(stack);
 
-	return NULL;
+
+	cr_expect_str_eq(output, expected);
+
+	free(output);
 }
 
 
