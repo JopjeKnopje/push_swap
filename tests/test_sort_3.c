@@ -54,7 +54,7 @@ void assert_sort_3(char *s, char *expected)
 		if (!stack)	
 			stack = stack_new(ft_atol(split[i]));
 		else
-		 	stack_add_front(&stack, stack_new(ft_atol(split[i])));
+		 	stack_add_back(&stack, stack_new(ft_atol(split[i])));
 		i++;
 	}
 	free_all(split, i);
@@ -63,13 +63,9 @@ void assert_sort_3(char *s, char *expected)
 	sort_small(&stack, &stack_b);
 
 	char *output = stack_to_str(stack);
-
-
 	stack_free(stack);
 
-
-	cr_expect_str_eq(output, expected);
-
+	cr_expect_str_eq(output, expected, "input: %s | output: %s | expected output %s\n", s, output, expected);
 	free(output);
 }
 

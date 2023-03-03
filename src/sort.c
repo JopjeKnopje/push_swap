@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/02 12:00:04 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/03 17:53:20 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,23 +112,29 @@ static void 	sort_3(t_stack **stack_a, t_stack **stack_b)
 		(*stack_a)->next->next->nb
 	};
 
-
-	if (nb[0] > nb[1] && nb[0] < nb[2])
+	if (nb[0] > nb[1] && nb[1] < nb[2] && nb[0] < nb[2])
+	{
 		sa(stack_a);
-	else if (nb[0] > nb[1] && nb[1] > nb[2])
+	}
+	else if (nb[0] > nb[1] && nb[1] > nb[2] && nb[0] > nb[2])
 	{
 		sa(stack_a);
 		rra(stack_a);
 	}
-	else if (nb[0] > nb[1] && nb[1] < nb[2])
+	else if (nb[0] > nb[1] && nb[1] < nb[2] && nb[0] > nb[2])
+	{
 		ra(stack_a);
-	else if (nb[0] < nb[1] && nb[1] > nb[2])
+	}
+	else if (nb[0] < nb[1] && nb[1] > nb[2] && nb[0] < nb[2])
 	{
 		sa(stack_a);
 		ra(stack_a);
 	}
-	else if (nb[0] > nb[1] && nb[1] < nb[2])
+	else if (nb[0] < nb[1] && nb[1] > nb[2] && nb[0] > nb[2])
+	{
+		printf("ahahahaha\n");
 		rra(stack_a);
+	}
 }
 
 void 	sort_small(t_stack **stack_a, t_stack **stack_b)

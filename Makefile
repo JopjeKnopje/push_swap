@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/03/03 16:48:20 by joppe         ########   odam.nl          #
+#    Updated: 2023/03/03 17:38:46 by joppe         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIBFT = libft/build/libft.a
 
 # CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -g -fsanitize=address
-# CFLAGS += -DBUILD_TESTER
+CFLAGS += -DBUILD_TESTER
 
 INC = -Ilibft/include -Iinclude 
 
