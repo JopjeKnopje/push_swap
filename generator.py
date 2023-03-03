@@ -1,7 +1,7 @@
 import random
 import os
 
-ARG_COUNT = 5
+ARG_COUNT = 500
 MIN_VAL = -2147483648
 MAX_VAL = 2147483647 
 
