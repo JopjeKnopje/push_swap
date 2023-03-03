@@ -1,20 +1,16 @@
-/**
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   test_sort_5.c                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: joppe <jboeve@student.codam.nl>              +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/03/03 18:06:40 by joppe         #+#    #+#                 */
+/*   Updated: 2023/03/03 18:06:48 by joppe         ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
-  	TODO Read this
-	https://github.com/Snaipe/Criterion/blob/bleeding/samples/parameterized.c
-  */
-
-
-#include <criterion/criterion.h>
-#include <criterion/internal/assert.h>
-#include <criterion/internal/new_asserts.h>
-#include <criterion/internal/test.h>
-#include <criterion/logging.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-#include "libft.h"
-#include "push_swap.h"
+#include "test_push_swap.h"
 
 t_stack *stack_sorted;
 t_stack *head_a = NULL;
@@ -22,13 +18,6 @@ t_stack *head_b = NULL;
 
 t_stack *create_stack_a(char *argv[], int argc);
 
-
-static void free_all(char **s_split, int i)
-{
-	while (i--)
-		free(s_split[i]);
-	free(s_split);
-}
 
 
 static int stack_cmp(t_stack *head_a, t_stack *head_b)

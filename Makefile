@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/03/03 17:38:46 by joppe         ########   odam.nl          #
+#    Updated: 2023/03/03 18:06:09 by joppe         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,10 +32,9 @@ OBJ_DIR = obj
 OBJS = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
 
 
-
 TEST_DIR = tests
-# TESTS = test_sort_3.c test_sort_5.c
-TESTS = test_sort_3.c
+TESTS = test_sort_3.c test_sort_5.c test_utils.c
+# TESTS = test_sort_3.c
 TESTS := $(addprefix $(TEST_DIR)/, $(TESTS))
 TEST_INC = -I/Users/jboeve/homebrew/include -L/Users/jboeve/homebrew/lib
 TEST_BIN_DIR = bin
