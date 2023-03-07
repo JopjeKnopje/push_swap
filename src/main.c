@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/01 16:09:35 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/07 15:18:12 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <limits.h>
 #include <stdlib.h>
 #include <unistd.h>
+
 
 
 t_stack *create_stack_a(char *argv[], int argc)
@@ -53,11 +54,10 @@ void do_sort(t_stack **head_a, t_stack **head_b)
 {
 	int size = stack_size(*head_a);
 
-	if (size <= 5)
+	if (size <= 6)
 		sort_small(head_a, head_b);
 	else
 		sort_radix(head_a, head_b);
-
 }
 
 // TODO Have head_b in the actual sorting function

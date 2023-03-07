@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/31 20:57:28 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/25 13:13:57 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/07 14:57:31 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,21 @@ t_stack *stack_dup(t_stack *head)
 	return (new);
 }
 
+t_stack *stack_max(t_stack *stack)
+{
+	t_stack *max = stack;
+
+	if (stack)
+		max = stack;
+	while (stack)
+	{
+		if (stack->nb > max->nb)
+			max = stack;
+		stack = stack->next;
+	}
+	return max;
+}
+
 int stack_is_sorted(t_stack *stack)
 {
 	t_stack *tmp = stack;
@@ -55,7 +70,6 @@ int stack_is_sorted(t_stack *stack)
 	return (1);
 }
 
-// TODO remove double pointer
 void stack_free(t_stack *head)
 {
 	t_stack *tmp;
