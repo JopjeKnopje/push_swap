@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 18:41:31 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/07 17:38:28 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/07 20:04:08 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define PUSH_SWAP_H
 
 #include <stdio.h>
+#include <limits.h>
 #include "libft.h"
 
 typedef struct s_stack

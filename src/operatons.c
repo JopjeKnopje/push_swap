@@ -6,32 +6,29 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/06 08:46:52 by joppe         #+#    #+#                 */
-/*   Updated: 2023/02/22 20:52:26 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/07 20:33:36 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 // Swap the top two numbers in a stack.
-void operation_swap(t_stack **stack)
+void	operation_swap(t_stack **stack)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	if (!(*stack) || !((*stack)->next))
 		return ;
-
 	tmp = (*stack)->next;
 	(*stack)->next = tmp->next;
 	tmp->next = *stack;
 	*stack = tmp;
 }
 
-
 // Top number in src goes to top of dst.
-void operation_push(t_stack **src, t_stack **dst)
+void	operation_push(t_stack **src, t_stack **dst)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	if (!(*src))
 		return ;
@@ -40,33 +37,28 @@ void operation_push(t_stack **src, t_stack **dst)
 	stack_add_front(dst, tmp);
 }
 
-
 // Top number in stack goes to bottom of stack.
-void operation_rotate(t_stack **stack)
+void	operation_rotate(t_stack **stack)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	if (!(*stack) || !(*stack)->next)
-		return;
-
+		return ;
 	tmp = *stack;
 	*stack = (*stack)->next;
-
 	tmp->next = NULL;
 	stack_last(*stack)->next = tmp;
 }
 
-
 // Bottom number in stack goes to top of stack.
 // TODO Actually move the node instead of the value lol.
-void operation_reverse_rotate(t_stack **stack)
+void	operation_reverse_rotate(t_stack **stack)
 {
 	t_stack	*tmp;
-	t_stack *end;
+	t_stack	*end;
 
 	if (!(*stack) || !(*stack)->next)
-		return;
-
+		return ;
 	tmp = *stack;
 	while (tmp)
 	{
@@ -76,9 +68,7 @@ void operation_reverse_rotate(t_stack **stack)
 			end = tmp;
 		tmp = tmp->next;
 	}
-
 	end->next = NULL;
 	tmp->next = (*stack);
 	stack_add_front(stack, tmp);
-
 }

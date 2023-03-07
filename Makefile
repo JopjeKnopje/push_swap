@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/03/07 17:36:11 by joppe         ########   odam.nl          #
+#    Updated: 2023/03/07 20:25:47 by joppe         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ CFLAGS += -g -fsanitize=address
 INC = -Ilibft/include -Iinclude 
 
 SRC_DIR = src
-SRCS = main.c stack.c operatons.c utils.c parser.c moves.c sort.c
+SRCS = main.c stack.c stack_utils.c operatons.c utils.c parser.c moves.c sort.c
 SRCS := $(addprefix $(SRC_DIR)/, $(SRCS))
 
 HEADER_DIR = include

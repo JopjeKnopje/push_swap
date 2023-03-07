@@ -6,17 +6,16 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/07 17:38:48 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/07 19:48:45 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-int push_swap(int argc, char *argv[])
+int	push_swap(int argc, char *argv[])
 {
-	t_stack *head_a;
-	t_stack *head_b;
+	t_stack	*head_a;
+	t_stack	*head_b;
 
 	if (argc <= 1)
 		return (0);
@@ -31,7 +30,7 @@ int push_swap(int argc, char *argv[])
 		if (!head_a)
 		{
 			printf("Error!\n");
-			return 0;
+			return (0);
 		}
 		do_sort(&head_a);
 		stack_free(head_a);
@@ -41,10 +40,11 @@ int push_swap(int argc, char *argv[])
 	return (0);
 }
 
-
 #ifndef BUILD_TESTER
-int main(int argc, char *argv[])
+
+int	main(int argc, char *argv[])
 {
 	return (push_swap(argc, argv));
 }
+
 #endif
