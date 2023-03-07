@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/03/03 17:38:46 by joppe         ########   odam.nl          #
+#    Updated: 2023/03/07 11:32:41 by jboeve        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,8 +34,9 @@ OBJS = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
 
 
 TEST_DIR = tests
-# TESTS = test_sort_3.c test_sort_5.c
-TESTS = test_sort_3.c
+TESTS = test_sort_3.c test_sort_5.c
+TESTS_UTILS = test_push_swap.c
+TESTS_UTILS := $(addprefix $(TEST_DIR)/, $(TESTS_UTILS))
 TESTS := $(addprefix $(TEST_DIR)/, $(TESTS))
 TEST_INC = -I/Users/jboeve/homebrew/include -L/Users/jboeve/homebrew/lib
 TEST_BIN_DIR = bin
@@ -86,7 +87,7 @@ dre:
 
 $(TEST_BIN_DIR)/%: $(TEST_DIR)/%.c
 	@mkdir -p $(TEST_BIN_DIR)
-	$(CC) $(CFLAGS) $(INC) $(TEST_INC) $< $(OBJS) $(LIBFT) -o $@ -lcriterion 
+	$(CC) $(CFLAGS) $(INC) $(TEST_INC) $< $(OBJS) $(TESTS_UTILS) $(LIBFT) -o $@ -lcriterion 
 
 test: $(LIBFT) $(OBJS) $(TEST_BINS)
 	@for test in $(TEST_BINS) ; do ./$$test -j 1 ; done
