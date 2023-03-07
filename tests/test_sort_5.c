@@ -3,21 +3,27 @@
 /*                                                        ::::::::            */
 /*   test_sort_5.c                                      :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: joppe <jboeve@student.codam.nl>              +#+                     */
+/*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/03 18:06:40 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/03 18:06:48 by joppe         ########   odam.nl         */
+/*   Created: 2023/03/07 11:33:05 by jboeve        #+#    #+#                 */
+/*   Updated: 2023/03/07 11:38:52 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+
+  	TODO Read this
+	https://github.com/Snaipe/Criterion/blob/bleeding/samples/parameterized.c
+  */
+
 #include "test_push_swap.h"
+
 
 t_stack *stack_sorted;
 t_stack *head_a = NULL;
 t_stack *head_b = NULL;
 
 t_stack *create_stack_a(char *argv[], int argc);
-
 
 
 static int stack_cmp(t_stack *head_a, t_stack *head_b)
