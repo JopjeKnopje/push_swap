@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/03 17:53:20 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/07 12:30:43 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,6 @@ static void 	sort_3(t_stack **stack_a, t_stack **stack_b)
 	}
 	else if (nb[0] < nb[1] && nb[1] > nb[2] && nb[0] > nb[2])
 	{
-		printf("ahahahaha\n");
 		rra(stack_a);
 	}
 }
@@ -144,7 +143,6 @@ void 	sort_small(t_stack **stack_a, t_stack **stack_b)
 		sa(stack_a);
 	if (size == 3)
 		sort_3(stack_a, stack_b);
-	// TODO Hardcode
 	if(size == 5)
 	{
 		pb(stack_a, stack_b);

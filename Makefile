@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/03/07 11:48:26 by jboeve        ########   odam.nl          #
+#    Updated: 2023/03/07 12:38:50 by jboeve        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIBFT = libft/build/libft.a
 
 # CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -g -fsanitize=address
-CFLAGS += -DBUILD_TESTER
+
 
 INC = -Ilibft/include -Iinclude 
 
@@ -41,6 +41,10 @@ TEST_INC = -I/Users/jboeve/homebrew/include -L/Users/jboeve/homebrew/lib
 TEST_BIN_DIR = bin
 TEST_BIN_DIR := $(addprefix $(TEST_DIR)/, $(TEST_BIN_DIR))
 TEST_BINS = $(patsubst $(TEST_DIR)/%.c, $(TEST_DIR)/bin/%, $(TESTS))
+
+ifdef TEST_BUILD
+CFLAGS += -DBUILD_TESTER
+endif
 
 
 
@@ -88,5 +92,10 @@ $(TEST_BIN_DIR)/%: $(TEST_DIR)/%.c
 	@mkdir -p $(TEST_BIN_DIR)
 	$(CC) $(CFLAGS) $(INC) $(TEST_INC) $< $(OBJS) $(TESTS_UTILS) $(LIBFT) -o $@ -lcriterion 
 
-test: $(LIBFT) $(OBJS) $(TEST_BINS)
+.PHONY: build_test
+build_test: $(LIBFT) $(OBJS) $(TEST_BINS)
 	@for test in $(TEST_BINS) ; do ./$$test -j 1 ; done
+
+test:
+	$(MAKE) clean
+	$(MAKE) build_test TEST_BUILD=1
