@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/03/07 20:25:47 by joppe         ########   odam.nl          #
+#    Updated: 2023/03/07 22:05:54 by joppe         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,12 @@ OBJS = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
 
 
 TEST_DIR = tests
-TESTS = test_sort_small_2.c test_sort_small_3.c test_sort_small_4.c test_sort_small_5.c test_sort_small_6.c
+TESTS = test_sort_small_2.c \
+		test_sort_small_3.c \
+		test_sort_small_4.c \
+		test_sort_small_5.c \
+		test_sort_small_6.c \
+		test_ft_atol.c
 TESTS_UTILS = test_push_swap.c
 TESTS_UTILS := $(addprefix $(TEST_DIR)/, $(TESTS_UTILS))
 TESTS := $(addprefix $(TEST_DIR)/, $(TESTS))
@@ -95,10 +100,11 @@ $(TEST_BIN_DIR)/%: $(TEST_DIR)/%.c
 .PHONY: build_test
 build_test: $(LIBFT) $(OBJS) $(TEST_BINS)
 	# @for test in $(TEST_BINS) ; do ./$$test -j4; done
-	./tests/bin/test_sort_small_3
-	./tests/bin/test_sort_small_4
-	./tests/bin/test_sort_small_5
-	./tests/bin/test_sort_small_6
+	# ./tests/bin/test_sort_small_3
+	# ./tests/bin/test_sort_small_4
+	# ./tests/bin/test_sort_small_5
+	# ./tests/bin/test_sort_small_6
+	./tests/bin/test_ft_atol
 
 test:
 	$(MAKE) clean
