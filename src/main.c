@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/07 15:18:12 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/03/07 16:19:50 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,6 @@ void exit_program(t_stack *head_a, t_stack *head_b)
 	exit(EXIT_SUCCESS);
 }
 
-void do_sort(t_stack **head_a, t_stack **head_b)
-{
-	int size = stack_size(*head_a);
-
-	if (size <= 6)
-		sort_small(head_a, head_b);
-	else
-		sort_radix(head_a, head_b);
-}
 
 // TODO Have head_b in the actual sorting function
 int push_swap(int argc, char *argv[])

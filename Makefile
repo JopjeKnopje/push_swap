@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/03/07 16:01:09 by jboeve        ########   odam.nl          #
+#    Updated: 2023/03/07 16:18:40 by jboeve        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ OBJS = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
 
 
 TEST_DIR = tests
-TESTS = test_sort_small_3.c test_sort_small_4.c test_sort_small_5.c test_sort_small_6.c
+TESTS = test_sort_small_2.c test_sort_small_3.c test_sort_small_4.c test_sort_small_5.c test_sort_small_6.c
 TESTS_UTILS = test_push_swap.c
 TESTS_UTILS := $(addprefix $(TEST_DIR)/, $(TESTS_UTILS))
 TESTS := $(addprefix $(TEST_DIR)/, $(TESTS))
@@ -94,7 +94,7 @@ $(TEST_BIN_DIR)/%: $(TEST_DIR)/%.c
 
 .PHONY: build_test
 build_test: $(LIBFT) $(OBJS) $(TEST_BINS)
-	@for test in $(TEST_BINS) ; do ./$$test -j 4 ; done
+	@for test in $(TEST_BINS) ; do ./$$test -j4 --verbose; done
 
 test:
 	$(MAKE) clean

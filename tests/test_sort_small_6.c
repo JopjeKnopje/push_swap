@@ -1,720 +1,720 @@
 #include "test_push_swap.h"
 
-Test(sort_small_5, args_1)
+Test(sort_small_6, args_1)
 {
 	assert_sort_small("1 2 3 4 5", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_2)
+Test(sort_small_6, args_2)
 {
 	assert_sort_small("1 2 3 5 4", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_3)
+Test(sort_small_6, args_3)
 {
 	assert_sort_small("1 2 4 3 5", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_4)
+Test(sort_small_6, args_4)
 {
 	assert_sort_small("1 2 4 5 3", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_5)
+Test(sort_small_6, args_5)
 {
 	assert_sort_small("1 2 5 3 4", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_6)
+Test(sort_small_6, args_6)
 {
 	assert_sort_small("1 2 5 4 3", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_7)
+Test(sort_small_6, args_7)
 {
 	assert_sort_small("1 3 2 4 5", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_8)
+Test(sort_small_6, args_8)
 {
 	assert_sort_small("1 3 2 5 4", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_9)
+Test(sort_small_6, args_9)
 {
 	assert_sort_small("1 3 4 2 5", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_10)
+Test(sort_small_6, args_10)
 {
 	assert_sort_small("1 3 4 5 2", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_11)
+Test(sort_small_6, args_11)
 {
 	assert_sort_small("1 3 5 2 4", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_12)
+Test(sort_small_6, args_12)
 {
 	assert_sort_small("1 3 5 4 2", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_13)
+Test(sort_small_6, args_13)
 {
 	assert_sort_small("1 4 2 3 5", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_14)
+Test(sort_small_6, args_14)
 {
 	assert_sort_small("1 4 2 5 3", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_15)
+Test(sort_small_6, args_15)
 {
 	assert_sort_small("1 4 3 2 5", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_16)
+Test(sort_small_6, args_16)
 {
 	assert_sort_small("1 4 3 5 2", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_17)
+Test(sort_small_6, args_17)
 {
 	assert_sort_small("1 4 5 2 3", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_18)
+Test(sort_small_6, args_18)
 {
 	assert_sort_small("1 4 5 3 2", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_19)
+Test(sort_small_6, args_19)
 {
 	assert_sort_small("1 5 2 3 4", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_20)
+Test(sort_small_6, args_20)
 {
 	assert_sort_small("1 5 2 4 3", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_21)
+Test(sort_small_6, args_21)
 {
 	assert_sort_small("1 5 3 2 4", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_22)
+Test(sort_small_6, args_22)
 {
 	assert_sort_small("1 5 3 4 2", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_23)
+Test(sort_small_6, args_23)
 {
 	assert_sort_small("1 5 4 2 3", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_24)
+Test(sort_small_6, args_24)
 {
 	assert_sort_small("1 5 4 3 2", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_25)
+Test(sort_small_6, args_25)
 {
 	assert_sort_small("2 1 3 4 5", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_26)
+Test(sort_small_6, args_26)
 {
 	assert_sort_small("2 1 3 5 4", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_27)
+Test(sort_small_6, args_27)
 {
 	assert_sort_small("2 1 4 3 5", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_28)
+Test(sort_small_6, args_28)
 {
 	assert_sort_small("2 1 4 5 3", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_29)
+Test(sort_small_6, args_29)
 {
 	assert_sort_small("2 1 5 3 4", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_30)
+Test(sort_small_6, args_30)
 {
 	assert_sort_small("2 1 5 4 3", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_31)
+Test(sort_small_6, args_31)
 {
 	assert_sort_small("2 3 1 4 5", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_32)
+Test(sort_small_6, args_32)
 {
 	assert_sort_small("2 3 1 5 4", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_33)
+Test(sort_small_6, args_33)
 {
 	assert_sort_small("2 3 4 1 5", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_34)
+Test(sort_small_6, args_34)
 {
 	assert_sort_small("2 3 4 5 1", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_35)
+Test(sort_small_6, args_35)
 {
 	assert_sort_small("2 3 5 1 4", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_36)
+Test(sort_small_6, args_36)
 {
 	assert_sort_small("2 3 5 4 1", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_37)
+Test(sort_small_6, args_37)
 {
 	assert_sort_small("2 4 1 3 5", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_38)
+Test(sort_small_6, args_38)
 {
 	assert_sort_small("2 4 1 5 3", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_39)
+Test(sort_small_6, args_39)
 {
 	assert_sort_small("2 4 3 1 5", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_40)
+Test(sort_small_6, args_40)
 {
 	assert_sort_small("2 4 3 5 1", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_41)
+Test(sort_small_6, args_41)
 {
 	assert_sort_small("2 4 5 1 3", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_42)
+Test(sort_small_6, args_42)
 {
 	assert_sort_small("2 4 5 3 1", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_43)
+Test(sort_small_6, args_43)
 {
 	assert_sort_small("2 5 1 3 4", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_44)
+Test(sort_small_6, args_44)
 {
 	assert_sort_small("2 5 1 4 3", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_45)
+Test(sort_small_6, args_45)
 {
 	assert_sort_small("2 5 3 1 4", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_46)
+Test(sort_small_6, args_46)
 {
 	assert_sort_small("2 5 3 4 1", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_47)
+Test(sort_small_6, args_47)
 {
 	assert_sort_small("2 5 4 1 3", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_48)
+Test(sort_small_6, args_48)
 {
 	assert_sort_small("2 5 4 3 1", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_49)
+Test(sort_small_6, args_49)
 {
 	assert_sort_small("3 1 2 4 5", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_50)
+Test(sort_small_6, args_50)
 {
 	assert_sort_small("3 1 2 5 4", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_51)
+Test(sort_small_6, args_51)
 {
 	assert_sort_small("3 1 4 2 5", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_52)
+Test(sort_small_6, args_52)
 {
 	assert_sort_small("3 1 4 5 2", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_53)
+Test(sort_small_6, args_53)
 {
 	assert_sort_small("3 1 5 2 4", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_54)
+Test(sort_small_6, args_54)
 {
 	assert_sort_small("3 1 5 4 2", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_55)
+Test(sort_small_6, args_55)
 {
 	assert_sort_small("3 2 1 4 5", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_56)
+Test(sort_small_6, args_56)
 {
 	assert_sort_small("3 2 1 5 4", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_57)
+Test(sort_small_6, args_57)
 {
 	assert_sort_small("3 2 4 1 5", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_58)
+Test(sort_small_6, args_58)
 {
 	assert_sort_small("3 2 4 5 1", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_59)
+Test(sort_small_6, args_59)
 {
 	assert_sort_small("3 2 5 1 4", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_60)
+Test(sort_small_6, args_60)
 {
 	assert_sort_small("3 2 5 4 1", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_61)
+Test(sort_small_6, args_61)
 {
 	assert_sort_small("3 4 1 2 5", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_62)
+Test(sort_small_6, args_62)
 {
 	assert_sort_small("3 4 1 5 2", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_63)
+Test(sort_small_6, args_63)
 {
 	assert_sort_small("3 4 2 1 5", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_64)
+Test(sort_small_6, args_64)
 {
 	assert_sort_small("3 4 2 5 1", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_65)
+Test(sort_small_6, args_65)
 {
 	assert_sort_small("3 4 5 1 2", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_66)
+Test(sort_small_6, args_66)
 {
 	assert_sort_small("3 4 5 2 1", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_67)
+Test(sort_small_6, args_67)
 {
 	assert_sort_small("3 5 1 2 4", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_68)
+Test(sort_small_6, args_68)
 {
 	assert_sort_small("3 5 1 4 2", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_69)
+Test(sort_small_6, args_69)
 {
 	assert_sort_small("3 5 2 1 4", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_70)
+Test(sort_small_6, args_70)
 {
 	assert_sort_small("3 5 2 4 1", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_71)
+Test(sort_small_6, args_71)
 {
 	assert_sort_small("3 5 4 1 2", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_72)
+Test(sort_small_6, args_72)
 {
 	assert_sort_small("3 5 4 2 1", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_73)
+Test(sort_small_6, args_73)
 {
 	assert_sort_small("4 1 2 3 5", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_74)
+Test(sort_small_6, args_74)
 {
 	assert_sort_small("4 1 2 5 3", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_75)
+Test(sort_small_6, args_75)
 {
 	assert_sort_small("4 1 3 2 5", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_76)
+Test(sort_small_6, args_76)
 {
 	assert_sort_small("4 1 3 5 2", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_77)
+Test(sort_small_6, args_77)
 {
 	assert_sort_small("4 1 5 2 3", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_78)
+Test(sort_small_6, args_78)
 {
 	assert_sort_small("4 1 5 3 2", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_79)
+Test(sort_small_6, args_79)
 {
 	assert_sort_small("4 2 1 3 5", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_80)
+Test(sort_small_6, args_80)
 {
 	assert_sort_small("4 2 1 5 3", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_81)
+Test(sort_small_6, args_81)
 {
 	assert_sort_small("4 2 3 1 5", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_82)
+Test(sort_small_6, args_82)
 {
 	assert_sort_small("4 2 3 5 1", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_83)
+Test(sort_small_6, args_83)
 {
 	assert_sort_small("4 2 5 1 3", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_84)
+Test(sort_small_6, args_84)
 {
 	assert_sort_small("4 2 5 3 1", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_85)
+Test(sort_small_6, args_85)
 {
 	assert_sort_small("4 3 1 2 5", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_86)
+Test(sort_small_6, args_86)
 {
 	assert_sort_small("4 3 1 5 2", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_87)
+Test(sort_small_6, args_87)
 {
 	assert_sort_small("4 3 2 1 5", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_88)
+Test(sort_small_6, args_88)
 {
 	assert_sort_small("4 3 2 5 1", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_89)
+Test(sort_small_6, args_89)
 {
 	assert_sort_small("4 3 5 1 2", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_90)
+Test(sort_small_6, args_90)
 {
 	assert_sort_small("4 3 5 2 1", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_91)
+Test(sort_small_6, args_91)
 {
 	assert_sort_small("4 5 1 2 3", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_92)
+Test(sort_small_6, args_92)
 {
 	assert_sort_small("4 5 1 3 2", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_93)
+Test(sort_small_6, args_93)
 {
 	assert_sort_small("4 5 2 1 3", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_94)
+Test(sort_small_6, args_94)
 {
 	assert_sort_small("4 5 2 3 1", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_95)
+Test(sort_small_6, args_95)
 {
 	assert_sort_small("4 5 3 1 2", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_96)
+Test(sort_small_6, args_96)
 {
 	assert_sort_small("4 5 3 2 1", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_97)
+Test(sort_small_6, args_97)
 {
 	assert_sort_small("5 1 2 3 4", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_98)
+Test(sort_small_6, args_98)
 {
 	assert_sort_small("5 1 2 4 3", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_99)
+Test(sort_small_6, args_99)
 {
 	assert_sort_small("5 1 3 2 4", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_100)
+Test(sort_small_6, args_100)
 {
 	assert_sort_small("5 1 3 4 2", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_101)
+Test(sort_small_6, args_101)
 {
 	assert_sort_small("5 1 4 2 3", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_102)
+Test(sort_small_6, args_102)
 {
 	assert_sort_small("5 1 4 3 2", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_103)
+Test(sort_small_6, args_103)
 {
 	assert_sort_small("5 2 1 3 4", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_104)
+Test(sort_small_6, args_104)
 {
 	assert_sort_small("5 2 1 4 3", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_105)
+Test(sort_small_6, args_105)
 {
 	assert_sort_small("5 2 3 1 4", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_106)
+Test(sort_small_6, args_106)
 {
 	assert_sort_small("5 2 3 4 1", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_107)
+Test(sort_small_6, args_107)
 {
 	assert_sort_small("5 2 4 1 3", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_108)
+Test(sort_small_6, args_108)
 {
 	assert_sort_small("5 2 4 3 1", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_109)
+Test(sort_small_6, args_109)
 {
 	assert_sort_small("5 3 1 2 4", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_110)
+Test(sort_small_6, args_110)
 {
 	assert_sort_small("5 3 1 4 2", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_111)
+Test(sort_small_6, args_111)
 {
 	assert_sort_small("5 3 2 1 4", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_112)
+Test(sort_small_6, args_112)
 {
 	assert_sort_small("5 3 2 4 1", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_113)
+Test(sort_small_6, args_113)
 {
 	assert_sort_small("5 3 4 1 2", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_114)
+Test(sort_small_6, args_114)
 {
 	assert_sort_small("5 3 4 2 1", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_115)
+Test(sort_small_6, args_115)
 {
 	assert_sort_small("5 4 1 2 3", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_116)
+Test(sort_small_6, args_116)
 {
 	assert_sort_small("5 4 1 3 2", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_117)
+Test(sort_small_6, args_117)
 {
 	assert_sort_small("5 4 2 1 3", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_118)
+Test(sort_small_6, args_118)
 {
 	assert_sort_small("5 4 2 3 1", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_119)
+Test(sort_small_6, args_119)
 {
 	assert_sort_small("5 4 3 1 2", "1 2 3 4 5");
 }
           
 
-Test(sort_small_5, args_120)
+Test(sort_small_6, args_120)
 {
 	assert_sort_small("5 4 3 2 1", "1 2 3 4 5");
 }
