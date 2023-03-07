@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 11:32:55 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/07 11:47:58 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/03/07 16:22:33 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void assert_sort_small(char *s, char *expected)
 	free_all(split, i);
 
 	t_stack *stack_b = NULL;
-	sort_small(&stack, &stack_b);
+	do_sort(&stack, &stack_b);
 
 	char *output = stack_to_str(stack);
 	stack_free(stack);
