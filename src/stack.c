@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/31 20:57:28 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/07 20:06:43 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/07 22:44:16 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_stack	*stack_last(t_stack *stack)
 	return (stack);
 }
 
-void 	stack_add_back(t_stack **stack, t_stack *new)
+void	stack_add_back(t_stack **stack, t_stack *new)
 {
 	t_stack	*last;
 
@@ -40,11 +40,10 @@ void 	stack_add_back(t_stack **stack, t_stack *new)
 	}
 }
 
-void 	stack_add_front(t_stack **stack, t_stack *new)
+void	stack_add_front(t_stack **stack, t_stack *new)
 {
 	if (!stack || !new)
 		return ;
-
 	new->next = *stack;
 	*stack = new;
 }
@@ -60,7 +59,6 @@ t_stack	*stack_new(int nb)
 	node->next = NULL;
 	return (node);
 }
-
 
 int	stack_size(t_stack *stack)
 {

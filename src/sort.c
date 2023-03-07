@@ -6,17 +6,13 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/07 17:35:13 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/07 23:02:04 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_swap.h"
-#include <limits.h>
-#include <stdio.h>
-#include <stdlib.h>
 
-static void bubblesort(t_stack *head) 
+static	void	bubblesort(t_stack *head)
 { 
 	t_stack *tmp;
 	int swapped = 1;

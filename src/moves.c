@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/09 16:39:57 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/07 19:56:46 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/07 22:43:14 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,9 @@ void	ra(t_stack **stack_a)
 	printf("%s\n", __func__);
 }
 
-// ra + rb
-void	rr(t_stack **stack_a, t_stack **stack_b)
-{
-	operation_rotate(stack_a);
-	operation_rotate(stack_b);
-	printf("%s\n", __func__);
-}
-
 // Bottom number in A goes to top of A
 void	rra(t_stack **stack_a)
 {
 	operation_reverse_rotate(stack_a);
 	printf("%s\n", __func__);
 }
-
