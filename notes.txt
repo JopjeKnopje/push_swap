@@ -32,3 +32,5 @@ TODO:
 	With reverse rotate a doubly linked list would be nice,
 	since you can call the prev node.
 
+	Accept arguments like this ./push_swap "2 1"
+
