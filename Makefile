@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/03/07 11:38:26 by jboeve        ########   odam.nl          #
+#    Updated: 2023/03/07 11:48:26 by jboeve        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ OBJS = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
 
 
 TEST_DIR = tests
-TESTS = test_sort_3.c test_sort_5.c
+TESTS = test_sort_small_3.c test_sort_small_5.c
 TESTS_UTILS = test_push_swap.c
 TESTS_UTILS := $(addprefix $(TEST_DIR)/, $(TESTS_UTILS))
 TESTS := $(addprefix $(TEST_DIR)/, $(TESTS))
