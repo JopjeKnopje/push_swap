@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/08 14:24:01 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/07 15:06:38 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/03/07 17:38:14 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,31 @@
 #include "push_swap.h"
 #include <limits.h>
 #include <stdio.h>
+
+
+t_stack *create_stack_a(char *argv[], int argc)
+{
+	t_stack *head; 
+
+	int i = 1;
+	head = 0;
+
+	while (argc - 1)
+	{
+		long num = atol(argv[argc - 1]);
+		if (num > INT_MAX || num < INT_MIN) 
+		{
+			stack_free(head);
+			return 0;
+		}
+		if (!head)
+			head = stack_new(num);
+		else
+			stack_add_front(&head, stack_new(num));
+		argc--;
+	}
+	return (head);
+}
 
 
 // TODO Support negative number

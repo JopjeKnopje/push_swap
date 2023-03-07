@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/07 16:20:44 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/03/07 17:35:13 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "push_swap.h"
 #include <limits.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 static void bubblesort(t_stack *head) 
 { 
@@ -49,7 +50,6 @@ static void apply_offset(t_stack *head_a, t_stack *head_sorted)
 
 	int index = 0;
 	int j;
-
 	while (head_sorted) 
 	{
 		j = 0;
@@ -153,24 +153,24 @@ static int find_rotates(t_stack *stack)
 		i++;
 		stack = stack->next;
 	}
-
 	return i;
 }
 
 static void 	sort_small(t_stack **stack_a, t_stack **stack_b)
 {
-	int size = stack_size(*stack_a);
-	int r_count = find_rotates(*stack_a);
-	int i;
-	int j = 0;
+	int size; 
+	int r_count;
+	int i = 0;
+	int j;
+	size = stack_size(*stack_a);
 	while (i < size - 3)
 	{
 		r_count = find_rotates(*stack_a);
 		j = 0;
 		while (j < r_count) 
 		{
-			j++;
 			ra(stack_a);
+			j++;
 		}
 		pb(stack_a, stack_b);
 		i++;
@@ -183,12 +183,16 @@ static void 	sort_small(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
-void do_sort(t_stack **head_a, t_stack **head_b)
+void do_sort(t_stack **head_a)
 {
+	t_stack *head_b;
+	head_b = NULL;
 	int size = stack_size(*head_a);
 
 	if (size <= 6)
-		sort_small(head_a, head_b);
+		sort_small(head_a, &head_b);
 	else
-		sort_radix(head_a, head_b);
+		sort_radix(head_a, &head_b);
+
+	stack_free(head_b);
 }
