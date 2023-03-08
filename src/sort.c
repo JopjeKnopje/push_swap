@@ -6,47 +6,50 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/07 23:02:04 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/08 22:01:23 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// TODO Maybe move node instead of value.
 static	void	bubblesort(t_stack *head)
-{ 
-	t_stack *tmp;
-	int swapped = 1;
+{
+	t_stack	*head_tmp;
+	int		swapped;
+	int		tmp_val;
 
+	swapped = 1;
 	while (swapped)
 	{
 		swapped = 0;
-		tmp = head;
-
-		while (tmp->next)
+		head_tmp = head;
+		while (head_tmp->next)
 		{
-			if (tmp->nb > tmp->next->nb)
+			if (head_tmp->nb > head_tmp->next->nb)
 			{
-				int x = tmp->nb;
-				tmp->nb = tmp->next->nb;
-				tmp->next->nb = x;
+				tmp_val = head_tmp->nb;
+				head_tmp->nb = head_tmp->next->nb;
+				head_tmp->next->nb = tmp_val;
 				swapped = 1;
 			}
-			tmp = tmp->next;
+			head_tmp = head_tmp->next;
 		}
 	}
-} 
+}
 
-static void apply_offset(t_stack *head_a, t_stack *head_sorted)
+static	void	apply_offset(t_stack *head_a, t_stack *head_sorted)
 {
-	t_stack *tmp = head_a;
-	// TODO Use different kind of array.
-	int *isset = ft_calloc(stack_size(head_a), sizeof(int));
+	t_stack	*tmp;
+	int		*isset;
+	int		index;
+	int		j;
+
+	isset = ft_calloc(stack_size(head_a), sizeof(int));
 	if (!isset)
 		return ;
-
-	int index = 0;
-	int j;
-	while (head_sorted) 
+	index = 0;
+	while (head_sorted)
 	{
 		j = 0;
 		tmp = head_a;
@@ -60,28 +63,25 @@ static void apply_offset(t_stack *head_a, t_stack *head_sorted)
 			tmp = tmp->next;
 			j++;
 		}
-		head_sorted = head_sorted->next;	
+		head_sorted = head_sorted->next;
 		index++;
 	}
 	free(isset);
 }
 
-
-void sort_radix(t_stack **stack_a, t_stack **stack_b)
+static	void	sort_radix(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack *stack_a_copy;
+	t_stack	*stack_a_copy;
+	int		shift;
+	int		size_a;
+	int		i;
 
 	stack_a_copy = stack_dup(*stack_a);
 	bubblesort(stack_a_copy);
 	apply_offset(*stack_a, stack_a_copy);
 	stack_free(stack_a_copy);
-
-	int shift;
-	int size_a;
-	int i;
-
 	shift = 0;
-	while (!stack_is_sorted(*stack_a)) 
+	while (!stack_is_sorted(*stack_a))
 	{
 		i = 0;
 		size_a = stack_size(*stack_a);
@@ -93,27 +93,25 @@ void sort_radix(t_stack **stack_a, t_stack **stack_b)
 				pb(stack_a, stack_b);
 			i++;
 		}
-		while ((*stack_b)) 
+		while ((*stack_b))
 			pa(stack_a, stack_b);
 		shift++;
 	}
 }
 
 // TODO remove if statements for each case.
-static void 	sort_3(t_stack **stack)
+static	void	sort_3(t_stack **stack)
 {
-	if (stack_size(*stack) == 2)
-	{
-		sa(stack);
-		return;
-	}
-
-	int nb[3] = {
+	int	nb[3] = {
 		(*stack)->nb,
 		(*stack)->next->nb,
 		(*stack)->next->next->nb
 	};
-
+	if (stack_size(*stack) == 2)
+	{
+		sa(stack);
+		return ;
+	}
 	if (nb[0] > nb[1] && nb[1] < nb[2] && nb[0] < nb[2])
 	{
 		sa(stack);
@@ -138,32 +136,35 @@ static void 	sort_3(t_stack **stack)
 	}
 }
 
-
-static int find_rotates(t_stack *stack)
+static	int	find_rotates(t_stack *stack)
 {
-	int i = 0;
-	t_stack *max = stack_max(stack);
+	int		i;
+	t_stack	*max;
 
+	i = 0;
+	max = stack_max(stack);
 	while (stack != max)
 	{
 		i++;
 		stack = stack->next;
 	}
-	return i;
+	return (i);
 }
 
-static void 	sort_small(t_stack **stack_a, t_stack **stack_b)
+static	void	sort_small(t_stack **stack_a, t_stack **stack_b)
 {
-	int size; 
-	int r_count;
-	int i = 0;
-	int j;
+	int	size;
+	int	r_count;
+	int	i;
+	int	j;
+
+	i = 0;
 	size = stack_size(*stack_a);
 	while (i < size - 3)
 	{
 		r_count = find_rotates(*stack_a);
 		j = 0;
-		while (j < r_count) 
+		while (j < r_count)
 		{
 			ra(stack_a);
 			j++;
@@ -179,16 +180,14 @@ static void 	sort_small(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
-void do_sort(t_stack **head_a)
+void	do_sort(t_stack **head_a)
 {
-	t_stack *head_b;
-	head_b = NULL;
-	int size = stack_size(*head_a);
+	t_stack	*head_b;
 
-	if (size <= 6)
+	head_b = NULL;
+	if (stack_size(*head_a) <= 6)
 		sort_small(head_a, &head_b);
 	else
 		sort_radix(head_a, &head_b);
-
 	stack_free(head_b);
 }
