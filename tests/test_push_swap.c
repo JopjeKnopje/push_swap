@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 11:32:55 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/07 17:35:43 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/08 09:31:50 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void assert_sort_small(char *s, char *expected)
 		 	stack_add_back(&stack, stack_new(ft_atol(split[i])));
 		i++;
 	}
-	free_all(split, i);
+	test_free_all(split, i);
 
 	do_sort(&stack);
 
@@ -38,7 +38,7 @@ void assert_sort_small(char *s, char *expected)
 	free(output);
 }
 
-char	**free_all(char **s_split, int i)
+char	**test_free_all(char **s_split, int i)
 {
 	while (i--)
 		free(s_split[i]);

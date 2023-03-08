@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/07 19:48:45 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/08 09:05:04 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ int	push_swap(int argc, char *argv[])
 
 int	main(int argc, char *argv[])
 {
-	return (push_swap(argc, argv));
+	// return (push_swap(argc, argv));
+	printf("parse_args: %d\n", parse_args(argv));
 }
 
 #endif

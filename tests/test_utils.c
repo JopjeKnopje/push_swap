@@ -6,14 +6,14 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/03 18:04:49 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/03 18:07:37 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/08 09:34:29 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "test_push_swap.h"
 
-char	**free_all(char **s_split, int i)
+char	**test_free_all(char **s_split, int i)
 {
 	while (i--)
 		free(s_split[i]);

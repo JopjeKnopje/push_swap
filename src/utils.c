@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/08 14:24:01 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/07 22:22:47 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/08 09:40:52 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,18 @@ t_stack	*create_stack_a(char *argv[], int argc)
 		argc--;
 	}
 	return (head);
+}
+
+// TODO Remove second loop
+char	**free_split(char **s_split)
+{
+	int i = 0;
+	while (s_split[i])
+		i++;
+	while (i--)
+		free(s_split[i]);
+	free(s_split);
+	return (NULL);
 }
 
 ///////////////////////
