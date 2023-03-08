@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/08 14:24:01 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/08 11:42:11 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/03/08 12:01:15 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ t_stack	*create_stack_a(char *argv[], int argc)
 {
 	t_stack	*head;
 	long	num;
+	int i = 0;
+	while (argv[i])
+	{
+		printf("parse_args: %s\n", argv[i++]);
+	}
 
 	head = 0;
 	while (argc - 1)
