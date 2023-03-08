@@ -6,10 +6,11 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/09 16:29:24 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/08 11:55:45 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/03/08 17:05:28 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "push_swap.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -59,8 +60,8 @@ int	check_elements(char *argv[])
 	int	i;
 	int	j;
 
-	i = 1;
-	j = 1;
+	i = 0;
+	j = 0;
 	if (has_dupes(argv))
 		return (0);
 	while (argv[i])
@@ -77,23 +78,24 @@ char **parse_args(char *argv[])
 	char **split;
 	int ret;
 
+	if (!argv[1])
+		return NULL;
+
 	if (ft_strchr(argv[1], ' '))
 	{
 		split = ft_split(argv[1], ' ');
 		if (!split)
 			return NULL;
-
 		ret = check_elements(split);
 		if (!ret)
 			free_split(split);
-
 	}
 	else
 	{
-		split = argv;
-		ret = check_elements(argv);
+		split = argv + 1;
+		ret = check_elements(split);
 		if (!ret)
 			return NULL;
 	}
-	return split;
+	return (split);
 }
