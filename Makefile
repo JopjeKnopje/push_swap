@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/03/08 17:04:48 by jboeve        ########   odam.nl          #
+#    Updated: 2023/03/08 17:24:45 by jboeve        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,11 +97,11 @@ $(TEST_BIN_DIR)/%: $(TEST_DIR)/%.c
 .PHONY: build_test
 build_test: $(LIBFT) $(OBJS) $(TEST_BINS)
 	# @for test in $(TEST_BINS) ; do ./$$test -j4; done
-	# ./tests/bin/test_sort_small_3
-	# ./tests/bin/test_sort_small_4
-	# ./tests/bin/test_sort_small_5
+	./tests/bin/test_sort_small_3
+	./tests/bin/test_sort_small_4
+	./tests/bin/test_sort_small_5
 	# ./tests/bin/test_sort_small_6
-	./tests/bin/test_ft_atol
+	# ./tests/bin/test_ft_atol
 
 test:
 	$(MAKE) clean

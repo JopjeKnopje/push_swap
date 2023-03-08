@@ -6,15 +6,11 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/09 16:29:24 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/08 17:05:28 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/03/08 17:13:11 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_swap.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 
 static	int	is_num_str(char *s)
 {

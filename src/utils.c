@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/08 14:24:01 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/08 16:56:22 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/03/08 17:26:35 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ t_stack	*create_stack_a(char *argv[], int argc)
 			stack_add_back(&head, stack_new(num));
 		i++;
 	}
-	print_stacks(head, NULL);
 	return (head);
 }
 
