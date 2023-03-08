@@ -6,14 +6,14 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/09 16:29:24 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/08 09:41:03 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/08 11:45:43 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include "libft.h"
 #include "push_swap.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 static	int	is_num_str(char *s)
 {
@@ -75,22 +75,19 @@ int	check_elements(char *argv[])
 int parse_args(char *argv[])
 {
 	char **split;
-	// split on ' '
+	int ret;
+
 	if (ft_strchr(argv[1], ' '))
 	{
 		split = ft_split(argv[1], ' ');
 		if (!split)
 			return 1;
-		// do stuff
+
+		ret = check_elements(split);
 		free_split(split);
 
 	}
-	else {
-		printf("nope\n");
-		return check_elements(argv);
-	}
-	// check if "2 1"
-
-	// of if 2 1
-	return 0;
+	else
+		ret = check_elements(argv);
+	return ret;
 }
