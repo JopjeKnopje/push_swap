@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 18:41:31 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/08 09:40:20 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/08 11:52:17 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_stack *create_stack_a(char *argv[], int argc);
 
 
 // parser.c
-int parse_args(char *argv[]);
+char **parse_args(char *argv[]);
 
 
 // moves.c
