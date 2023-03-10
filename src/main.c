@@ -6,13 +6,13 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/10 15:15:43 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/10 15:28:30 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char *argv[])
+int	push_swap(int argc, char *argv[])
 {
 	t_stack	*head_a;
 
@@ -34,9 +34,18 @@ int	main(int argc, char *argv[])
 		}
 		do_sort(&head_a);
 		stack_free(head_a);
-		free_split(argv);
 	}
 	else
 		printf("Error!\n");
+	free_split(argv);
 	return (0);
 }
+
+#ifndef BUILD_TESTER
+
+int	main(int argc, char *argv[])
+{
+	return (push_swap(argc, argv));
+}
+
+#endif

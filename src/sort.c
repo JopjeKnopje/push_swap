@@ -6,14 +6,15 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/08 23:38:18 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/10 15:32:18 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // TODO Maybe move node instead of value.
-static	void	bubblesort(t_stack *head)
+// static	void	bubblesort(t_stack *head)
+void	bubblesort(t_stack *head)
 {
 	t_stack	*head_tmp;
 	int		swapped;
@@ -38,7 +39,8 @@ static	void	bubblesort(t_stack *head)
 	}
 }
 
-static	void	apply_offset(t_stack *head_a, t_stack *head_sorted)
+// static	void	apply_offset(t_stack *head_a, t_stack *head_sorted)
+void	apply_offset(t_stack *head_a, t_stack *head_sorted)
 {
 	t_stack	*tmp;
 	int		*isset;
