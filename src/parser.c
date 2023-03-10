@@ -6,15 +6,11 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/09 16:29:24 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/10 01:07:24 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/10 01:28:42 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_swap.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 static	int	is_num_str(char *s)
 {
@@ -83,13 +79,15 @@ void print_split(char **s)
 	}
 }
 
-// TODO Input null checks.
-// TODO Malloc protection.
 char	**strjoin_free_2d(char **s_base, char **s_append)
 {
-	int		len_base;
-	int		len_append;
 	char 	**s_joined;
+	int		len_append;
+	int		len_base;
+	int		i;
+
+	if (!s_append)
+		return (NULL);
 
 	len_base = 0;
 	while (s_base[len_base]) 
@@ -101,9 +99,13 @@ char	**strjoin_free_2d(char **s_base, char **s_append)
 	
 	s_joined = ft_calloc(len_append + len_base + 1, sizeof(char *));
 	if (!s_joined)
+	{
+		free_split(s_base);
+		free_split(s_append);
 		return (NULL);
+	}
 
-	int i = 0;
+	i = 0;
 	while (s_base[i]) 
 	{
 		s_joined[i]	= s_base[i];
@@ -118,7 +120,7 @@ char	**strjoin_free_2d(char **s_base, char **s_append)
 
 	free(s_base);
 	free(s_append);
-	return s_joined;
+	return (s_joined);
 }
 
 char **parse_args(char *argv[])
@@ -136,10 +138,12 @@ char **parse_args(char *argv[])
 	{
 		split = ft_split(argv[i], ' ');
 		args_base = strjoin_free_2d(args_base, split);
+		if (!args_base)
+			break ;
 		i++;
 	}
 	passed = check_elements(args_base);
-	if(!passed)
+	if(!passed || !split)
 	{
 		free_split(args_base);
 		return (NULL);

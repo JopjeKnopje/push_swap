@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/10 00:56:56 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/10 01:28:18 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	push_swap(int argc, char *argv[])
 	}
 	else
 		printf("Error!\n");
-	// free_split(argv);
+	free_split(argv);
 	return (0);
 }
 
@@ -49,11 +49,10 @@ int	push_swap(int argc, char *argv[])
 int	main(int argc, char *argv[])
 {
 	// return (push_swap(argc, argv));
-
 	argv = parse_args(argv);
 	if (!argv)
 	{
-		printf("invailid arguments\n");
+		printf("Error\n");
 		return (0);
 	}
 	print_split(argv);
