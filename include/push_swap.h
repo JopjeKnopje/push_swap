@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 18:41:31 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/08 22:06:18 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/10 00:33:17 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <limits.h>
 #include "libft.h"
+#include <stdlib.h>
 
 typedef struct s_stack
 {
@@ -54,7 +55,8 @@ t_stack *create_stack_a(char *argv[], int argc);
 
 
 // parser.c
-char **parse_args(char *argv[]);
+char	**parse_args(char *argv[]);
+void	print_split(char **s);
 
 
 // moves.c

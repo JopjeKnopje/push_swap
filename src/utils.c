@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/08 14:24:01 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/08 17:26:35 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/03/10 01:06:30 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ t_stack	*create_stack_a(char *argv[], int argc)
 char	**free_split(char **s_split)
 {
 	int i = 0;
+
 	while (s_split[i])
 	{
 		free(s_split[i]);

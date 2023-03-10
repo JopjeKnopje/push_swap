@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/08 22:01:23 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/08 23:38:18 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,11 +107,6 @@ static	void	sort_3(t_stack **stack)
 		(*stack)->next->nb,
 		(*stack)->next->next->nb
 	};
-	if (stack_size(*stack) == 2)
-	{
-		sa(stack);
-		return ;
-	}
 	if (nb[0] > nb[1] && nb[1] < nb[2] && nb[0] < nb[2])
 	{
 		sa(stack);
@@ -183,9 +178,13 @@ static	void	sort_small(t_stack **stack_a, t_stack **stack_b)
 void	do_sort(t_stack **head_a)
 {
 	t_stack	*head_b;
+	int 	size;
 
+	size = stack_size(*head_a);
 	head_b = NULL;
-	if (stack_size(*head_a) <= 6)
+	if (size == 2)
+		sa(head_a);
+	else if (stack_size(*head_a) <= 6)
 		sort_small(head_a, &head_b);
 	else
 		sort_radix(head_a, &head_b);
