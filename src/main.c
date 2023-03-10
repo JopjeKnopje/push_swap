@@ -6,14 +6,11 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/10 01:28:18 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/10 01:59:20 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_swap.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 int	push_swap(int argc, char *argv[])
 {
@@ -55,7 +52,6 @@ int	main(int argc, char *argv[])
 		printf("Error\n");
 		return (0);
 	}
-	print_split(argv);
 	free_split(argv);
 }
 

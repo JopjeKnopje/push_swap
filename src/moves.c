@@ -6,16 +6,13 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/09 16:39:57 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/08 22:05:03 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/10 01:59:14 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_swap.h"
-#include <unistd.h>
 
 #ifdef BUILD_TESTER
-// # define printf(fmt, ...) (0)
 # define ft_putstr_fd(s, fd) (0)
 #endif
 

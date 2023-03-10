@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/09 16:29:24 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/10 01:28:42 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/10 02:00:27 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,61 +69,7 @@ static int	check_elements(char *argv[])
 	return (1);
 }
 
-void print_split(char **s)
-{
-	int i = 0;
-	while (s[i])
-	{
-		printf("[%s]\n", s[i]);
-		i++;
-	}
-}
-
-char	**strjoin_free_2d(char **s_base, char **s_append)
-{
-	char 	**s_joined;
-	int		len_append;
-	int		len_base;
-	int		i;
-
-	if (!s_append)
-		return (NULL);
-
-	len_base = 0;
-	while (s_base[len_base]) 
-		len_base++;	
-
-	len_append = 0;
-	while (s_append[len_append]) 
-		len_append++;	
-	
-	s_joined = ft_calloc(len_append + len_base + 1, sizeof(char *));
-	if (!s_joined)
-	{
-		free_split(s_base);
-		free_split(s_append);
-		return (NULL);
-	}
-
-	i = 0;
-	while (s_base[i]) 
-	{
-		s_joined[i]	= s_base[i];
-		i++;
-	}
-	i = 0;
-	while (s_append[i]) 
-	{
-		s_joined[i + len_base]	= s_append[i];
-		i++;
-	}
-
-	free(s_base);
-	free(s_append);
-	return (s_joined);
-}
-
-char **parse_args(char *argv[])
+char	**parse_args(char *argv[])
 {
 	char	**args_base;
 	char	**split;
@@ -143,12 +89,10 @@ char **parse_args(char *argv[])
 		i++;
 	}
 	passed = check_elements(args_base);
-	if(!passed || !split)
+	if (!passed || !split)
 	{
 		free_split(args_base);
 		return (NULL);
 	}
 	return (args_base);
 }
-
-
