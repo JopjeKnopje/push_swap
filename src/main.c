@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/14 00:00:16 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/14 00:17:55 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,24 @@ int	push_swap(int argc, char *argv[])
 
 int	main(int argc, char *argv[])
 {
-	return (push_swap(argc, argv));
+	// return (push_swap(argc, argv));
 
-	// char **args = parse_args(argv);
-	// int x = 0;
-	//
-	// while (args[x]) 
-	// {
-	// 	printf("[%s]\n", args[x]);
-	// 	x++;
-	// }
-	// free_split(args);
+	char **args = parse_args(argv);
+	if (!args)
+	{
+		printf("parse_args is null\n");
+		return 0;
+	}
+	int i = 0;
+	while (args[i])
+	{
+		printf("[%s]\n", args[i]);
+		i++;
+	}
+
+
+	if (args)
+		free_split(args);
 }
 
 #endif
