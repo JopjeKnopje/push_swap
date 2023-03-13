@@ -6,131 +6,36 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/10 15:32:18 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/13 23:04:08 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// TODO Maybe move node instead of value.
-// static	void	bubblesort(t_stack *head)
-void	bubblesort(t_stack *head)
-{
-	t_stack	*head_tmp;
-	int		swapped;
-	int		tmp_val;
-
-	swapped = 1;
-	while (swapped)
-	{
-		swapped = 0;
-		head_tmp = head;
-		while (head_tmp->next)
-		{
-			if (head_tmp->nb > head_tmp->next->nb)
-			{
-				tmp_val = head_tmp->nb;
-				head_tmp->nb = head_tmp->next->nb;
-				head_tmp->next->nb = tmp_val;
-				swapped = 1;
-			}
-			head_tmp = head_tmp->next;
-		}
-	}
-}
-
-// static	void	apply_offset(t_stack *head_a, t_stack *head_sorted)
-void	apply_offset(t_stack *head_a, t_stack *head_sorted)
-{
-	t_stack	*tmp;
-	int		*isset;
-	int		index;
-	int		j;
-
-	isset = ft_calloc(stack_size(head_a), sizeof(int));
-	if (!isset)
-		return ;
-	index = 0;
-	while (head_sorted)
-	{
-		j = 0;
-		tmp = head_a;
-		while (tmp)
-		{
-			if (tmp->nb == head_sorted->nb && !isset[j])
-			{
-				tmp->nb = index;
-				isset[j] = 1;
-			}
-			tmp = tmp->next;
-			j++;
-		}
-		head_sorted = head_sorted->next;
-		index++;
-	}
-	free(isset);
-}
-
-static	void	sort_radix(t_stack **stack_a, t_stack **stack_b)
-{
-	t_stack	*stack_a_copy;
-	int		shift;
-	int		size_a;
-	int		i;
-
-	stack_a_copy = stack_dup(*stack_a);
-	bubblesort(stack_a_copy);
-	apply_offset(*stack_a, stack_a_copy);
-	stack_free(stack_a_copy);
-	shift = 0;
-	while (!stack_is_sorted(*stack_a))
-	{
-		i = 0;
-		size_a = stack_size(*stack_a);
-		while (i < size_a)
-		{
-			if ((*stack_a)->nb >> shift & 1)
-				ra(stack_a);
-			else
-				pb(stack_a, stack_b);
-			i++;
-		}
-		while ((*stack_b))
-			pa(stack_a, stack_b);
-		shift++;
-	}
-}
-
 // TODO remove if statements for each case.
-static	void	sort_3(t_stack **stack)
+static	void	sort_3(t_stack **s)
 {
-	int	nb[3] = {
-		(*stack)->nb,
-		(*stack)->next->nb,
-		(*stack)->next->next->nb
-	};
-	if (nb[0] > nb[1] && nb[1] < nb[2] && nb[0] < nb[2])
+	if ((*s)->nb > (*s)->next->nb && (*s)->next->nb < (*s)->next->next->nb
+		&& (*s)->nb < (*s)->next->next->nb)
+		sa(s);
+	else if ((*s)->nb > (*s)->next->nb && (*s)->next->nb > (*s)->next->next->nb
+		&& (*s)->nb > (*s)->next->next->nb)
 	{
-		sa(stack);
+		sa(s);
+		rra(s);
 	}
-	else if (nb[0] > nb[1] && nb[1] > nb[2] && nb[0] > nb[2])
+	else if ((*s)->nb > (*s)->next->nb && (*s)->next->nb < (*s)->next->next->nb
+		&& (*s)->nb > (*s)->next->next->nb)
+		ra(s);
+	else if ((*s)->nb < (*s)->next->nb && (*s)->next->nb > (*s)->next->next->nb
+		&& (*s)->nb < (*s)->next->next->nb)
 	{
-		sa(stack);
-		rra(stack);
+		sa(s);
+		ra(s);
 	}
-	else if (nb[0] > nb[1] && nb[1] < nb[2] && nb[0] > nb[2])
-	{
-		ra(stack);
-	}
-	else if (nb[0] < nb[1] && nb[1] > nb[2] && nb[0] < nb[2])
-	{
-		sa(stack);
-		ra(stack);
-	}
-	else if (nb[0] < nb[1] && nb[1] > nb[2] && nb[0] > nb[2])
-	{
-		rra(stack);
-	}
+	else if ((*s)->nb < (*s)->next->nb && (*s)->next->nb > (*s)->next->next->nb
+		&& (*s)->nb > (*s)->next->next->nb)
+		rra(s);
 }
 
 static	int	find_rotates(t_stack *stack)
@@ -180,10 +85,10 @@ static	void	sort_small(t_stack **stack_a, t_stack **stack_b)
 void	do_sort(t_stack **head_a)
 {
 	t_stack	*head_b;
-	int 	size;
+	int		size;
 
-	size = stack_size(*head_a);
 	head_b = NULL;
+	size = stack_size(*head_a);
 	if (size == 2)
 		sa(head_a);
 	else if (stack_size(*head_a) <= 6)

@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/03/10 15:26:38 by joppe         ########   odam.nl          #
+#    Updated: 2023/03/13 23:40:05 by joppe         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,16 @@ CFLAGS += -g -fsanitize=address
 INC = -Ilibft/include -Iinclude 
 
 SRC_DIR = src
-SRCS = main.c stack.c stack_utils.c operatons.c utils.c parser.c moves.c sort.c
+SRCS = main.c \
+	   stack.c \
+	   stack_utils.c \
+	   operatons.c \
+	   utils.c \
+	   parser.c \
+	   moves.c \
+	   sort.c \
+	   radix.c
+
 SRCS := $(addprefix $(SRC_DIR)/, $(SRCS))
 
 HEADER_DIR = include
@@ -39,7 +48,8 @@ TESTS = test_sort_small_2.c \
 		test_sort_small_5.c \
 		test_sort_small_6.c \
 		test_ft_atol.c \
-		test_apply_offset.c
+		test_apply_offset.c \
+		test_create_stack_a.c
 
 TESTS_UTILS = test_push_swap.c
 TESTS_UTILS := $(addprefix $(TEST_DIR)/, $(TESTS_UTILS))
@@ -98,13 +108,13 @@ $(TEST_BIN_DIR)/%: $(TEST_DIR)/%.c
 
 .PHONY: build_test
 build_test: $(LIBFT) $(OBJS) $(TEST_BINS)
-	# @for test in $(TEST_BINS) ; do ./$$test -j4; done
+	@for test in $(TEST_BINS) ; do ./$$test -j4; done
 	# ./tests/bin/test_sort_small_3
 	# ./tests/bin/test_sort_small_4
 	# ./tests/bin/test_sort_small_5
 	# ./tests/bin/test_sort_small_6
+	# ./tests/bin/test_create_stack_a
 	# ./tests/bin/test_ft_atol
-	./tests/bin/test_apply_offset
 
 test:
 	$(MAKE) clean

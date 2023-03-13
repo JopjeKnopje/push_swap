@@ -6,35 +6,44 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/08 14:24:01 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/10 02:02:14 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/13 23:52:25 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "push_swap.h"
+#include <stdio.h>
 
 t_stack	*create_stack_a(char *argv[], int argc)
 {
 	t_stack	*head;
 	long	num;
-
-	head = 0;
 	int i = 0;
+
+	head = NULL;
 	while (argv[i])
 	{
 		num = ft_atol(argv[i]);
+		printf("argv[argc - 1] %s\n", argv[i]);
 		if (num > INT_MAX || num < INT_MIN)
 		{
 			stack_free(head);
-			return (0);
+			return (NULL);
 		}
 		if (!head)
 			head = stack_new(num);
 		else
-			// stack_add_front(&head, stack_new(num));
-			stack_add_back(&head, stack_new(num));
+			stack_add_front(&head, stack_new(num));
 		i++;
 	}
 	return (head);
+}
+
+char **free_2d_ptr(char **p1, char **p2)
+{
+	free(p1);
+	free(p2);
+	return (NULL);
 }
 
 char	**strjoin_free_2d(char **s_base, char **s_append)
@@ -44,17 +53,13 @@ char	**strjoin_free_2d(char **s_base, char **s_append)
 	int		len_base;
 	int		i;
 
+
 	if (!s_append)
 		return (NULL);
-	len_base = ptr_arr_len(s_base);
-	len_append = ptr_arr_len(s_append);
-	s_joined = ft_calloc(len_append + len_base + 1, sizeof(char *));
+	len_base = ft_strlen((const char *) s_base);
+	s_joined = ft_calloc(ft_strlen((const char *) s_append) + len_base + 1, sizeof(char *));
 	if (!s_joined)
-	{
-		free_split(s_base);
-		free_split(s_append);
-		return (NULL);
-	}
+		return (free_2d_ptr(s_base, s_append));
 	i = 0;
 	while (s_base[i])
 	{
@@ -67,15 +72,15 @@ char	**strjoin_free_2d(char **s_base, char **s_append)
 		s_joined[i + len_base] = s_append[i];
 		i++;
 	}
-	free(s_base);
-	free(s_append);
+	free_2d_ptr(s_base, s_append);
 	return (s_joined);
 }
 
 char	**free_split(char **s_split)
 {
-	int i = 0;
+	int	i;
 
+	i = 0;
 	while (s_split[i])
 	{
 		free(s_split[i]);
@@ -83,16 +88,6 @@ char	**free_split(char **s_split)
 	}
 	free(s_split);
 	return (NULL);
-}
-
-int	ptr_arr_len(char **arr)
-{
-	int	i;
-
-	i = 0;
-	while (arr[i])
-		i++;
-	return (i);
 }
 
 ///////////////////////

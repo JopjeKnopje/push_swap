@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   test_apply_offset.c                                :+:    :+:            */
+/*   test_create_stack_a.c                              :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/10 15:21:57 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/13 18:04:03 by joppe         ########   odam.nl         */
+/*   Created: 2023/03/13 23:09:45 by joppe         #+#    #+#                 */
+/*   Updated: 2023/03/13 23:32:12 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 #include "test_push_swap.h"
 
-void	bubblesort(t_stack *head);
-void	apply_offset(t_stack *head_a, t_stack *head_sorted);
 
-Test(apply_offset, args_1)
+t_stack	*create_stack_a(char *argv[], int argc);
+
+Test(test_create_stack_a, args_1)
 {
-	t_stack *head = stack_new(10);
-	for (int i = 0; i < 10; i++) 
-	{
-		stack_add_back(&head, stack_new(rand() % 50));
-	}
-	t_stack *head_copy = stack_dup(head);
+	char *argv[] = {
+		"1",
+		"2",
+		"3",
+		NULL
+	};
 
-	bubblesort(head_copy);
+	t_stack *expected_head = stack_new(1);
+	stack_add_back(&expected_head, stack_new(2));
+	stack_add_back(&expected_head, stack_new(3));
 
-	print_stacks(head, head_copy);
+	t_stack *head = create_stack_a(argv, 3);
 
-	apply_offset(head, head_copy);
-
-	print_stacks(head, head_copy);
+	print_stacks(head, expected_head);
 
 	stack_free(head);
-	stack_free(head_copy);
+	stack_free(expected_head);
 }
-
