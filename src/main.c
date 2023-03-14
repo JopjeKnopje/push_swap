@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/14 19:56:17 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/14 20:22:53 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	push_swap(int argc, char *argv[])
 	argv = parse_args(argv);
 	if (argv && ptr_arr_len(argv) > 1)
 	{
-		head_a = create_stack_a(argv, ptr_arr_len(argv) - 1);
+		head_a = create_stack_a(argv, ptr_arr_len(argv));
 		if (head_a && stack_is_sorted(head_a))
 		{
 			stack_free(head_a);
