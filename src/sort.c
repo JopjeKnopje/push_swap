@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/14 20:19:58 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/14 20:59:14 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,10 @@ static	int	find_rotates(t_stack *stack)
 	}
 
 	int len = stack_size(tmp);
-	if (i > len / 2)
+	if (i >= (len / 2) + (len % 2))
 	{
-		i = len - i;
-		if (i > 0)
-			i = -i;
+		i = len - i + (len % 2);
+		i = -i;
 	}
 	return (i);
 }

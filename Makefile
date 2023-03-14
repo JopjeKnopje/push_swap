@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/03/14 20:26:45 by joppe         ########   odam.nl          #
+#    Updated: 2023/03/14 20:54:04 by joppe         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,8 @@ run: all
 	# ./$(NAME) "2 1"
 	# ./$(NAME) "2425 1155" -1 "-341 7950" 420
 	# ./$(NAME) 23132
-	./$(NAME) 172 854 741 -188 -563
+	# ./$(NAME) 172 854 741 -188 -563
+	./$(NAME) 2 3 4 1 5
 	@# python3 generator.py | wc -l
 
 
@@ -113,7 +114,7 @@ build_test: $(LIBFT) $(OBJS) $(TEST_BINS)
 	# @for test in $(TEST_BINS) ; do ./$$test -j4; done
 	# ./tests/bin/test_sort_small_3
 	# ./tests/bin/test_sort_small_4
-	./tests/bin/test_sort_small_5
+	# ./tests/bin/test_sort_small_5
 	./tests/bin/test_sort_small_6
 	# ./tests/bin/test_create_stack_a
 	# ./tests/bin/test_ft_atol
