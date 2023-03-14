@@ -6,14 +6,12 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/09 16:29:24 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/14 00:16:32 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/14 15:00:29 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_swap.h"
 #include <stdio.h>
-#include <unistd.h>
 
 static	int	is_num_str(char *s)
 {
@@ -69,8 +67,6 @@ static int	check_elements(char *argv[])
 			return (0);
 		i++;
 	}
-	if (i <= 1)
-		return (0);
 	return (1);
 }
 
@@ -99,5 +95,7 @@ char	**parse_args(char *argv[])
 		free_split(args_base);
 		return (NULL);
 	}
+
+	print_split(args_base);
 	return (args_base);
 }

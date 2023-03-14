@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 18:41:31 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/14 10:47:15 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/03/14 14:49:32 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ typedef struct s_stack
 	int nb;
 	struct s_stack	*next;
 }	t_stack;
+
+// main.c (tmp)
+void print_split(char **s);
 
 
 // stack_utils.c
@@ -54,7 +57,6 @@ char	**strjoin_free_2d(char **s_base, char **s_append);
 char	**free_split(char **s_split);
 char 	*bin_to_str(int bin);
 int		ptr_arr_len(char **arr);
-void 	print_split(char **split);
 
 
 // parser.c
