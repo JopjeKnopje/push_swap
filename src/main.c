@@ -6,10 +6,11 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/14 00:17:55 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/14 10:55:45 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "push_swap.h"
 
 int	push_swap(int argc, char *argv[])
@@ -19,6 +20,7 @@ int	push_swap(int argc, char *argv[])
 	if (argc <= 1)
 		return (0);
 	argv = parse_args(argv);
+	argc = ptr_arr_len(argv);
 	if (argc > 1 && argv)
 	{
 		head_a = create_stack_a(argv, argc);
@@ -45,24 +47,26 @@ int	push_swap(int argc, char *argv[])
 
 int	main(int argc, char *argv[])
 {
-	// return (push_swap(argc, argv));
+	return (push_swap(argc, argv));
 
-	char **args = parse_args(argv);
-	if (!args)
-	{
-		printf("parse_args is null\n");
-		return 0;
-	}
-	int i = 0;
-	while (args[i])
-	{
-		printf("[%s]\n", args[i]);
-		i++;
-	}
-
-
-	if (args)
-		free_split(args);
+	// char **args = parse_args(argv);
+	// if (!args)
+	// {
+	// 	printf("parse_args is null\n");
+	// 	return 0;
+	// }
+	// int i = 0;
+	// while (args[i])
+	// {
+	// 	printf("[%s]\n", args[i]);
+	// 	i++;
+	// }
+	//
+	// t_stack *head = create_stack_a(args, argc);
+	//
+	//
+	// if (args)
+	// 	free_split(args);
 }
 
 #endif

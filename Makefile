@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/03/13 23:40:05 by joppe         ########   odam.nl          #
+#    Updated: 2023/03/14 12:33:23 by jboeve        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,8 @@ re: fclean dfclean all
 
 run: all
 	# ./$(NAME) "2 1"
-	./$(NAME) "2425 1155" -1 "-341 7950" 420
+	# ./$(NAME) "2425 1155" -1 "-341 7950" 420
+	./$(NAME) 23132
 	@# python3 generator.py | wc -l
 
 

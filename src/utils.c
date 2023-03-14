@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/08 14:24:01 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/14 00:16:17 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/14 10:49:17 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-t_stack	*create_stack_a(char *argv[], int argc)
+t_stack	*create_stack_a(char *args[], int len)
 {
 	t_stack	*head;
 	long	num;
 	int i = 0;
 
+	len--;
 	head = NULL;
-	while (argv[i])
+	while (len >= 0)
 	{
-		num = ft_atol(argv[i]);
-		printf("argv[argc - 1] %s\n", argv[i]);
+		num = ft_atol(args[len]);
+		printf("%d | argv[argc - 1] %s\n", len, args[len]);
 		if (num > INT_MAX || num < INT_MIN)
 		{
 			stack_free(head);
@@ -33,8 +34,10 @@ t_stack	*create_stack_a(char *argv[], int argc)
 		if (!head)
 			head = stack_new(num);
 		else
+			// stack_add_back(&head, stack_new(num));
 			stack_add_front(&head, stack_new(num));
-		i++;
+		// i++;
+		len--;
 	}
 	return (head);
 }
