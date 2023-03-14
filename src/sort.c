@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/13 23:04:08 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/14 18:36:57 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ static	void	sort_3(t_stack **s)
 static	int	find_rotates(t_stack *stack)
 {
 	int		i;
-	t_stack	*max;
+	t_stack	*min;
 
 	i = 0;
-	max = stack_max(stack);
-	while (stack != max)
+	min = stack_min(stack);
+	while (stack != min)
 	{
 		i++;
 		stack = stack->next;
@@ -76,10 +76,7 @@ static	void	sort_small(t_stack **stack_a, t_stack **stack_b)
 	}
 	sort_3(stack_a);
 	while (*stack_b)
-	{
 		pa(stack_a, stack_b);
-		ra(stack_a);
-	}
 }
 
 void	do_sort(t_stack **head_a)

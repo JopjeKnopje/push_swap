@@ -6,23 +6,12 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/14 14:59:58 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/03/14 18:30:45 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
-
-void print_split(char **s)
-{
-	int i = 0;
-	printf("print_split\n");
-	while (s[i]) 
-	{
-		printf("[%s]\n", s[i]);
-		i++;
-	}
-}
 
 int	push_swap(int argc, char *argv[])
 {
@@ -31,8 +20,7 @@ int	push_swap(int argc, char *argv[])
 	if (argc <= 1)
 		return (0);
 	argv = parse_args(argv);
-	int len = ptr_arr_len(argv);
-	if (argv && len > 1)
+	if (argv && ptr_arr_len(argv) > 1)
 	{
 		head_a = create_stack_a(argv, ptr_arr_len(argv) - 1);
 		if (head_a && stack_is_sorted(head_a))
@@ -56,19 +44,36 @@ int	push_swap(int argc, char *argv[])
 
 #ifndef BUILD_TESTER
 
-int	main(int argc, char *argv[])
+void	print_split(char **s)
 {
-	// return (push_swap(argc, argv));
-
-
-	char **args = parse_args(argv);
 	int i = 0;
-
-	while (args[i]) 
+	printf("print_split\n");
+	while (s[i]) 
 	{
-		printf("i %d | s %s\n", i, args[i]);	
+		printf("[%s]\n", s[i]);
 		i++;
 	}
+}
+
+
+int	main(int argc, char *argv[])
+{
+	return (push_swap(argc, argv));
+
+	// char **args = parse_args(argv);
+	// if (!args)
+	// {
+	// 	printf("args = null\n");
+	// 	return 0;
+	// }
+	// int i = 0;
+	// 
+	// while (args[i]) 
+	// {
+	// 	printf("i %d | s %s\n", i, args[i]);	
+	// 	i++;
+	// }
+	// printf("i: %d\n", i);
 
 
 	// char **args = parse_args(argv);

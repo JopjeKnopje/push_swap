@@ -32,3 +32,8 @@ TODO:
 	Accept arguments like this ./push_swap "2 1"
 
 	Malloc protection.
+
+
+
+	check whether to use ra or rra
+	these args gave 13 Instructions "172 854 741 -188 -563"

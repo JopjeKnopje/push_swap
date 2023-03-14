@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 18:41:31 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/14 14:49:32 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/03/14 18:36:31 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void print_split(char **s);
 
 // stack_utils.c
 t_stack *stack_dup(t_stack *head);
-t_stack *stack_max(t_stack *stack);
+t_stack	*stack_min(t_stack *stack);
 int 	stack_is_sorted(t_stack *head);
 void 	stack_free(t_stack *head);
 
