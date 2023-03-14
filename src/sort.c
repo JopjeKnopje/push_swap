@@ -6,11 +6,12 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/14 18:36:57 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/03/14 20:19:58 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 // TODO remove if statements for each case.
 static	void	sort_3(t_stack **s)
@@ -42,6 +43,7 @@ static	int	find_rotates(t_stack *stack)
 {
 	int		i;
 	t_stack	*min;
+	t_stack *tmp = stack;
 
 	i = 0;
 	min = stack_min(stack);
@@ -49,6 +51,14 @@ static	int	find_rotates(t_stack *stack)
 	{
 		i++;
 		stack = stack->next;
+	}
+
+	int len = stack_size(tmp);
+	if (i > len / 2)
+	{
+		i = len - i;
+		if (i > 0)
+			i = -i;
 	}
 	return (i);
 }
@@ -60,15 +70,22 @@ static	void	sort_small(t_stack **stack_a, t_stack **stack_b)
 	int	i;
 	int	j;
 
+	void (*rotate_func)(t_stack **) = &ra;
+
 	i = 0;
 	size = stack_size(*stack_a);
 	while (i < size - 3)
 	{
 		r_count = find_rotates(*stack_a);
+		if (r_count < 0) 
+		{
+			rotate_func = &rra;
+			r_count = -r_count;
+		}
 		j = 0;
 		while (j < r_count)
 		{
-			ra(stack_a);
+			rotate_func(stack_a);
 			j++;
 		}
 		pb(stack_a, stack_b);

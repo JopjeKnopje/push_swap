@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/14 18:30:45 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/03/14 19:56:17 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ int	push_swap(int argc, char *argv[])
 		}
 		do_sort(&head_a);
 		stack_free(head_a);
-		free_split(argv);
 	}
 	else
 		printf("Error!\n");
+	free_split(argv);
 	return (0);
 }
 
