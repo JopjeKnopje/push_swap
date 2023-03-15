@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/13 16:52:11 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/13 21:48:59 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/15 20:51:35 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	sort_radix(t_stack **stack_a, t_stack **stack_b)
 	stack_a_copy = stack_dup(*stack_a);
 	bubblesort(stack_a_copy);
 	apply_offset(*stack_a, stack_a_copy);
+	stack_free(stack_a_copy);
 	shift = 0;
 	while (!stack_is_sorted(*stack_a))
 	{

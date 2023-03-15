@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/03/15 20:37:54 by joppe         ########   odam.nl          #
+#    Updated: 2023/03/15 20:56:29 by joppe         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,7 +93,7 @@ run: all
 	# ./$(NAME) "2425 1155" -1 "-341 7950" 420
 	# ./$(NAME) 23132
 	# ./$(NAME) 172 854 741 -188 -563
-	./$(NAME) 2 3 4 1 5
+	./$(NAME) -645 -94
 	@# python3 generator.py | wc -l
 
 
@@ -111,11 +111,12 @@ $(TEST_BIN_DIR)/%: $(TEST_DIR)/%.c
 
 .PHONY: build_test
 build_test: $(LIBFT) $(OBJS) $(TEST_BINS)
-	@for test in $(TEST_BINS) ; do ./$$test -j4; done
-	# ./tests/bin/test_sort_small_3
-	# ./tests/bin/test_sort_small_4
-	# ./tests/bin/test_sort_small_5
-	# ./tests/bin/test_sort_small_6
+	# @for test in $(TEST_BINS) ; do ./$$test -j4; done
+	./tests/bin/test_sort_small_2
+	./tests/bin/test_sort_small_3
+	./tests/bin/test_sort_small_4
+	./tests/bin/test_sort_small_5
+	./tests/bin/test_sort_small_6
 	# ./tests/bin/test_create_stack_a
 	# ./tests/bin/test_ft_atol
 

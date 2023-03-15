@@ -6,12 +6,11 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/14 20:56:19 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/15 21:00:46 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 int	push_swap(int argc, char *argv[])
 {
@@ -26,11 +25,14 @@ int	push_swap(int argc, char *argv[])
 		if (head_a && stack_is_sorted(head_a))
 		{
 			stack_free(head_a);
+			free_split(argv);
 			head_a = NULL;
+			return 0;
 		}
 		if (!head_a)
 		{
 			printf("Error!\n");
+			free_split(argv);
 			return (0);
 		}
 		do_sort(&head_a);

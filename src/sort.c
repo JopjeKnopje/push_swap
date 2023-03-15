@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/15 20:37:35 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/15 20:42:28 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ static	void	sort_3(t_stack **s)
 		rra(s);
 }
 
-static	int	find_rotates(t_stack *stack, t_stack **s)
+static	int	find_rotates(t_stack *stack)
 {
 	int		i;
+	int		size;
 	t_stack	*min;
 	t_stack *tmp = stack;
 
@@ -52,36 +53,9 @@ static	int	find_rotates(t_stack *stack, t_stack **s)
 		tmp = tmp->next;
 		i++;
 	}
-
-	int len = stack_size(stack);
-
-	if (i > len / 2)
-	{
-		// printf("rra\n");
-		i = len - i;
-		i = -i;
-	}
-
-	// void (*rotate_func)(t_stack **) = &ra;
-	// if (i < 0)
-	// {
-	// 	rotate_func = &rra;
-	// 	i = -i;
-	// 	printf("%d amount of rra required to have %d on top.\n", i, min->nb);
-	// }
-	// else {
-	// 	printf("%d amount of ra required to have %d on top.\n", i, min->nb);
-	// }
-	// print_stacks(*s, NULL);
-	// printf("i = %d\n", i);
-	// while (i)
-	// {
-	// 	rotate_func(s);
-	// 	printf("called rotate_func\n");
-	// 	i--;
-	// }
-	// print_stacks(*s, NULL);
-
+	size = stack_size(stack);
+	if (i > size / 2)
+		i = -(size - i);
 	return (i);
 }
 
@@ -98,7 +72,7 @@ static	void	sort_small(t_stack **stack_a, t_stack **stack_b)
 	size = stack_size(*stack_a);
 	while (i < size - 3)
 	{
-		r_count = find_rotates(*stack_a, stack_a);
+		r_count = find_rotates(*stack_a);
 		if (r_count < 0) 
 		{
 			rotate_func = &rra;
