@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/16 14:58:04 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/03/16 19:25:12 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,10 @@ static	int	find_rotates(t_stack *stack)
 	int		i;
 	int		size;
 	t_stack	*min;
-	t_stack *tmp = stack;
+	t_stack	*tmp;
 
 	i = 0;
+	tmp = stack;
 	min = stack_min(tmp);
 	while (tmp != min)
 	{
@@ -59,35 +60,40 @@ static	int	find_rotates(t_stack *stack)
 	return (i);
 }
 
+static	void	smart_rotate(t_stack **stack)
+{
+	int		j;
+	int		r_count;
+	void	(*rotate_func)(t_stack **);
+
+	r_count = find_rotates(*stack);
+	if (r_count < 0)
+	{
+		rotate_func = &rra;
+		r_count = -r_count;
+	}
+	else
+		rotate_func = &ra;
+	j = 0;
+	while (j < r_count)
+	{
+		rotate_func(stack);
+		j++;
+	}
+}
+
 static	void	sort_small(t_stack **stack_a, t_stack **stack_b)
 {
 	int	size;
-	int	r_count;
 	int	i;
-	int	j;
-
-	void (*rotate_func)(t_stack **) = &ra;
 
 	i = 0;
 	size = stack_size(*stack_a);
 	while (i < size - 3)
 	{
-		r_count = find_rotates(*stack_a);
-		if (r_count < 0) 
-		{
-			rotate_func = &rra;
-			r_count = -r_count;
-		}
-		else
-			rotate_func = &ra;
-		j = 0;
-		while (j < r_count)
-		{
-			rotate_func(stack_a);
-			j++;
-		}
+		smart_rotate(stack_a);
 		if (stack_is_sorted(*stack_a))
-			break;
+			break ;
 		pb(stack_a, stack_b);
 		i++;
 	}

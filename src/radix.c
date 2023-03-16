@@ -6,22 +6,22 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/13 16:52:11 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/16 14:53:18 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/03/16 19:30:12 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // TODO Maybe move node instead of value.
-// static	void	bubblesort(t_stack *head)
-void	bubblesort(t_stack *head)
+// void	bubblesort(t_stack *head)
+static	void	bubblesort(t_stack *head)
 {
 	t_stack	*head_tmp;
 	int		swapped;
 	int		tmp_val;
 
 	if (!head)
-		return;
+		return ;
 	swapped = 1;
 	while (swapped)
 	{
@@ -64,7 +64,7 @@ static	int	apply_offset(t_stack *head_a, t_stack *head_sorted)
 	int		*isset;
 	int		index;
 	int		j;
-	
+
 	if (!head_a || !head_sorted)
 		return (0);
 	isset = ft_calloc(stack_size(head_a), sizeof(int));
@@ -85,12 +85,11 @@ static	int	apply_offset(t_stack *head_a, t_stack *head_sorted)
 int	sort_radix(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*stack_a_copy;
-	int		shift;
 	int		size_a;
+	int		shift;
 	int		i;
 
 	stack_a_copy = stack_dup(*stack_a);
-	// stack_a_copy = NULL;
 	bubblesort(stack_a_copy);
 	if (!apply_offset(*stack_a, stack_a_copy))
 		return (0);

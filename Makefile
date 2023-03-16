@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/03/16 15:02:30 by jboeve        ########   odam.nl          #
+#    Updated: 2023/03/16 19:23:13 by joppe         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,6 +90,7 @@ re: fclean dfclean all
 
 run: all
 	python3 tests/test_return_value.py
+	./$(NAME) 3 1 2 5 7 9 4 33
 
 
 compile_commands: dfclean fclean
@@ -107,11 +108,11 @@ $(TEST_BIN_DIR)/%: $(TEST_DIR)/%.c
 .PHONY: build_test
 build_test: $(LIBFT) $(OBJS) $(TEST_BINS)
 	# @for test in $(TEST_BINS) ; do ./$$test -j4; done
-	./tests/bin/test_sort_small_2
-	./tests/bin/test_sort_small_3
-	./tests/bin/test_sort_small_4
-	./tests/bin/test_sort_small_5
-	./tests/bin/test_sort_small_6
+	# ./tests/bin/test_sort_small_2
+	# ./tests/bin/test_sort_small_3
+	# ./tests/bin/test_sort_small_4
+	# ./tests/bin/test_sort_small_5
+	# ./tests/bin/test_sort_small_6
 	# ./tests/bin/test_create_stack_a
 	# ./tests/bin/test_ft_atol
 
