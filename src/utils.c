@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/08 14:24:01 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/16 19:18:05 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/16 22:51:41 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,6 @@ t_stack	*create_stack_a(char *args[], int len)
 	return (head);
 }
 
-static	char	**free_2d_ptr(char **p1, char **p2)
-{
-	free(p1);
-	free(p2);
-	return (NULL);
-}
-
 int	str_arr_len(char **ptr)
 {
 	int	i;
@@ -51,6 +44,13 @@ int	str_arr_len(char **ptr)
 	while (ptr[i])
 		i++;
 	return (i);
+}
+
+static	char	**free_ptr2(char **p1, char **p2)
+{
+	free(p1);
+	free(p2);
+	return (NULL);
 }
 
 char	**strjoin_free_2d(char **s_base, char **s_append)
@@ -64,7 +64,7 @@ char	**strjoin_free_2d(char **s_base, char **s_append)
 	len_base = str_arr_len(s_base);
 	s_joined = ft_calloc(str_arr_len(s_append) + len_base + 1, sizeof(char *));
 	if (!s_joined)
-		return (free_2d_ptr(s_base, s_append));
+		return (free_ptr2(s_base, s_append));
 	i = 0;
 	while (s_base[i])
 	{
@@ -77,7 +77,7 @@ char	**strjoin_free_2d(char **s_base, char **s_append)
 		s_joined[i + len_base] = s_append[i];
 		i++;
 	}
-	free_2d_ptr(s_base, s_append);
+	free_ptr2(s_base, s_append);
 	return (s_joined);
 }
 
@@ -93,38 +93,4 @@ int	free_split(char **s_split)
 	}
 	free(s_split);
 	return (0);
-}
-
-///////////////////////
-// remove this stuff //
-///////////////////////
-void	print_stacks(t_stack *head_a, t_stack *head_b)
-{
-	t_stack *tmp_a = head_a;
-	t_stack *tmp_b = head_b;
-
-	int stack_a_len = stack_size(head_a);
-	int stack_b_len = stack_size(head_b);
-
-	while (tmp_a || tmp_b)
-	{
-		if (tmp_a)
-			printf("stack_a %4d\t", tmp_a->nb);
-		else 
-			printf("\t\t");
-		if (tmp_b)
-			printf("| stack_b %4d\n", tmp_b->nb);
-		else
-			printf("\n");
-		
-		if (tmp_a && tmp_a->next)
-			tmp_a = tmp_a->next;
-		else
-		 	tmp_a = NULL;
-		if (tmp_b && tmp_b->next)
-			tmp_b = tmp_b->next;
-		else
-		 	tmp_b = NULL;
-	}
-	printf("==============================\n");
 }

@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 18:41:31 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/16 19:18:20 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/16 22:57:40 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void print_split(char **s);
 // stack_utils.c
 t_stack *stack_dup(t_stack *head);
 t_stack	*stack_min(t_stack *stack);
-int 	stack_is_sorted(t_stack *head);
 void 	stack_free(t_stack *head);
+int 	stack_is_sorted(t_stack *head);
 
 
 // stack.c
@@ -52,10 +52,8 @@ void 	operation_reverse_rotate(t_stack **stack);
 
 // utils.c
 t_stack	*create_stack_a(char *args[], int len);
-void 	print_stacks(t_stack *head_a, t_stack *head_b);
 char	**strjoin_free_2d(char **s_base, char **s_append);
 int		free_split(char **s_split);
-char 	*bin_to_str(int bin);
 int		str_arr_len(char **arr);
 
 

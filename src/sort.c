@@ -6,12 +6,11 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/16 19:25:12 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/16 22:56:16 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 // TODO remove if statements for each case.
 static	void	sort_3(t_stack **s)

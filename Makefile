@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/03/16 19:23:13 by joppe         ########   odam.nl          #
+#    Updated: 2023/03/16 23:02:57 by joppe         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME = push_swap
 
 LIBFT = libft/build/libft.a
 
-# CFLAGS = -Wall -Wextra -Werror
-CFLAGS += -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
+# CFLAGS += -g -fsanitize=address
 
 
 INC = -Ilibft/include -Iinclude 
@@ -85,13 +85,11 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-
 re: fclean dfclean all
 
 run: all
-	python3 tests/test_return_value.py
+	# python3 tests/test_return_value.py
 	./$(NAME) 3 1 2 5 7 9 4 33
-
 
 compile_commands: dfclean fclean
 	$(MAKE) | compiledb
@@ -117,7 +115,5 @@ build_test: $(LIBFT) $(OBJS) $(TEST_BINS)
 	# ./tests/bin/test_ft_atol
 
 test:
-
-
 	$(MAKE) clean
 	$(MAKE) build_test TEST_BUILD=1

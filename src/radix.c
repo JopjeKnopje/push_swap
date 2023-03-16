@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/13 16:52:11 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/16 19:30:12 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/16 23:02:02 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,28 +58,29 @@ static void	inner_loop(t_stack *head, t_stack *tmp, int *isset, int index)
 	}
 }
 
-static	int	apply_offset(t_stack *head_a, t_stack *head_sorted)
+static	void	apply_offset(t_stack *head_a, t_stack *head_sorted)
 {
 	t_stack	*tmp;
 	int		*isset;
 	int		index;
-	int		j;
 
 	if (!head_a || !head_sorted)
-		return (0);
+		return ;
 	isset = ft_calloc(stack_size(head_a), sizeof(int));
-	if (!isset)
-		return (0);
-	index = 0;
-	while (head_sorted)
+	if (isset)
 	{
-		inner_loop(head_a, head_sorted, isset, index);
-		head_sorted = head_sorted->next;
-		index++;
+		tmp = head_sorted;
+		index = 0;
+		while (tmp)
+		{
+			inner_loop(head_a, tmp, isset, index);
+			tmp = tmp->next;
+			index++;
+		}
+		free(isset);
 	}
-	free(isset);
 	stack_free(head_sorted);
-	return (1);
+	return ;
 }
 
 int	sort_radix(t_stack **stack_a, t_stack **stack_b)
@@ -91,21 +92,18 @@ int	sort_radix(t_stack **stack_a, t_stack **stack_b)
 
 	stack_a_copy = stack_dup(*stack_a);
 	bubblesort(stack_a_copy);
-	if (!apply_offset(*stack_a, stack_a_copy))
-		return (0);
-	stack_free(stack_a_copy);
+	apply_offset(*stack_a, stack_a_copy);
 	shift = 0;
 	while (!stack_is_sorted(*stack_a))
 	{
 		i = 0;
 		size_a = stack_size(*stack_a);
-		while (i < size_a)
+		while (i++ < size_a)
 		{
 			if ((*stack_a)->nb >> shift & 1)
 				ra(stack_a);
 			else
 				pb(stack_a, stack_b);
-			i++;
 		}
 		while ((*stack_b))
 			pa(stack_a, stack_b);

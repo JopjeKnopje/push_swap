@@ -6,20 +6,17 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/09 16:29:24 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/16 10:57:09 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/03/16 23:01:42 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 static	int	is_num_str(char *s)
 {
 	int	i;
-	int	counter;
 
 	i = 0;
-	counter = 0;
 	while (s[i] == '-' || s[i] == '+')
 		i++;
 	while (s[i])
@@ -55,10 +52,8 @@ static	int	has_dupes(char *strings[])
 static int	check_elements(char *argv[])
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
 	if (has_dupes(argv))
 		return (0);
 	while (argv[i])
