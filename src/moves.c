@@ -6,16 +6,11 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/09 16:39:57 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/13 21:55:34 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/16 14:30:55 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-
-#ifdef BUILD_TESTER
-#define ft_putstr_fd(fmt, ...) (0)
-#endif /* ifdef TEST_BUILD */
 
 // Swap the top two numbers in A
 void	sa(t_stack **stack_a)

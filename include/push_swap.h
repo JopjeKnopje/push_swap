@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 18:41:31 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/16 11:12:51 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/03/16 14:52:32 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,11 @@ void rra(t_stack **stack_a);
 
 
 // sort.c
-void	do_sort(t_stack **head_a);
+int	do_sort(t_stack **head_a);
 
 
 // radix.c 
-void	sort_radix(t_stack **stack_a, t_stack **stack_b);
+int	sort_radix(t_stack **stack_a, t_stack **stack_b);
 
 
 #endif
