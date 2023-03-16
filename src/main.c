@@ -6,21 +6,26 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/16 11:21:29 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/03/16 13:18:20 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
-int	push_swap(int argc, char *argv[])
+int	push_swap1(int argc, char *argv[])
 {
 	t_stack	*head_a;
 
 	if (argc <= 1)
 		return (0);
 	argv = parse_args(argv);
-
-	if (argv && str_arr_len(argv) > 1)
+	if (argv && str_arr_len(argv) <= 1)
+	{
+		free_split(argv);
+		return 0;
+	}
+	if (argv)
 	{
 		head_a = create_stack_a(argv, str_arr_len(argv));
 		if (head_a && stack_is_sorted(head_a))
@@ -60,44 +65,36 @@ void	print_split(char **s)
 }
 
 
+int	push_swap(int argc, char *argv[])
+{
+	t_stack *head_a;
+	int 	argv_len;
+
+	argv = parse_args(argv);
+	if (argv)
+	{
+		argv_len = str_arr_len(argv);
+		head_a = create_stack_a(argv, argv_len);
+		// print_stacks(head_a, NULL);
+		if (!head_a)
+		{
+			free_split(argv);
+			printf("Error!\n");
+			return 0;
+		}
+		do_sort(&head_a);
+		stack_free(head_a);
+		free_split(argv);
+	}
+	if (!argv)
+		printf("Error!\n");
+	return 0;
+}
+
+
 int	main(int argc, char *argv[])
 {
 	return (push_swap(argc, argv));
-
-	// char **args = parse_args(argv);
-	// if (!args)
-	// {
-	// 	printf("args = null\n");
-	// 	return 0;
-	// }
-	// int i = 0;
-	// 
-	// while (args[i]) 
-	// {
-	// 	printf("i %d | s %s\n", i, args[i]);	
-	// 	i++;
-	// }
-	// printf("i: %d\n", i);
-
-
-	// char **args = parse_args(argv);
-	// if (!args)
-	// {
-	// 	printf("parse_args is null\n");
-	// 	return 0;
-	// }
-	// int i = 0;
-	// while (args[i])
-	// {
-	// 	printf("[%s]\n", args[i]);
-	// 	i++;
-	// }
-	//
-	// t_stack *head = create_stack_a(args, argc);
-	//
-	//
-	// if (args)
-	// 	free_split(args);
 }
 
 #endif
