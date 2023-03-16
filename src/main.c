@@ -6,14 +6,11 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/16 15:11:40 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/03/16 17:32:56 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <unistd.h>
-
-// #define STDERR_FILENO STDOUT_FILENO
 
 int	push_swap(int argc, char *argv[])
 {
