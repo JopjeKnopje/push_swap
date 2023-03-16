@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 18:41:31 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/14 18:36:31 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/03/16 11:12:51 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void 	print_stacks(t_stack *head_a, t_stack *head_b);
 char	**strjoin_free_2d(char **s_base, char **s_append);
 char	**free_split(char **s_split);
 char 	*bin_to_str(int bin);
-int		ptr_arr_len(char **arr);
+int		str_arr_len(char **arr);
 
 
 // parser.c

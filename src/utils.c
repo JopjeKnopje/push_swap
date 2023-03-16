@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/08 14:24:01 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/14 20:22:46 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/16 11:12:13 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static	char	**free_2d_ptr(char **p1, char **p2)
 	return (NULL);
 }
 
-int	ptr_arr_len(char **ptr)
+int	str_arr_len(char **ptr)
 {
 	int	i;
 
@@ -61,8 +61,8 @@ char	**strjoin_free_2d(char **s_base, char **s_append)
 
 	if (!s_append)
 		return (NULL);
-	len_base = ptr_arr_len(s_base);
-	s_joined = ft_calloc(ptr_arr_len(s_append) + len_base + 1, sizeof(char *));
+	len_base = str_arr_len(s_base);
+	s_joined = ft_calloc(str_arr_len(s_append) + len_base + 1, sizeof(char *));
 	if (!s_joined)
 		return (free_2d_ptr(s_base, s_append));
 	i = 0;

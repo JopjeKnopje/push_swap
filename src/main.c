@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/15 21:00:46 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/16 11:21:29 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ int	push_swap(int argc, char *argv[])
 	if (argc <= 1)
 		return (0);
 	argv = parse_args(argv);
-	if (argv && ptr_arr_len(argv) > 1)
+
+	if (argv && str_arr_len(argv) > 1)
 	{
-		head_a = create_stack_a(argv, ptr_arr_len(argv));
+		head_a = create_stack_a(argv, str_arr_len(argv));
 		if (head_a && stack_is_sorted(head_a))
 		{
 			stack_free(head_a);
@@ -40,7 +41,8 @@ int	push_swap(int argc, char *argv[])
 	}
 	else
 		printf("Error!\n");
-	free_split(argv);
+	if (argv)
+		free_split(argv);
 	return (0);
 }
 
