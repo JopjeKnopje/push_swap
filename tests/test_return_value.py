@@ -1,7 +1,4 @@
-import os
-
-# to test the code put in main
-#define STDERR_FILENO STDOUT_FILENO
+import subprocess
 
 arguments = [
         ["one", "Error\n"],
@@ -16,11 +13,18 @@ arguments = [
 def main():
 
     for x in range(0, len(arguments)):
-        cmd = "./push_swap " + arguments[x][0]
         expected = arguments[x][1]
-        returned_output = os.popen(cmd).read()
-        if (expected != returned_output):
-            print("expected [{0}] | input [{1}] != output [{2}]".format(expected.rstrip('\n'), arguments[x][0].rstrip('\n'), returned_output.rstrip('\n')))
+
+        sp = subprocess.Popen(["./push_swap", arguments[x][0]], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        out, err = sp.communicate()
+
+        if (err == ""):
+            cmd_output = out.decode('utf-8')
+        else:
+            cmd_output = err.decode('utf-8')
+
+        if (expected != cmd_output):
+            print("expected [{0}] | input [{1}] != output [{2}]".format(expected.rstrip('\n'), arguments[x][0].rstrip('\n'), cmd_output.rstrip('\n')))
         else:
             print("passed")
 
