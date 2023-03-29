@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/16 19:24:15 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/29 10:57:23 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static	int	push_swap(int argc, char *argv[])
 			ft_putstr_fd("Error\n", STDERR_FILENO);
 			return (EXIT_FAILURE);
 		}
-		if (stack_is_sorted(head_a))
+		if (is_stack_sorted(head_a))
 		{
 			stack_free(head_a);
 			return (free_split(argv));

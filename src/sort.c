@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/16 22:56:16 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/29 10:57:23 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static	void	sort_small(t_stack **stack_a, t_stack **stack_b)
 	while (i < size - 3)
 	{
 		smart_rotate(stack_a);
-		if (stack_is_sorted(*stack_a))
+		if (is_stack_sorted(*stack_a))
 			break ;
 		pb(stack_a, stack_b);
 		i++;
