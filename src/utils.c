@@ -6,11 +6,18 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/08 14:24:01 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/16 22:51:41 by joppe         ########   odam.nl         */
+/*   Updated: 2023/03/29 17:05:07 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static	char	**free_ptr2(char **p1, char **p2)
+{
+	free(p1);
+	free(p2);
+	return (NULL);
+}
 
 t_stack	*create_stack_a(char *args[], int len)
 {
@@ -34,23 +41,6 @@ t_stack	*create_stack_a(char *args[], int len)
 		len--;
 	}
 	return (head);
-}
-
-int	str_arr_len(char **ptr)
-{
-	int	i;
-
-	i = 0;
-	while (ptr[i])
-		i++;
-	return (i);
-}
-
-static	char	**free_ptr2(char **p1, char **p2)
-{
-	free(p1);
-	free(p2);
-	return (NULL);
 }
 
 char	**strjoin_free_2d(char **s_base, char **s_append)
@@ -93,4 +83,14 @@ int	free_split(char **s_split)
 	}
 	free(s_split);
 	return (0);
+}
+
+int	str_arr_len(char **ptr)
+{
+	int	i;
+
+	i = 0;
+	while (ptr[i])
+		i++;
+	return (i);
 }

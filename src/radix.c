@@ -6,13 +6,12 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/13 16:52:11 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/29 11:22:16 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/03/29 17:07:56 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// TODO Maybe move node instead of value.
 static	void	bubblesort(t_stack *head)
 {
 	t_stack	*head_tmp;
@@ -65,13 +64,9 @@ static	int	apply_offset(t_stack *head_a, t_stack *head_sorted)
 
 	if (!head_a || !head_sorted)
 		return (0);
-	// isset = ft_calloc(stack_size(head_a), sizeof(int));
-	is_set = NULL;
+	is_set = ft_calloc(stack_size(head_a), sizeof(int));
 	if (!is_set)
-	{
-		// stack_free(head_sorted);
 		return (0);
-	}
 	tmp = head_sorted;
 	index = 0;
 	while (tmp)
@@ -85,32 +80,42 @@ static	int	apply_offset(t_stack *head_a, t_stack *head_sorted)
 	return (1);
 }
 
-int	sort_radix(t_stack **stack_a, t_stack **stack_b)
+static	void	do_radix(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*stack_a_copy;
-	int		size_a;
-	int		shift;
 	int		i;
+	int		shift;
+	int		size_a;
 
-	stack_a_copy = stack_dup(*stack_a);
-	bubblesort(stack_a_copy);
-	if (!apply_offset(*stack_a, stack_a_copy))
-		return (0);
 	shift = 0;
 	while (!is_stack_sorted(*stack_a))
 	{
 		i = 0;
 		size_a = stack_size(*stack_a);
-		while (i++ < size_a)
+		while (i < size_a)
 		{
 			if ((*stack_a)->nb >> shift & 1)
 				ra(stack_a);
 			else
 				pb(stack_a, stack_b);
+			i++;
 		}
 		while ((*stack_b))
 			pa(stack_a, stack_b);
 		shift++;
 	}
+}
+
+int	sort_radix(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	*stack_a_copy;
+
+	stack_a_copy = stack_dup(*stack_a);
+	bubblesort(stack_a_copy);
+	if (!apply_offset(*stack_a, stack_a_copy))
+	{
+		stack_free(stack_a_copy);
+		return (0);
+	}
+	do_radix(stack_a, stack_b);
 	return (1);
 }
