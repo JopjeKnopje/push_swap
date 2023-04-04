@@ -6,11 +6,12 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/08 14:24:01 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/29 17:05:07 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/04/04 11:26:47 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <limits.h>
 
 static	char	**free_ptr2(char **p1, char **p2)
 {
