@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/13 16:52:11 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/29 17:07:56 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/04/04 09:49:27 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static	void	do_radix(t_stack **stack_a, t_stack **stack_b)
 	int		size_a;
 
 	shift = 0;
-	while (!is_stack_sorted(*stack_a))
+	while (!stack_is_sorted(*stack_a))
 	{
 		i = 0;
 		size_a = stack_size(*stack_a);

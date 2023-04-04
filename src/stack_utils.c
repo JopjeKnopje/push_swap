@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 20:06:03 by joppe         #+#    #+#                 */
-/*   Updated: 2023/04/04 09:45:35 by joppe         ########   odam.nl         */
+/*   Updated: 2023/04/04 09:48:57 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_stack	*stack_min(t_stack *stack)
 	return (min);
 }
 
-int	is_stack_sorted(t_stack *stack)
+int	stack_is_sorted(t_stack *stack)
 {
 	while (stack)
 	{
