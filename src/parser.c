@@ -6,26 +6,30 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/09 16:29:24 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/29 17:01:09 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/04/04 14:07:46 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
-static	int	is_num_str(char *s)
+static	int	is_str_num(char *s)
 {
 	int	i;
+	int	has_sign;
 
 	i = 0;
+	has_sign = 0;
 	while (s[i] == '-' || s[i] == '+')
 		i++;
+	has_sign = i;
 	while (s[i])
 	{
 		if (!ft_isdigit(s[i]))
 			return (0);
 		i++;
 	}
-	return (1);
+	return (!(i == has_sign));
 }
 
 static	int	has_dupes(char *strings[])
@@ -54,11 +58,11 @@ static int	check_elements(char *argv[])
 	int	i;
 
 	i = 0;
-	if (has_dupes(argv))
+	if (!argv || has_dupes(argv))
 		return (0);
 	while (argv[i])
 	{
-		if (!is_num_str(argv[i]))
+		if (!is_str_num(argv[i]))
 			return (0);
 		i++;
 	}
@@ -69,7 +73,6 @@ char	**parse_args(char *argv[])
 {
 	char	**args_base;
 	char	**split;
-	int		passed;
 	int		i;
 
 	args_base = ft_calloc(1, sizeof(char *));
@@ -79,13 +82,14 @@ char	**parse_args(char *argv[])
 	while (argv[i])
 	{
 		split = ft_split(argv[i], ' ');
+		if (!split)
+			break ;
 		args_base = strjoin_free_2d(args_base, split);
 		if (!args_base)
 			break ;
 		i++;
 	}
-	passed = check_elements(args_base);
-	if (!passed || !split)
+	if (!split || (args_base && !check_elements(args_base)))
 	{
 		free_split(args_base);
 		return (NULL);

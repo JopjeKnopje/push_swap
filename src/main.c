@@ -6,11 +6,12 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/04/04 09:55:14 by joppe         ########   odam.nl         */
+/*   Updated: 2023/04/04 14:02:36 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdlib.h>
 
 static	int	push_swap(int argc, char *argv[])
 {
@@ -43,8 +44,14 @@ static	int	push_swap(int argc, char *argv[])
 
 #ifndef BUILD_TESTER
 
+void check_leaks()
+{
+	system("Leaks push_swap");
+}
+
 int	main(int argc, char *argv[])
 {
+	// atexit(check_leaks);
 	return (push_swap(argc, argv));
 }
 
