@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/03/29 17:02:00 by jboeve        ########   odam.nl          #
+#    Updated: 2023/04/04 11:10:03 by jboeve        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,9 @@ NAME = push_swap
 
 LIBFT = libft/build/libft.a
 
-# CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 # CFLAGS += -g -fsanitize=address
-CFLAGS = -g
+# CFLAGS = -g
 
 
 INC = -Ilibft/include -Iinclude 
@@ -63,8 +63,6 @@ TEST_BINS = $(patsubst $(TEST_DIR)/%.c, $(TEST_DIR)/bin/%, $(TESTS))
 ifdef TEST_BUILD
 CFLAGS += -DBUILD_TESTER
 endif
-
-
 
 all: $(NAME)
 
