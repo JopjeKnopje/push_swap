@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 18:41:31 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/29 10:57:04 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/04/04 09:49:02 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void print_split(char **s);
 t_stack *stack_dup(t_stack *head);
 t_stack	*stack_min(t_stack *stack);
 void 	stack_free(t_stack *head);
-int 	is_stack_sorted(t_stack *head);
+int 	stack_is_sorted(t_stack *head);
 
 
 // stack.c

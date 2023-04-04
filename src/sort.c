@@ -6,13 +6,12 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/29 10:57:23 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/04/04 09:55:01 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// TODO remove if statements for each case.
 static	void	sort_3(t_stack **s)
 {
 	if ((*s)->nb > (*s)->next->nb && (*s)->next->nb < (*s)->next->next->nb
@@ -61,7 +60,7 @@ static	int	find_rotates(t_stack *stack)
 
 static	void	smart_rotate(t_stack **stack)
 {
-	int		j;
+	int		i;
 	int		r_count;
 	void	(*rotate_func)(t_stack **);
 
@@ -73,11 +72,11 @@ static	void	smart_rotate(t_stack **stack)
 	}
 	else
 		rotate_func = &ra;
-	j = 0;
-	while (j < r_count)
+	i = 0;
+	while (i < r_count)
 	{
 		rotate_func(stack);
-		j++;
+		i++;
 	}
 }
 
@@ -91,7 +90,7 @@ static	void	sort_small(t_stack **stack_a, t_stack **stack_b)
 	while (i < size - 3)
 	{
 		smart_rotate(stack_a);
-		if (is_stack_sorted(*stack_a))
+		if (stack_is_sorted(*stack_a))
 			break ;
 		pb(stack_a, stack_b);
 		i++;
@@ -104,10 +103,10 @@ static	void	sort_small(t_stack **stack_a, t_stack **stack_b)
 int	do_sort(t_stack **head_a)
 {
 	t_stack	*head_b;
-	int		val;
+	int		ret_val;
 	int		size;
 
-	val = 1;
+	ret_val = 1;
 	head_b = NULL;
 	size = stack_size(*head_a);
 	if (size == 2)
@@ -115,7 +114,7 @@ int	do_sort(t_stack **head_a)
 	else if (size > 2 && size <= 6)
 		sort_small(head_a, &head_b);
 	else if (size > 6)
-		val = sort_radix(head_a, &head_b);
+		ret_val = sort_radix(head_a, &head_b);
 	stack_free(head_b);
-	return (val);
+	return (ret_val);
 }
