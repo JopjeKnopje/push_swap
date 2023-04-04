@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/03/29 17:02:00 by jboeve        ########   odam.nl          #
+#    Updated: 2023/04/04 09:43:22 by joppe         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,8 @@ re: fclean dfclean all
 
 run: all
 	# python3 tests/test_return_value.py
-	./$(NAME) 3 1 2 5 7 9 4 33 -2147483648 2147483647 
+	# ./$(NAME) 3 1 2 5 7 9 4 33 -2147483648 2147483647 
+	./$(NAME) 1 2 3 4 5
 
 compile_commands: dfclean fclean
 	$(MAKE) | compiledb

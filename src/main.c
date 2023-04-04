@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/03/29 17:02:20 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/04/04 09:43:37 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,29 @@ void	check_leaks(void)
 	system("Leaks push_swap");
 }
 
+void print_stack(t_stack *head)
+{
+	while (head)
+	{
+		printf("[%d]\n", head->nb);
+		head = head->next;
+	
+	}
+}
+
+
 #ifndef BUILD_TESTER
 
 int	main(int argc, char *argv[])
 {
 	// atexit(check_leaks);
-	return (push_swap(argc, argv));
+	// return (push_swap(argc, argv));
+	t_stack *stacka = create_stack_a(argv, argc);
+	t_stack *dup = stack_dup(stacka);
+	print_stack(stacka);
+
+	printf("------------------\n");
+	print_stack(dup);
 }
 
 #endif
