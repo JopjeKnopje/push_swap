@@ -24,16 +24,5 @@ rrr : rra + rrb
 
 
 TODO:
-	Instead of using shitty list funcions,
+	Instead of duping the stack just have another field in the stack struct called index
 
-	With reverse rotate a doubly linked list would be nice,
-	since you can call the prev node.
-
-	Accept arguments like this ./push_swap "2 1"
-
-	Malloc protection.
-
-
-
-	check whether to use ra or rra
-	these args gave 13 Instructions "172 854 741 -188 -563"
