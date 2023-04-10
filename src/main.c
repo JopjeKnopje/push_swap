@@ -6,12 +6,11 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/04/04 14:41:04 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/04/10 11:18:31 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdlib.h>
 
 static	int	push_swap(int argc, char *argv[])
 {
@@ -46,6 +45,8 @@ static	int	push_swap(int argc, char *argv[])
 
 int	main(int argc, char *argv[])
 {
+	if (argc < 2)
+		return (EXIT_SUCCESS);
 	return (push_swap(argc, argv));
 }
 
