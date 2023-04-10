@@ -14,7 +14,7 @@ NAME = push_swap
 
 LIBFT = libft/build/libft.a
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 # CFLAGS += -g -fsanitize=address
 # CFLAGS = -g
 

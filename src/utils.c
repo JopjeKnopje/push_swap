@@ -36,9 +36,16 @@ t_stack	*create_stack_a(char *args[], int len)
 			return (NULL);
 		}
 		if (!head)
+		{
 			head = stack_new(num);
-		else
-			stack_add_front(&head, stack_new(num));
+			if (!head)
+				return (NULL);
+		}
+		else if (!stack_add_front(&head, stack_new(num)))
+		{
+			stack_free(head);
+			return (NULL);
+		}
 		len--;
 	}
 	return (head);
@@ -55,7 +62,12 @@ char	**strjoin_free_2d(char **s_base, char **s_append)
 	len_base = str_arr_len(s_base);
 	s_joined = ft_calloc(str_arr_len(s_append) + len_base + 1, sizeof(char *));
 	if (!s_joined)
-		return (free_ptr2(s_base, s_append));
+	{
+		free_split(s_base);
+		free_split(s_append);
+		return (NULL);
+	}
+		
 	i = 0;
 	while (s_base[i])
 	{
@@ -75,6 +87,9 @@ char	**strjoin_free_2d(char **s_base, char **s_append)
 int	free_split(char **s_split)
 {
 	int	i;
+	
+	if (!s_split && !(*s_split))
+		return (0);
 
 	i = 0;
 	while (s_split[i])

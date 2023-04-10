@@ -22,11 +22,19 @@ t_stack	*stack_dup(t_stack *head)
 	if (!head)
 		return (NULL);
 	new = stack_new(tmp->nb);
+	if (!new)
+	{
+		return (NULL);
+	}
 	last = &new;
 	tmp = tmp->next;
 	while (tmp)
 	{
-		stack_add_back(last, stack_new(tmp->nb));
+		if (!stack_add_back(last, stack_new(tmp->nb)))
+		{
+			stack_free(*last);
+			return (NULL);
+		}
 		last = &(*last)->next;
 		tmp = tmp->next;
 	}

@@ -41,10 +41,15 @@ static	int	push_swap(int argc, char *argv[])
 	return (EXIT_SUCCESS);
 }
 
+void check(void) {
+	system("leaks -q push_swap");
+}
+
 #ifndef BUILD_TESTER
 
 int	main(int argc, char *argv[])
 {
+	atexit(check);
 	if (argc < 2)
 		return (EXIT_SUCCESS);
 	return (push_swap(argc, argv));

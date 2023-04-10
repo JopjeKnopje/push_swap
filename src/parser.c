@@ -82,13 +82,16 @@ char	**parse_args(char *argv[])
 	{
 		split = ft_split(argv[i], ' ');
 		if (!split)
-			break ;
+		{
+			free_split(args_base);
+			return (NULL);
+		}
 		args_base = strjoin_free_2d(args_base, split);
 		if (!args_base)
-			break ;
+			return (NULL);
 		i++;
 	}
-	if (!split || (args_base && !check_elements(args_base)))
+	if (args_base && !check_elements(args_base))
 	{
 		free_split(args_base);
 		return (NULL);

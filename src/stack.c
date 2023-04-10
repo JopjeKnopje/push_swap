@@ -25,27 +25,32 @@ t_stack	*stack_last(t_stack *stack)
 	return (stack);
 }
 
-void	stack_add_back(t_stack **stack, t_stack *new)
+t_stack	*stack_add_back(t_stack **stack, t_stack *new)
 {
-	t_stack	*last;
+	t_stack *last;
 
-	if (!stack || !new)
-		return ;
+	if (!stack || !(*stack) || !new)
+		return (NULL);
 	if (!(*stack))
+	{
 		*stack = new;
+		last = new;
+	}
 	else
 	{
 		last = stack_last(*stack);
 		last->next = new;
 	}
+	return (last);
 }
 
-void	stack_add_front(t_stack **stack, t_stack *new)
+t_stack	*stack_add_front(t_stack **stack, t_stack *new)
 {
-	if (!stack || !new)
-		return ;
+	if (!stack || !(*stack) || !new)
+		return (NULL);
 	new->next = *stack;
 	*stack = new;
+	return (*stack);
 }
 
 t_stack	*stack_new(int nb)
