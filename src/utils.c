@@ -6,12 +6,14 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/08 14:24:01 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/04/10 11:25:51 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/04/11 10:57:17 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <limits.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 static	char	**free_ptr2(char **p1, char **p2)
 {
@@ -41,10 +43,21 @@ t_stack	*create_stack_a(char *args[], int len)
 			if (!head)
 				return (NULL);
 		}
-		else if (!stack_add_front(&head, stack_new(num)))
+		// TODO: Check protection
+		else 
 		{
-			stack_free(head);
-			return (NULL);
+			t_stack *tmp = stack_new(num);
+			if (!tmp)
+			{
+				stack_free(head);
+				return (NULL);
+			}
+			if (!stack_add_front(&head, tmp))
+			{
+				stack_free(head);
+				free(tmp);
+				return (NULL);
+			}
 		}
 		len--;
 	}

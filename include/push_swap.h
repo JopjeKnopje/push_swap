@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 18:41:31 by joppe         #+#    #+#                 */
-/*   Updated: 2023/04/04 11:23:22 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/04/11 10:30:13 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int		stack_is_sorted(t_stack *head);
 // stack.c
 t_stack	*stack_new(int nb);
 t_stack	*stack_last(t_stack *stack);
-void	stack_add_front(t_stack **stack, t_stack *new);
-void	stack_add_back(t_stack **stack, t_stack *new);
+t_stack *stack_add_front(t_stack **stack, t_stack *new);
+t_stack *stack_add_back(t_stack **stack, t_stack *new);
 int		stack_size(t_stack *stack);
 
 // operations.c

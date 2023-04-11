@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/31 20:57:28 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/07 22:44:16 by joppe         ########   odam.nl         */
+/*   Updated: 2023/04/11 10:51:22 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ t_stack	*stack_add_front(t_stack **stack, t_stack *new)
 		return (NULL);
 	new->next = *stack;
 	*stack = new;
+	// just return a non-zero value
 	return (*stack);
 }
 

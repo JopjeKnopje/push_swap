@@ -6,11 +6,12 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/06 08:46:52 by joppe         #+#    #+#                 */
-/*   Updated: 2023/03/07 22:39:36 by joppe         ########   odam.nl         */
+/*   Updated: 2023/04/11 11:00:50 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 // Swap the top two numbers in a stack.
 void	operation_swap(t_stack **stack)

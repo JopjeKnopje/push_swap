@@ -6,11 +6,12 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 20:06:03 by joppe         #+#    #+#                 */
-/*   Updated: 2023/04/04 09:48:57 by joppe         ########   odam.nl         */
+/*   Updated: 2023/04/11 10:47:19 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdlib.h>
 
 t_stack	*stack_dup(t_stack *head)
 {
