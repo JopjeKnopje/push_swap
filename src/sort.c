@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/04/12 23:02:39 by joppe         ########   odam.nl         */
+/*   Updated: 2023/04/12 23:19:04 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static	void	smart_rotate(t_stack **stack)
 {
 	int		i;
 	int		r_count;
-	int	(*rotate_func)(t_stack **);
+	int		(*rotate_func)(t_stack **);
 
 	r_count = find_rotates(*stack);
 	if (r_count < 0)
@@ -80,17 +80,6 @@ static	void	smart_rotate(t_stack **stack)
 	}
 }
 
-t_stack *operation_push_tmp(t_stack **src, t_stack **dst)
-{
-	t_stack	*tmp;
-
-	if (!(*src))
-		return NULL;
-	tmp = (*src);
-	*src = (*src)->next;
-	return (stack_add_front(dst, tmp));
-}
-
 static	int	sort_small(t_stack **stack_a, t_stack **stack_b)
 {
 	int	size;
@@ -104,14 +93,14 @@ static	int	sort_small(t_stack **stack_a, t_stack **stack_b)
 		if (stack_is_sorted(*stack_a))
 			break ;
 		if (!pb(stack_a, stack_b))
-			return (0);	
+			return (0);
 		i++;
 	}
 	sort_3(stack_a);
 	while (*stack_b)
 	{
 		if (!pa(stack_a, stack_b))
-			return (0);	
+			return (0);
 	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/09 16:29:24 by joppe         #+#    #+#                 */
-/*   Updated: 2023/04/12 23:05:35 by joppe         ########   odam.nl         */
+/*   Updated: 2023/04/12 23:13:36 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,13 @@ char	**parse_args(char *argv[])
 	{
 		split = ft_split(argv[i], ' ');
 		if (!split)
-		{
-			free_split(args_base);
-			return (NULL);
-		}
+			break ;
 		args_base = strjoin_free_2d(args_base, split);
 		if (!args_base)
 			return (NULL);
 		i++;
 	}
-	if (args_base && !check_elements(args_base))
+	if (!split || (args_base && !check_elements(args_base)))
 	{
 		free_split(args_base);
 		return (NULL);
