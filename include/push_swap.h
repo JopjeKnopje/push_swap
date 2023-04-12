@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 18:41:31 by joppe         #+#    #+#                 */
-/*   Updated: 2023/04/11 10:30:13 by joppe         ########   odam.nl         */
+/*   Updated: 2023/04/12 22:58:48 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ t_stack *stack_add_back(t_stack **stack, t_stack *new);
 int		stack_size(t_stack *stack);
 
 // operations.c
-void	operation_swap(t_stack **stack);
-void	operation_push(t_stack **src, t_stack **dst);
-void	operation_rotate(t_stack **stack);
-void	operation_reverse_rotate(t_stack **stack);
+t_stack	*operation_swap(t_stack **stack);
+t_stack *operation_push(t_stack **src, t_stack **dst);
+t_stack	*operation_rotate(t_stack **stack);
+t_stack *operation_reverse_rotate(t_stack **stack);
 
 // utils.c
 t_stack	*create_stack_a(char *args[], int len);
@@ -50,11 +50,11 @@ int		str_arr_len(char **arr);
 char	**parse_args(char *argv[]);
 
 // moves.c
-void	sa(t_stack **stack_a);
-void	pa(t_stack **stack_a, t_stack **stack_b);
-void	pb(t_stack **stack_a, t_stack **stack_b);
-void	ra(t_stack **stack_a);
-void	rra(t_stack **stack_a);
+int		sa(t_stack **stack_a);
+int		pa(t_stack **stack_a, t_stack **stack_b);
+int		pb(t_stack **stack_a, t_stack **stack_b);
+int		ra(t_stack **stack_a);
+int		rra(t_stack **stack_a);
 
 // sort.c
 int		do_sort(t_stack **head_a);

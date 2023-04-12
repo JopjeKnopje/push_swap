@@ -6,17 +6,16 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 20:06:03 by joppe         #+#    #+#                 */
-/*   Updated: 2023/04/11 10:47:19 by joppe         ########   odam.nl         */
+/*   Updated: 2023/04/12 23:04:08 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdlib.h>
 
 t_stack	*stack_dup(t_stack *head)
 {
-	t_stack	*new;
 	t_stack	**last;
+	t_stack	*new;
 	t_stack	*tmp;
 
 	tmp = head;
@@ -24,9 +23,7 @@ t_stack	*stack_dup(t_stack *head)
 		return (NULL);
 	new = stack_new(tmp->nb);
 	if (!new)
-	{
 		return (NULL);
-	}
 	last = &new;
 	tmp = tmp->next;
 	while (tmp)

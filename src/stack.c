@@ -6,11 +6,12 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/31 20:57:28 by joppe         #+#    #+#                 */
-/*   Updated: 2023/04/11 10:51:22 by joppe         ########   odam.nl         */
+/*   Updated: 2023/04/12 23:04:56 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 t_stack	*stack_last(t_stack *stack)
 {
@@ -27,7 +28,7 @@ t_stack	*stack_last(t_stack *stack)
 
 t_stack	*stack_add_back(t_stack **stack, t_stack *new)
 {
-	t_stack *last;
+	t_stack	*last;
 
 	if (!stack || !(*stack) || !new)
 		return (NULL);
@@ -46,11 +47,16 @@ t_stack	*stack_add_back(t_stack **stack, t_stack *new)
 
 t_stack	*stack_add_front(t_stack **stack, t_stack *new)
 {
-	if (!stack || !(*stack) || !new)
+	if (!stack || !new)
 		return (NULL);
+	if (!(*stack))
+	{
+		*stack = new;
+		new->next = NULL;
+		return (*stack);
+	}
 	new->next = *stack;
 	*stack = new;
-	// just return a non-zero value
 	return (*stack);
 }
 

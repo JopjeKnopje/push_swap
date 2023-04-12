@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/04/04 09:55:01 by joppe         ########   odam.nl         */
+/*   Updated: 2023/04/12 23:02:39 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static	void	smart_rotate(t_stack **stack)
 {
 	int		i;
 	int		r_count;
-	void	(*rotate_func)(t_stack **);
+	int	(*rotate_func)(t_stack **);
 
 	r_count = find_rotates(*stack);
 	if (r_count < 0)
@@ -80,7 +80,18 @@ static	void	smart_rotate(t_stack **stack)
 	}
 }
 
-static	void	sort_small(t_stack **stack_a, t_stack **stack_b)
+t_stack *operation_push_tmp(t_stack **src, t_stack **dst)
+{
+	t_stack	*tmp;
+
+	if (!(*src))
+		return NULL;
+	tmp = (*src);
+	*src = (*src)->next;
+	return (stack_add_front(dst, tmp));
+}
+
+static	int	sort_small(t_stack **stack_a, t_stack **stack_b)
 {
 	int	size;
 	int	i;
@@ -92,12 +103,17 @@ static	void	sort_small(t_stack **stack_a, t_stack **stack_b)
 		smart_rotate(stack_a);
 		if (stack_is_sorted(*stack_a))
 			break ;
-		pb(stack_a, stack_b);
+		if (!pb(stack_a, stack_b))
+			return (0);	
 		i++;
 	}
 	sort_3(stack_a);
 	while (*stack_b)
-		pa(stack_a, stack_b);
+	{
+		if (!pa(stack_a, stack_b))
+			return (0);	
+	}
+	return (1);
 }
 
 int	do_sort(t_stack **head_a)
@@ -110,9 +126,9 @@ int	do_sort(t_stack **head_a)
 	head_b = NULL;
 	size = stack_size(*head_a);
 	if (size == 2)
-		sa(head_a);
+		ret_val = sa(head_a);
 	else if (size > 2 && size <= 6)
-		sort_small(head_a, &head_b);
+		ret_val = sort_small(head_a, &head_b);
 	else if (size > 6)
 		ret_val = sort_radix(head_a, &head_b);
 	stack_free(head_b);
