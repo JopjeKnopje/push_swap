@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 20:06:03 by joppe         #+#    #+#                 */
-/*   Updated: 2023/04/12 23:04:08 by joppe         ########   odam.nl         */
+/*   Updated: 2023/04/13 10:06:02 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	stack_is_sorted(t_stack *stack)
 	return (1);
 }
 
-void	stack_free(t_stack *head)
+t_stack	*stack_free(t_stack *head)
 {
 	t_stack	*tmp;
 
@@ -76,4 +76,5 @@ void	stack_free(t_stack *head)
 		head = head->next;
 		free(tmp);
 	}
+	return (NULL);
 }

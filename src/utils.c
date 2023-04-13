@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/08 14:24:01 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/04/12 23:29:20 by joppe         ########   odam.nl         */
+/*   Updated: 2023/04/13 10:17:31 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,31 +31,17 @@ t_stack	*create_stack_a(char *args[], int len)
 	{
 		num = ft_atol(args[len]);
 		if (num > INT_MAX || num < INT_MIN)
-		{
-			stack_free(head);
-			return (NULL);
-		}
+			return (stack_free(head));
 		if (!head)
 		{
 			head = stack_new(num);
 			if (!head)
 				return (NULL);
 		}
-		// TODO: Check protection
-		else 
+		else
 		{
-			t_stack *tmp = stack_new(num);
-			if (!tmp)
-			{
-				stack_free(head);
-				return (NULL);
-			}
-			if (!stack_add_front(&head, tmp))
-			{
-				stack_free(head);
-				free(tmp);
-				return (NULL);
-			}
+			if (!stack_add_front(&head, stack_new(num)))
+				return (stack_free(head));
 		}
 		len--;
 	}
@@ -73,12 +59,7 @@ char	**strjoin_free_2d(char **s_base, char **s_append)
 	len_base = str_arr_len(s_base);
 	s_joined = ft_calloc(str_arr_len(s_append) + len_base + 1, sizeof(char *));
 	if (!s_joined)
-	{
-		free_split(s_base);
-		free_split(s_append);
-		return (NULL);
-	}
-		
+		return (free_split(s_base), free_split(s_append), NULL);
 	i = 0;
 	while (s_base[i])
 	{
@@ -98,10 +79,9 @@ char	**strjoin_free_2d(char **s_base, char **s_append)
 int	free_split(char **s_split)
 {
 	int	i;
-	
+
 	if (!s_split && !(*s_split))
 		return (0);
-
 	i = 0;
 	while (s_split[i])
 	{

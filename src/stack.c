@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/31 20:57:28 by joppe         #+#    #+#                 */
-/*   Updated: 2023/04/12 23:04:56 by joppe         ########   odam.nl         */
+/*   Updated: 2023/04/13 10:10:33 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,13 @@ t_stack	*stack_add_back(t_stack **stack, t_stack *new)
 
 t_stack	*stack_add_front(t_stack **stack, t_stack *new)
 {
-	if (!stack || !new)
+	if (!new)
 		return (NULL);
+	if (!stack && new)
+	{
+		free(new);
+		return (NULL);
+	}
 	if (!(*stack))
 	{
 		*stack = new;
