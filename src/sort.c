@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/04/12 23:19:04 by joppe         ########   odam.nl         */
+/*   Updated: 2023/04/13 13:18:44 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,30 @@
 
 static	void	sort_3(t_stack **s)
 {
-	if ((*s)->nb > (*s)->next->nb && (*s)->next->nb < (*s)->next->next->nb
-		&& (*s)->nb < (*s)->next->next->nb)
+	const int	nb1 = (*s)->nb;
+	const int	nb2 = (*s)->next->nb;
+	const int	nb3 = (*s)->next->next->nb;
+
+	if (nb1 > nb2 && nb2 < nb3
+		&& nb1 < nb3)
 		sa(s);
-	else if ((*s)->nb > (*s)->next->nb && (*s)->next->nb > (*s)->next->next->nb
-		&& (*s)->nb > (*s)->next->next->nb)
+	else if (nb1 > nb2 && nb2 > nb3
+		&& nb1 > nb3)
 	{
 		sa(s);
 		rra(s);
 	}
-	else if ((*s)->nb > (*s)->next->nb && (*s)->next->nb < (*s)->next->next->nb
-		&& (*s)->nb > (*s)->next->next->nb)
+	else if (nb1 > nb2 && nb2 < nb3
+		&& nb1 > nb3)
 		ra(s);
-	else if ((*s)->nb < (*s)->next->nb && (*s)->next->nb > (*s)->next->next->nb
-		&& (*s)->nb < (*s)->next->next->nb)
+	else if (nb1 < nb2 && nb2 > nb3
+		&& nb1 < nb3)
 	{
 		sa(s);
 		ra(s);
 	}
-	else if ((*s)->nb < (*s)->next->nb && (*s)->next->nb > (*s)->next->next->nb
-		&& (*s)->nb > (*s)->next->next->nb)
+	else if (nb1 < nb2 && nb2 > nb3
+		&& nb1 > nb3)
 		rra(s);
 }
 

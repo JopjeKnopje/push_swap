@@ -6,37 +6,40 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/13 16:52:11 by joppe         #+#    #+#                 */
-/*   Updated: 2023/04/04 09:49:27 by joppe         ########   odam.nl         */
+/*   Updated: 2023/04/13 13:52:31 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 
-static	void	bubblesort(t_stack *head)
+static	int	bubblesort(t_stack **head)
 {
-	t_stack	*head_tmp;
+	t_stack	**head_tmp;
 	int		swapped;
-	int		tmp_val;
 
 	if (!head)
-		return ;
+		return (0);
 	swapped = 1;
 	while (swapped)
 	{
 		swapped = 0;
 		head_tmp = head;
-		while (head_tmp->next)
+		while ((*head_tmp)->next)
 		{
-			if (head_tmp->nb > head_tmp->next->nb)
+			if ((*head_tmp)->nb > (*head_tmp)->next->nb)
 			{
-				tmp_val = head_tmp->nb;
-				head_tmp->nb = head_tmp->next->nb;
-				head_tmp->next->nb = tmp_val;
+				if (!operation_swap(head_tmp))
+					return (0);
 				swapped = 1;
 			}
-			head_tmp = head_tmp->next;
+			head_tmp = &(*head_tmp)->next;
 		}
 	}
+	return (1);
 }
 
 static void	inner_loop(t_stack *head, t_stack *tmp, int *isset, int index)
@@ -76,33 +79,36 @@ static	int	apply_offset(t_stack *head_a, t_stack *head_sorted)
 		index++;
 	}
 	free(is_set);
-	stack_free(head_sorted);
 	return (1);
 }
 
-static	void	do_radix(t_stack **stack_a, t_stack **stack_b)
+static	int	do_radix(t_stack **stack_a, t_stack **stack_b)
 {
 	int		i;
+	int		err;
 	int		shift;
-	int		size_a;
+	int		size;
 
 	shift = 0;
 	while (!stack_is_sorted(*stack_a))
 	{
 		i = 0;
-		size_a = stack_size(*stack_a);
-		while (i < size_a)
+		size = stack_size(*stack_a);
+		while (i++ < size)
 		{
 			if ((*stack_a)->nb >> shift & 1)
-				ra(stack_a);
+				err = ra(stack_a);
 			else
-				pb(stack_a, stack_b);
-			i++;
+				err = pb(stack_a, stack_b);
+			if (!err)
+				return (0);
 		}
 		while ((*stack_b))
-			pa(stack_a, stack_b);
+			if (!pa(stack_a, stack_b))
+				return (0);
 		shift++;
 	}
+	return (1);
 }
 
 int	sort_radix(t_stack **stack_a, t_stack **stack_b)
@@ -110,12 +116,18 @@ int	sort_radix(t_stack **stack_a, t_stack **stack_b)
 	t_stack	*stack_a_copy;
 
 	stack_a_copy = stack_dup(*stack_a);
-	bubblesort(stack_a_copy);
+	if (!stack_a_copy)
+		return (0);
+	if (!bubblesort(&stack_a_copy))
+	{
+		stack_free(stack_a_copy);
+		return (0);
+	}
 	if (!apply_offset(*stack_a, stack_a_copy))
 	{
 		stack_free(stack_a_copy);
 		return (0);
 	}
-	do_radix(stack_a, stack_b);
-	return (1);
+	stack_free(stack_a_copy);
+	return (do_radix(stack_a, stack_b));
 }

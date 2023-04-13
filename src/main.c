@@ -6,7 +6,7 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/04/12 23:02:49 by joppe         ########   odam.nl         */
+/*   Updated: 2023/04/13 12:21:26 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,14 @@ static	int	push_swap(int argc, char *argv[])
 
 #ifndef BUILD_TESTER
 
+void check_leaks()
+{
+	system("Leaks -q push_swap");
+}
+
 int	main(int argc, char *argv[])
 {
+	atexit(check_leaks);
 	return (push_swap(argc, argv));
 }
 

@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/04/11 10:55:00 by joppe         ########   odam.nl          #
+#    Updated: 2023/04/13 10:39:22 by jboeve        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME = push_swap
 
 LIBFT = libft/build/libft.a
 
-# CFLAGS = -Wall -Wextra -Werror -g
-CFLAGS += -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g
+# CFLAGS += -g -fsanitize=address
 # CFLAGS = -g
 
 INC = -Ilibft/include -Iinclude 
