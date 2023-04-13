@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 18:41:31 by joppe         #+#    #+#                 */
-/*   Updated: 2023/04/13 10:05:53 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/04/13 21:33:49 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int		free_split(char **s_split);
 int		str_arr_len(char **arr);
 
 // parser.c
+int		is_str_num(char *s);
 char	**parse_args(char *argv[]);
 
 // moves.c

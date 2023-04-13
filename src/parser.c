@@ -6,30 +6,13 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/09 16:29:24 by joppe         #+#    #+#                 */
-/*   Updated: 2023/04/13 14:01:16 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/04/13 22:01:30 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static	int	is_str_num(char *s)
-{
-	int	i;
-	int	has_sign;
-
-	i = 0;
-	has_sign = 0;
-	while (s[i] == '-' || s[i] == '+')
-		i++;
-	has_sign = i;
-	while (s[i])
-	{
-		if (!ft_isdigit(s[i]))
-			return (0);
-		i++;
-	}
-	return (!(i == has_sign));
-}
+#include <stdio.h>
+#include <string.h>
 
 static	int	has_dupes(char *strings[])
 {
@@ -46,7 +29,7 @@ static	int	has_dupes(char *strings[])
 			if (!ft_strncmp(strings[i], strings[j], 11))
 				return (1);
 			j++;
- 		}
+		}
 		i++;
 	}
 	return (0);
@@ -66,6 +49,25 @@ static int	check_elements(char *argv[])
 		i++;
 	}
 	return (1);
+}
+
+int	is_str_num(char *s)
+{
+	int	i;
+	int	has_sign;
+
+	i = 0;
+	has_sign = 0;
+	while (s[i] == '-' || s[i] == '+')
+		i++;
+	has_sign = i;
+	while (s[i])
+	{
+		if (!ft_isdigit(s[i]))
+			return (0);
+		i++;
+	}
+	return (!(i == has_sign));
 }
 
 char	**parse_args(char *argv[])
