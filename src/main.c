@@ -6,13 +6,13 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/04/13 12:21:26 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/04/13 14:00:47 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static	int	push_swap(int argc, char *argv[])
+static	int	push_swap(char *argv[])
 {
 	t_stack	*head_a;
 
@@ -36,22 +36,18 @@ static	int	push_swap(int argc, char *argv[])
 		stack_free(head_a);
 		free_split(argv);
 	}
-	if (!argv && argc > 1)
+	else
 		ft_putstr_fd("Error\n", STDERR_FILENO);
 	return (EXIT_SUCCESS);
 }
 
 #ifndef BUILD_TESTER
 
-void check_leaks()
-{
-	system("Leaks -q push_swap");
-}
-
 int	main(int argc, char *argv[])
 {
-	atexit(check_leaks);
-	return (push_swap(argc, argv));
+	if (argc <= 2)
+		return (EXIT_SUCCESS);
+	return (push_swap(argv));
 }
 
 #endif

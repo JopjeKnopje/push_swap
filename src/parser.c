@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/09 16:29:24 by joppe         #+#    #+#                 */
-/*   Updated: 2023/04/13 11:00:05 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/04/13 14:01:16 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static	int	has_dupes(char *strings[])
 			if (!ft_strncmp(strings[i], strings[j], 11))
 				return (1);
 			j++;
-		}
+ 		}
 		i++;
 	}
 	return (0);

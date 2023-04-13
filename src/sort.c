@@ -6,38 +6,34 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/04/13 13:18:44 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/04/13 14:25:28 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// TODO Protect oeprations?
 static	void	sort_3(t_stack **s)
 {
 	const int	nb1 = (*s)->nb;
 	const int	nb2 = (*s)->next->nb;
 	const int	nb3 = (*s)->next->next->nb;
 
-	if (nb1 > nb2 && nb2 < nb3
-		&& nb1 < nb3)
+	if (nb1 > nb2 && nb2 < nb3 && nb1 < nb3)
 		sa(s);
-	else if (nb1 > nb2 && nb2 > nb3
-		&& nb1 > nb3)
+	else if (nb1 > nb2 && nb2 > nb3 && nb1 > nb3)
 	{
 		sa(s);
 		rra(s);
 	}
-	else if (nb1 > nb2 && nb2 < nb3
-		&& nb1 > nb3)
+	else if (nb1 > nb2 && nb2 < nb3 && nb1 > nb3)
 		ra(s);
-	else if (nb1 < nb2 && nb2 > nb3
-		&& nb1 < nb3)
+	else if (nb1 < nb2 && nb2 > nb3 && nb1 < nb3)
 	{
 		sa(s);
 		ra(s);
 	}
-	else if (nb1 < nb2 && nb2 > nb3
-		&& nb1 > nb3)
+	else if (nb1 < nb2 && nb2 > nb3 && nb1 > nb3)
 		rra(s);
 }
 
@@ -62,6 +58,7 @@ static	int	find_rotates(t_stack *stack)
 	return (i);
 }
 
+// TODO Protect rotate_func.
 static	void	smart_rotate(t_stack **stack)
 {
 	int		i;
