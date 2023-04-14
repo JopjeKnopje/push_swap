@@ -6,13 +6,12 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 18:41:31 by joppe         #+#    #+#                 */
-/*   Updated: 2023/04/13 21:33:49 by joppe         ########   odam.nl         */
+/*   Updated: 2023/04/14 20:52:01 by joppe         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
 # include "libft.h"
 
 typedef struct s_stack
@@ -30,15 +29,15 @@ int		stack_is_sorted(t_stack *head);
 // stack.c
 t_stack	*stack_new(int nb);
 t_stack	*stack_last(t_stack *stack);
-t_stack *stack_add_front(t_stack **stack, t_stack *new);
-t_stack *stack_add_back(t_stack **stack, t_stack *new);
+t_stack	*stack_add_front(t_stack **stack, t_stack *new);
+t_stack	*stack_add_back(t_stack **stack, t_stack *new);
 int		stack_size(t_stack *stack);
 
 // operations.c
 t_stack	*operation_swap(t_stack **stack);
-t_stack *operation_push(t_stack **src, t_stack **dst);
+t_stack	*operation_push(t_stack **src, t_stack **dst);
 t_stack	*operation_rotate(t_stack **stack);
-t_stack *operation_reverse_rotate(t_stack **stack);
+t_stack	*operation_reverse_rotate(t_stack **stack);
 
 // utils.c
 t_stack	*create_stack_a(char *args[], int len);
