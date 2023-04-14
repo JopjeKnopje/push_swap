@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/04/13 10:39:22 by jboeve        ########   odam.nl          #
+#    Updated: 2023/04/14 12:41:25 by jboeve        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 
 LIBFT = libft/build/libft.a
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 # CFLAGS += -g -fsanitize=address
 # CFLAGS = -g
 
@@ -63,7 +63,9 @@ ifdef TEST_BUILD
 CFLAGS += -DBUILD_TESTER
 endif
 
-all: $(NAME)
+.PHONY: make_libft clean fclean re run compile_commands dfclean dre
+
+all: make_libft $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
 	$(CC) $(OBJS) $(LIBFT) $(CFLAGS) $(INC) -o $(NAME)
@@ -72,8 +74,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS)
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
 
-.PHONY: $(LIBFT)
-$(LIBFT):
+make_libft:
 	$(MAKE) -C libft
 
 clean:
@@ -116,3 +117,4 @@ build_test: $(LIBFT) $(OBJS) $(TEST_BINS)
 test:
 	$(MAKE) clean
 	$(MAKE) build_test TEST_BUILD=1
+
