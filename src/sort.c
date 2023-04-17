@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/22 19:53:17 by joppe         #+#    #+#                 */
-/*   Updated: 2023/04/13 14:25:28 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/04/17 11:48:39 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ static	int	find_rotates(t_stack *stack)
 	return (i);
 }
 
-// TODO Protect rotate_func.
 static	void	smart_rotate(t_stack **stack)
 {
 	int		i;

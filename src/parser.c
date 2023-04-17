@@ -6,13 +6,11 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/09 16:29:24 by joppe         #+#    #+#                 */
-/*   Updated: 2023/04/17 11:33:36 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/04/17 11:43:27 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
-#include <string.h>
 
 static	int	has_dupes(char *strings[])
 {
