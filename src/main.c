@@ -6,19 +6,19 @@
 /*   By: jboeve <marvin@42.fr>                        +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/26 16:06:53 by jboeve        #+#    #+#                 */
-/*   Updated: 2023/04/17 11:42:39 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/04/17 11:53:39 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static	int	push_swap(int argc, char *argv[])
+static	int	push_swap(char *argv[])
 {
 	t_stack	*head_a;
 
 	argv = parse_args(argv);
-	if (!argv && argc == 1)
-		return (EXIT_FAILURE);
+	if (argv && str_arr_len(argv) == 0)
+		return (free_split(argv));
 	if (argv)
 	{
 		head_a = create_stack_a(argv, str_arr_len(argv));
@@ -45,7 +45,8 @@ static	int	push_swap(int argc, char *argv[])
 
 int	main(int argc, char *argv[])
 {
-	return (push_swap(argc, argv));
+	(void) argc;
+	return (push_swap(argv));
 }
 
 #endif
