@@ -13,3 +13,4 @@ checker_Mac
 checker
 push_swap_run_args.log
 push_swap_tester/
+memdetect/

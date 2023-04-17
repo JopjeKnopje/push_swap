@@ -6,7 +6,7 @@
 /*   By: joppe <jboeve@student.codam.nl>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/09 16:29:24 by joppe         #+#    #+#                 */
-/*   Updated: 2023/04/17 11:07:16 by jboeve        ########   odam.nl         */
+/*   Updated: 2023/04/17 11:33:36 by jboeve        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,6 @@ char	**parse_args(char *argv[])
 			return (NULL);
 		i++;
 	}
-	int x = (args_base && !check_elements(args_base));
-	printf("x %d...\n", x);
 	if (!split || (args_base && !check_elements(args_base)))
 	{
 		free_split(args_base);

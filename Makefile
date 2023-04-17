@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/04/17 11:13:14 by jboeve        ########   odam.nl          #
+#    Updated: 2023/04/17 11:26:57 by jboeve        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,6 +90,9 @@ run: all
 	# python3 tests/test_return_value.py
 	# ./$(NAME) 3 1 2 5 7 9 4 33 -2147483648 2147483647 
 	./$(NAME)
+
+mem:
+	memdetect/memdetect.sh . $(CFLAGS) $(INC) $(TEST_INC) --exclude push_swap_visualizer --exclude tests
 
 compile_commands: dfclean fclean
 	$(MAKE) | compiledb
