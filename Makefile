@@ -6,7 +6,7 @@
 #    By: jboeve <jboeve@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/17 12:05:02 by jboeve        #+#    #+#                  #
-#    Updated: 2023/04/14 20:52:29 by joppe         ########   odam.nl          #
+#    Updated: 2023/04/17 11:13:14 by jboeve        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 
 LIBFT = libft/build/libft.a
 
-CFLAGS = -Wall -Wextra -Werror
+# CFLAGS = -Wall -Wextra -Werror
 # CFLAGS += -g -fsanitize=address
 # CFLAGS = -g
 
@@ -89,7 +89,7 @@ re: fclean dfclean all
 run: all
 	# python3 tests/test_return_value.py
 	# ./$(NAME) 3 1 2 5 7 9 4 33 -2147483648 2147483647 
-	./$(NAME) 3 1 2 5 7 9 4 33 -2147483648 2147483647
+	./$(NAME)
 
 compile_commands: dfclean fclean
 	$(MAKE) | compiledb
